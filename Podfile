@@ -8,5 +8,9 @@ target 'Manhattan' do
   pod 'IQKeyboardManager'
   pod 'JJMaterialTextField'
   pod 'THCalendarDatePicker', '~> 1.2.6'
-  
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
+  pod 'AFNetworking'
+  pod 'NVActivityIndicatorView'
 end

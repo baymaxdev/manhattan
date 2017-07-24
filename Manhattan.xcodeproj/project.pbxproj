@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		CB3A5D6D1F238BEE00D61562 /* AHTagsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D6B1F238BEE00D61562 /* AHTagsLabel.swift */; };
 		CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D6C1F238BEE00D61562 /* AHTagView.swift */; };
+		CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D701F23CA8700D61562 /* FacebookAPIManager.swift */; };
+		CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D711F23CA8700D61562 /* NetworkingManager.swift */; };
+		CB3A5D761F23CAAE00D61562 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D751F23CAAE00D61562 /* User.swift */; };
+		CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D771F23D18000D61562 /* FacebookPost.swift */; };
+		CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F811F260B630092014E /* Signup1stViewController.swift */; };
+		CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F831F260B790092014E /* Signup2ndViewController.swift */; };
+		CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F851F260B870092014E /* Signup3rdViewController.swift */; };
+		CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F871F260B930092014E /* Signup4thViewController.swift */; };
 		CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */; };
 		CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FE1F222D5C00E01C60 /* ViewController.swift */; };
 		CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95001F222D5C00E01C60 /* Main.storyboard */; };
@@ -16,7 +24,6 @@
 		CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */; };
 		CB6E95121F222D5C00E01C60 /* ManhattanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E95111F222D5C00E01C60 /* ManhattanTests.swift */; };
 		CB6E951D1F222D5C00E01C60 /* ManhattanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */; };
-		CB6E95321F2247C000E01C60 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E95311F2247C000E01C60 /* SignupViewController.swift */; };
 		D83FC281202D56E9B1198DD3 /* Pods_Manhattan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDA95FBA69D301B3EF89A01 /* Pods_Manhattan.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +50,15 @@
 		C30B163244EB0EA6454AD111 /* Pods-Manhattan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manhattan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manhattan/Pods-Manhattan.release.xcconfig"; sourceTree = "<group>"; };
 		CB3A5D6B1F238BEE00D61562 /* AHTagsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHTagsLabel.swift; sourceTree = "<group>"; };
 		CB3A5D6C1F238BEE00D61562 /* AHTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHTagView.swift; sourceTree = "<group>"; };
+		CB3A5D701F23CA8700D61562 /* FacebookAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAPIManager.swift; sourceTree = "<group>"; };
+		CB3A5D711F23CA8700D61562 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		CB3A5D751F23CAAE00D61562 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB3A5D771F23D18000D61562 /* FacebookPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookPost.swift; sourceTree = "<group>"; };
+		CB3A5D791F23E3C900D61562 /* Manhattan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Manhattan.entitlements; sourceTree = "<group>"; };
+		CB603F811F260B630092014E /* Signup1stViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup1stViewController.swift; sourceTree = "<group>"; };
+		CB603F831F260B790092014E /* Signup2ndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ndViewController.swift; sourceTree = "<group>"; };
+		CB603F851F260B870092014E /* Signup3rdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup3rdViewController.swift; sourceTree = "<group>"; };
+		CB603F871F260B930092014E /* Signup4thViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup4thViewController.swift; sourceTree = "<group>"; };
 		CB6E94F91F222D5C00E01C60 /* Manhattan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Manhattan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E94FE1F222D5C00E01C60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +72,6 @@
 		CB6E95181F222D5C00E01C60 /* ManhattanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManhattanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManhattanUITests.swift; sourceTree = "<group>"; };
 		CB6E951E1F222D5C00E01C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB6E95311F2247C000E01C60 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +117,36 @@
 			name = AHTag;
 			sourceTree = "<group>";
 		};
+		CB3A5D6F1F23CA7500D61562 /* Social Networking Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CB3A5D701F23CA8700D61562 /* FacebookAPIManager.swift */,
+				CB3A5D711F23CA8700D61562 /* NetworkingManager.swift */,
+			);
+			name = "Social Networking Manager";
+			sourceTree = "<group>";
+		};
+		CB3A5D741F23CAA700D61562 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB3A5D771F23D18000D61562 /* FacebookPost.swift */,
+				CB3A5D751F23CAAE00D61562 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CB603F801F2608B20092014E /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				CB6E94FE1F222D5C00E01C60 /* ViewController.swift */,
+				CB603F811F260B630092014E /* Signup1stViewController.swift */,
+				CB603F831F260B790092014E /* Signup2ndViewController.swift */,
+				CB603F851F260B870092014E /* Signup3rdViewController.swift */,
+				CB603F871F260B930092014E /* Signup4thViewController.swift */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
 		CB6E94F01F222D5C00E01C60 = {
 			isa = PBXGroup;
 			children = (
@@ -127,13 +172,15 @@
 		CB6E94FB1F222D5C00E01C60 /* Manhattan */ = {
 			isa = PBXGroup;
 			children = (
-				CB6E952F1F22443200E01C60 /* 3rd Party */,
-				CB6E95301F2247A000E01C60 /* ViewControllers */,
+				CB3A5D791F23E3C900D61562 /* Manhattan.entitlements */,
 				CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */,
 				CB6E95001F222D5C00E01C60 /* Main.storyboard */,
 				CB6E95031F222D5C00E01C60 /* Assets.xcassets */,
 				CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */,
 				CB6E95081F222D5C00E01C60 /* Info.plist */,
+				CB3A5D741F23CAA700D61562 /* Model */,
+				CB6E952F1F22443200E01C60 /* 3rd Party */,
+				CB6E95301F2247A000E01C60 /* ViewControllers */,
 			);
 			path = Manhattan;
 			sourceTree = "<group>";
@@ -159,6 +206,7 @@
 		CB6E952F1F22443200E01C60 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				CB3A5D6F1F23CA7500D61562 /* Social Networking Manager */,
 				CB3A5D6A1F238BD000D61562 /* AHTag */,
 			);
 			name = "3rd Party";
@@ -167,8 +215,7 @@
 		CB6E95301F2247A000E01C60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CB6E94FE1F222D5C00E01C60 /* ViewController.swift */,
-				CB6E95311F2247C000E01C60 /* SignupViewController.swift */,
+				CB603F801F2608B20092014E /* Register */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -255,6 +302,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = L9W2CKHZ3Q;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					CB6E950C1F222D5C00E01C60 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -369,10 +421,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB3A5D6D1F238BEE00D61562 /* AHTagsLabel.swift in Sources */,
+				CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */,
 				CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */,
+				CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */,
 				CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */,
-				CB6E95321F2247C000E01C60 /* SignupViewController.swift in Sources */,
+				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
+				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,
+				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,
 				CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */,
+				CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */,
+				CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */,
+				CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
