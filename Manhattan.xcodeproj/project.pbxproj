@@ -36,6 +36,8 @@
 		CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F831F260B790092014E /* Signup2ndViewController.swift */; };
 		CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F851F260B870092014E /* Signup3rdViewController.swift */; };
 		CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F871F260B930092014E /* Signup4thViewController.swift */; };
+		CB65468F1F2D2A9900C2393D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65468E1F2D2A9900C2393D /* CommentCell.swift */; };
+		CB6546911F2D2AAF00C2393D /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6546901F2D2AAF00C2393D /* CommentViewController.swift */; };
 		CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */; };
 		CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FE1F222D5C00E01C60 /* ViewController.swift */; };
 		CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95001F222D5C00E01C60 /* Main.storyboard */; };
@@ -97,6 +99,8 @@
 		CB603F831F260B790092014E /* Signup2ndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ndViewController.swift; sourceTree = "<group>"; };
 		CB603F851F260B870092014E /* Signup3rdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup3rdViewController.swift; sourceTree = "<group>"; };
 		CB603F871F260B930092014E /* Signup4thViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup4thViewController.swift; sourceTree = "<group>"; };
+		CB65468E1F2D2A9900C2393D /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		CB6546901F2D2AAF00C2393D /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		CB6E94F91F222D5C00E01C60 /* Manhattan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Manhattan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E94FE1F222D5C00E01C60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				CB33D50B1F2B709700E05B87 /* BlogPostViewController.swift */,
 				CB33D50D1F2B7CBD00E05B87 /* PhotoPostViewController.swift */,
 				CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */,
+				CB6546901F2D2AAF00C2393D /* CommentViewController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				CB23744F1F2C721300ABDC4D /* BlogCell.swift */,
 				CB3511F21F2965650043DB88 /* CourseCell.swift */,
 				CB3511F51F29716B0043DB88 /* MessageCell.swift */,
+				CB65468E1F2D2A9900C2393D /* CommentCell.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -564,6 +570,8 @@
 				CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */,
 				CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */,
 				CB33D5031F2B53AE00E05B87 /* PopupViewController.swift in Sources */,
+				CB65468F1F2D2A9900C2393D /* CommentCell.swift in Sources */,
+				CB6546911F2D2AAF00C2393D /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

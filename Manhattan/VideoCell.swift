@@ -9,9 +9,9 @@
 import UIKit
 
 protocol VideoCellDelegate {
-    func didSelectComment(_ index: Int)
+    func didSelectComment(_ index: Int, _ type: String)
     
-    func didSelectProfile(_ index: Int)
+    func didSelectProfile(_ index: Int, _ type: String)
 }
 
 class VideoCell: UITableViewCell {
@@ -25,6 +25,7 @@ class VideoCell: UITableViewCell {
     @IBOutlet weak var lbDate: UILabel!
     @IBOutlet weak var vwPlayer: BMCustomPlayer!
     @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var vwBack: UIView!
     
     var index: Int?
     var delegate: VideoCellDelegate?
@@ -33,6 +34,12 @@ class VideoCell: UITableViewCell {
         super.awakeFromNib()
         
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
+        
+        vwBack.layer.masksToBounds = false
+        vwBack.layer.shadowColor = UIColor.black.cgColor
+        vwBack.layer.shadowOffset = CGSize(width: 2, height: 2)
+        vwBack.layer.shadowOpacity = 0.7
+        vwBack.layer.shadowRadius = 1.0
         // Initialization code
     }
 
@@ -43,11 +50,11 @@ class VideoCell: UITableViewCell {
     }
 
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!)
+        delegate?.didSelectComment(index!, "video")
     }
     
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectProfile(index!)
+        delegate?.didSelectProfile(index!, "video")
     }
     
     @IBAction func onLike(_ sender: Any) {

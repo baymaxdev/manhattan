@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import ExpandableLabel
 
 protocol BlogCellDelegate {
-    func didSelectComment(_ index: Int)
+    func didSelectComment(_ index: Int, _ type: String)
     
-    func didSelectProfile(_ index: Int)
+    func didSelectProfile(_ index: Int, _ type: String)
 }
 
 class BlogCell: UITableViewCell {
@@ -23,9 +24,10 @@ class BlogCell: UITableViewCell {
     @IBOutlet weak var lbLikeCnt: UILabel!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbBlogTitle: UILabel!
-    @IBOutlet weak var lbBlogContent: UILabel!
     @IBOutlet weak var vwBlogTitle: UIView!
     @IBOutlet weak var vwBlogContent: UIView!
+    @IBOutlet weak var lbBlogContent: ExpandableLabel!
+    @IBOutlet weak var vwBack: UIView!
     
     var index: Int?
     var delegate: BlogCellDelegate?
@@ -35,7 +37,34 @@ class BlogCell: UITableViewCell {
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
         vwBlogTitle.layer.cornerRadius = 10
         vwBlogContent.layer.cornerRadius = 10
+        
+        vwBlogTitle.layer.masksToBounds = false
+        vwBlogTitle.layer.shadowColor = UIColor.black.cgColor
+        vwBlogTitle.layer.shadowOffset = CGSize(width: 2, height: 2)
+        vwBlogTitle.layer.shadowOpacity = 0.7
+        vwBlogTitle.layer.shadowRadius = 1.0
+        
+        vwBack.layer.masksToBounds = false
+        vwBack.layer.shadowColor = UIColor.black.cgColor
+        vwBack.layer.shadowOffset = CGSize(width: 2, height: 2)
+        vwBack.layer.shadowOpacity = 0.7
+        vwBack.layer.shadowRadius = 1.0
+        
+        
         // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        lbBlogContent.collapsed = true
+        lbBlogContent.text = nil
+    }
+    
+    func initCell()
+    {
+        let attributedStr = NSMutableAttributedString(string: "More")
+        attributedStr.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0), range: NSMakeRange(0, attributedStr.length))
+        lbBlogContent.collapsedAttributedLink = attributedStr
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,11 +74,11 @@ class BlogCell: UITableViewCell {
     }
     
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectProfile(index!)
+        delegate?.didSelectComment(index!, "blog")
     }
     
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectComment(index!)
+        delegate?.didSelectProfile(index!, "blog")
     }
     
     @IBAction func onLike(_ sender: Any) {

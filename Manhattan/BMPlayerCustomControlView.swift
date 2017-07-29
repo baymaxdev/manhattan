@@ -15,9 +15,8 @@ class BMPlayerCustomControlView: BMPlayerControlView {
      Override if need to customize UI components
      */
     override func customizeUIComponents() {
-        
+        hideLoader()
     }
-    
     
     
     override func updateUI(_ isForFullScreen: Bool) {

@@ -9,9 +9,9 @@
 import UIKit
 
 protocol PhotoCellDelegate {
-    func didSelectComment(_ index: Int)
+    func didSelectComment(_ index: Int, _ type: String)
     
-    func didSelectProfile(_ index: Int)
+    func didSelectProfile(_ index: Int, _ type: String)
 }
 
 class PhotoCell: UITableViewCell {
@@ -24,6 +24,7 @@ class PhotoCell: UITableViewCell {
     @IBOutlet weak var btnLike: UIButton!
     @IBOutlet weak var imgPhoto: UIImageView!
     @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var vwBack: UIView!
     
     var index: Int?
     var delegate: PhotoCellDelegate?
@@ -31,6 +32,12 @@ class PhotoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
+        
+        vwBack.layer.masksToBounds = false
+        vwBack.layer.shadowColor = UIColor.black.cgColor
+        vwBack.layer.shadowOffset = CGSize(width: 2, height: 2)
+        vwBack.layer.shadowOpacity = 0.7
+        vwBack.layer.shadowRadius = 1.0
         // Initialization code
     }
 
@@ -41,7 +48,7 @@ class PhotoCell: UITableViewCell {
     }
 
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectProfile(index!)
+        delegate?.didSelectProfile(index!, "photo")
     }
     
     @IBAction func onLike(_ sender: Any) {
@@ -65,7 +72,7 @@ class PhotoCell: UITableViewCell {
     }
     
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!)
+        delegate?.didSelectComment(index!, "photo")
     }
     
 }
