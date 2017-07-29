@@ -46,6 +46,8 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
             delegate?.showAlert(vc: self, msg: "Email field is required")
         } else if (tfPassword.text?.isEmpty)! {
             delegate?.showAlert(vc: self, msg: "Password field is required")
+        } else {
+            delegate?.configureTabBar()
         }
     }
     
@@ -85,6 +87,7 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
     
     private func didLogin(method: String) {
         delegate?.hideLoader()
+        delegate?.configureTabBar()
     }
 }
 

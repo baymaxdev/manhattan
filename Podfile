@@ -13,4 +13,8 @@ target 'Manhattan' do
   pod 'FacebookShare'
   pod 'AFNetworking'
   pod 'NVActivityIndicatorView'
+  pod 'MXSegmentedPager'
+  pod 'MIBlurPopup'
+  pod 'BMPlayer'
+  
 end

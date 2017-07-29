@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BMPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HMSegmentedControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -64,12 +74,37 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MIBlurPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MXPagerView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MXParallaxHeader.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MXSegmentedPager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Manhattan.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -82,6 +117,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>007E1F352BBDCF79216810967474DAE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>171892E643977CACF1C966931DF0970F</key>
 		<dict>
 			<key>primary</key>
@@ -92,17 +132,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A83C4647045A6584A3D81D564434915</key>
+		<key>28546100F97BDD9F1D3D863522625D5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>57F2D7810545726BD51B43D20B2CEE08</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>593E9479C06FB200807D11AB29EB50BD</key>
 		<dict>
 			<key>primary</key>
@@ -127,7 +167,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>69F59636E016BD704D9FAFDDACAFE4EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7335E9C9689F3B8A16F063A884748533</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7891E2B724C54EF58FB1692B34F1455C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A78FE8D66B9455BC8B398440044B3E58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +202,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CF7D5D6C203849F69F787F31045FF721</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D41F2F37088EE2B724A283C89AC6B567</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE3A3B3F5BA920E833B29135E89F8F0E</key>
+		<key>DEC05651D1F4F24769A11DC2A95A1FF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E75E5BAC0FE6E4C6A5E5F95EA6807F8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

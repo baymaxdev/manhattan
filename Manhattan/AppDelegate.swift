@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var user: User?
     var indicator: NVActivityIndicatorView?
     var indicatorView: UIView?
+    var tabBarController: TabBarViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         indicatorView?.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func configureTabBar() {
+        tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
+        self.window?.rootViewController = tabBarController
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

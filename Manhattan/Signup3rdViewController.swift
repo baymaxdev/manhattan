@@ -23,7 +23,7 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         delegate = UIApplication.shared.delegate as? AppDelegate
         
         imgAvatar.layer.borderWidth = 5
-        imgAvatar.layer.borderColor = UIColor(red: 152/255.0, green: 200/255.0, blue: 223/255.0, alpha: 1.0).cgColor
+        imgAvatar.layer.borderColor = UIColor.white.cgColor
         imgAvatar.layer.cornerRadius = self.view.bounds.width * 0.4 / 2
         
         btnNext.layer.cornerRadius = btnNext.frame.height / 2
