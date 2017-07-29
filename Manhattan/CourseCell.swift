@@ -12,6 +12,9 @@ class CourseCell: UITableViewCell {
 
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var vwContainer: UIView!
+    
+    var index: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         vwContainer.layer.cornerRadius = 10

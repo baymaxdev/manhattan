@@ -10,6 +10,8 @@
 		CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */; };
 		CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */; };
 		CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */; };
+		CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */; };
+		CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744F1F2C721300ABDC4D /* BlogCell.swift */; };
 		CB33D5031F2B53AE00E05B87 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */; };
 		CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5041F2B53BE00E05B87 /* PopupMenuViewController.swift */; };
 		CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5071F2B6FBB00E05B87 /* FloatLabelTextField.swift */; };
@@ -68,6 +70,8 @@
 		CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostViewController.swift; sourceTree = "<group>"; };
 		CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCustomPlayer.swift; sourceTree = "<group>"; };
 		CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayerCustomControlView.swift; sourceTree = "<group>"; };
+		CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		CB23744F1F2C721300ABDC4D /* BlogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		CB33D5041F2B53BE00E05B87 /* PopupMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupMenuViewController.swift; sourceTree = "<group>"; };
 		CB33D5071F2B6FBB00E05B87 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				CB3511ED1F2940740043DB88 /* VideoCell.swift */,
+				CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */,
+				CB23744F1F2C721300ABDC4D /* BlogCell.swift */,
 				CB3511F21F2965650043DB88 /* CourseCell.swift */,
 				CB3511F51F29716B0043DB88 /* MessageCell.swift */,
 			);
@@ -537,12 +543,14 @@
 				CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */,
 				CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */,
 				CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */,
+				CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */,
 				CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */,
 				CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */,
 				CB33D50A1F2B6FBB00E05B87 /* FloatLabelTextView.swift in Sources */,
 				CB33D50C1F2B709700E05B87 /* BlogPostViewController.swift in Sources */,
 				CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */,
 				CB3511EB1F2940490043DB88 /* FeedViewController.swift in Sources */,
+				CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */,
 				CB3511F61F29716B0043DB88 /* MessageCell.swift in Sources */,
 				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
 				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,

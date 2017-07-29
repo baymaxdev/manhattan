@@ -16,5 +16,6 @@ target 'Manhattan' do
   pod 'MXSegmentedPager'
   pod 'MIBlurPopup'
   pod 'BMPlayer'
+  pod 'ExpandableLabel'
   
 end

@@ -1,37 +1,35 @@
 //
-//  VideoCell.swift
+//  PhotoCell.swift
 //  Manhattan
 //
-//  Created by gOd on 7/27/17.
+//  Created by gOd on 7/29/17.
 //  Copyright © 2017 gOd. All rights reserved.
 //
 
 import UIKit
 
-protocol VideoCellDelegate {
+protocol PhotoCellDelegate {
     func didSelectComment(_ index: Int)
     
     func didSelectProfile(_ index: Int)
 }
 
-class VideoCell: UITableViewCell {
+class PhotoCell: UITableViewCell {
 
-    @IBOutlet weak var btnComment: UIButton!
-    @IBOutlet weak var btnLike: UIButton!
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var lbTitle: UILabel!
-    @IBOutlet weak var lbLikeCnt: UILabel!
-    @IBOutlet weak var lbCommentCnt: UILabel!
     @IBOutlet weak var lbDate: UILabel!
-    @IBOutlet weak var vwPlayer: BMCustomPlayer!
+    @IBOutlet weak var lbCommentCnt: UILabel!
+    @IBOutlet weak var lbLikeCnt: UILabel!
+    @IBOutlet weak var btnLike: UIButton!
+    @IBOutlet weak var imgPhoto: UIImageView!
     @IBOutlet weak var lbDescription: UILabel!
     
     var index: Int?
-    var delegate: VideoCellDelegate?
+    var delegate: PhotoCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
         // Initialization code
     }
@@ -42,16 +40,11 @@ class VideoCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!)
-    }
-    
     @IBAction func onProfile(_ sender: Any) {
         delegate?.didSelectProfile(index!)
     }
     
     @IBAction func onLike(_ sender: Any) {
-        
         UIView.animate(withDuration: 0.3/1.5, animations: {
             self.btnLike.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }) { (bool: Bool) in
@@ -70,4 +63,9 @@ class VideoCell: UITableViewCell {
             btnLike.isSelected = true
         }
     }
+    
+    @IBAction func onComment(_ sender: Any) {
+        delegate?.didSelectComment(index!)
+    }
+    
 }

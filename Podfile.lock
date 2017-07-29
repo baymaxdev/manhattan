@@ -27,6 +27,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - ExpandableLabel (0.2.4)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -67,6 +68,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BMPlayer
+  - ExpandableLabel
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -81,6 +83,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  ExpandableLabel: 08a058c02bf7abc4f6a91fa4f4b86e5627bfbf19
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
@@ -99,6 +102,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   THCalendarDatePicker: fd1a1103ae0d1d1f2d0f9a1463a3f628a23a25a5
 
-PODFILE CHECKSUM: dab4df97a4b92472c0e00003bda6218696ab9329
+PODFILE CHECKSUM: 1c7abe357a5a8fcaf8de7cee6b35e6366b526d49
 
 COCOAPODS: 1.2.1

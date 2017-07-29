@@ -39,8 +39,16 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell") as! BlogCell
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+            return cell
+        }
     }
     
     /*
