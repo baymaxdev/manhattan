@@ -38,12 +38,18 @@
 		CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F871F260B930092014E /* Signup4thViewController.swift */; };
 		CB65468F1F2D2A9900C2393D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65468E1F2D2A9900C2393D /* CommentCell.swift */; };
 		CB6546911F2D2AAF00C2393D /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6546901F2D2AAF00C2393D /* CommentViewController.swift */; };
+		CB6546971F2D441500C2393D /* BlogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6546961F2D441500C2393D /* BlogCell.xib */; };
+		CB6546991F2D44F100C2393D /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6546981F2D44F100C2393D /* PhotoCell.xib */; };
+		CB65469B1F2D451100C2393D /* VideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB65469A1F2D451100C2393D /* VideoCell.xib */; };
 		CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */; };
 		CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E94FE1F222D5C00E01C60 /* ViewController.swift */; };
 		CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95001F222D5C00E01C60 /* Main.storyboard */; };
 		CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */; };
 		CB6E95121F222D5C00E01C60 /* ManhattanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E95111F222D5C00E01C60 /* ManhattanTests.swift */; };
 		CB6E951D1F222D5C00E01C60 /* ManhattanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */; };
+		CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */; };
+		CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */; };
+		CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */; };
 		CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC8B841F28D692002267DA /* TabBarViewController.swift */; };
 		D83FC281202D56E9B1198DD3 /* Pods_Manhattan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDA95FBA69D301B3EF89A01 /* Pods_Manhattan.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +107,9 @@
 		CB603F871F260B930092014E /* Signup4thViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup4thViewController.swift; sourceTree = "<group>"; };
 		CB65468E1F2D2A9900C2393D /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		CB6546901F2D2AAF00C2393D /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		CB6546961F2D441500C2393D /* BlogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogCell.xib; sourceTree = "<group>"; };
+		CB6546981F2D44F100C2393D /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		CB65469A1F2D451100C2393D /* VideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCell.xib; sourceTree = "<group>"; };
 		CB6E94F91F222D5C00E01C60 /* Manhattan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Manhattan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E94FC1F222D5C00E01C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E94FE1F222D5C00E01C60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +122,9 @@
 		CB6E95181F222D5C00E01C60 /* ManhattanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManhattanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManhattanUITests.swift; sourceTree = "<group>"; };
 		CB6E951E1F222D5C00E01C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
+		CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
+		CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		CBCC8B841F28D692002267DA /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,11 +198,15 @@
 			isa = PBXGroup;
 			children = (
 				CB3511ED1F2940740043DB88 /* VideoCell.swift */,
+				CB65469A1F2D451100C2393D /* VideoCell.xib */,
 				CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */,
+				CB6546981F2D44F100C2393D /* PhotoCell.xib */,
 				CB23744F1F2C721300ABDC4D /* BlogCell.swift */,
+				CB6546961F2D441500C2393D /* BlogCell.xib */,
 				CB3511F21F2965650043DB88 /* CourseCell.swift */,
 				CB3511F51F29716B0043DB88 /* MessageCell.swift */,
 				CB65468E1F2D2A9900C2393D /* CommentCell.swift */,
+				CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -199,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3511F01F29654A0043DB88 /* CourseViewController.swift */,
+				CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */,
 			);
 			name = Course;
 			sourceTree = "<group>";
@@ -207,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				CB3511F71F2971810043DB88 /* MessageViewController.swift */,
+				CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -465,8 +483,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */,
+				CB6546971F2D441500C2393D /* BlogCell.xib in Resources */,
 				CB3511E81F2935B60043DB88 /* Assets.xcassets in Resources */,
+				CB65469B1F2D451100C2393D /* VideoCell.xib in Resources */,
 				CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */,
+				CB6546991F2D44F100C2393D /* PhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +570,7 @@
 				CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */,
 				CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */,
 				CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */,
+				CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */,
 				CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */,
 				CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */,
 				CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */,
@@ -557,6 +579,7 @@
 				CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */,
 				CB3511EB1F2940490043DB88 /* FeedViewController.swift in Sources */,
 				CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */,
+				CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */,
 				CB3511F61F29716B0043DB88 /* MessageCell.swift in Sources */,
 				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
 				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,
@@ -566,6 +589,7 @@
 				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,
 				CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */,
 				CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */,
+				CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */,
 				CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */,
 				CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */,
 				CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */,

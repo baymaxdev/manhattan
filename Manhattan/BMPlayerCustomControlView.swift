@@ -16,6 +16,7 @@ class BMPlayerCustomControlView: BMPlayerControlView {
      */
     override func customizeUIComponents() {
         hideLoader()
+        fullscreenButton.isHidden = true
     }
     
     

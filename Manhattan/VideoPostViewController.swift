@@ -93,6 +93,7 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                 if stringType == kUTTypeMovie as String {
                     let urlOfVideo = info[UIImagePickerControllerMediaURL] as? URL
                     if let url = urlOfVideo {
+                        print(url)
                         if isRecord == true {
                             PHPhotoLibrary.shared().performChanges({
                                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)

@@ -17,5 +17,6 @@ target 'Manhattan' do
   pod 'MIBlurPopup'
   pod 'BMPlayer'
   pod 'ExpandableLabel'
+  pod 'JSQMessagesViewController'
   
 end

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource {
+class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource ,CourseCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -38,7 +38,14 @@ class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") as! CourseCell
+        cell.index = indexPath.row
+        cell.delegate = self
         return cell
+    }
+    
+    func didSelectDetail(_ index: Int) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailViewController") as! CourseDetailViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 

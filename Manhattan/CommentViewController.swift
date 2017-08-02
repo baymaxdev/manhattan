@@ -10,7 +10,9 @@ import UIKit
 
 class CommentViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate{
 
-    @IBOutlet weak var tvCommet: FloatLabelTextView!
+    @IBOutlet weak var btnPost: UIButton!
+    @IBOutlet weak var vwComment: UIView!
+    @IBOutlet weak var tvComment: FloatLabelTextView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,6 +22,16 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
+        tableView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellReuseIdentifier: "PhotoCell")
+        tableView.register(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
+        
+        vwComment.layer.borderWidth = 1
+        vwComment.layer.borderColor = UIColor(red: 200/255.0, green: 200/255.0, blue: 200/255.0, alpha: 1.0).cgColor
+        //tvComment.layer.cornerRadius = 10
+        //tvComment.layer.borderWidth = 1
+        //tvComment.layer.borderColor = UIColor(red: 0/255.0, green: 128/255.0, blue: 200/255.0, alpha: 1.0).cgColor
+        btnPost.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
 

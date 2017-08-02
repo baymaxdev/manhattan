@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol CourseCellDelegate {
+    func didSelectDetail(_ index: Int)
+}
+
 class CourseCell: UITableViewCell {
 
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var vwContainer: UIView!
+    @IBOutlet weak var imgBack: UIImageView!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var lbName: UILabel!
     
     var index: Int?
+    var delegate: CourseCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,4 +44,7 @@ class CourseCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onDetail(_ sender: Any) {
+        delegate?.didSelectDetail(index!)
+    }
 }
