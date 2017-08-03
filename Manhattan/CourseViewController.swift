@@ -18,7 +18,7 @@ class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 272
-        
+        tableView.register(UINib(nibName: "CourseCell", bundle: nil), forCellReuseIdentifier: "CourseCell")
         
         // Do any additional setup after loading the view.
     }

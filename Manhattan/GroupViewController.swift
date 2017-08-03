@@ -1,5 +1,5 @@
 //
-//  MessageDetailViewController.swift
+//  GroupViewController.swift
 //  Manhattan
 //
 //  Created by gOd on 8/2/17.
@@ -8,27 +8,20 @@
 
 import UIKit
 
-class MessageDetailViewController: UIViewController {
+class GroupViewController: UIViewController {
 
-    @IBOutlet weak var lbTitle: UILabel!
-    @IBOutlet weak var imgAvatar: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
+
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
     /*
     // MARK: - Navigation
 

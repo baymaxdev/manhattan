@@ -10,6 +10,13 @@
 		CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */; };
 		CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */; };
 		CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */; };
+		CB2342191F31F0B40004786F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342181F31F0B40004786F /* ChatViewController.swift */; };
+		CB23421C1F31FAD10004786F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421B1F31FAD10004786F /* SearchViewController.swift */; };
+		CB23421E1F325F490004786F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421D1F325F490004786F /* AboutViewController.swift */; };
+		CB2342201F325F860004786F /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421F1F325F860004786F /* GroupViewController.swift */; };
+		CB2342221F325FAD0004786F /* MyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342211F325FAD0004786F /* MyFeedViewController.swift */; };
+		CB2342241F325FFA0004786F /* MyCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342231F325FFA0004786F /* MyCourseViewController.swift */; };
+		CB2342261F3266040004786F /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2342251F3266040004786F /* CourseCell.xib */; };
 		CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */; };
 		CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744F1F2C721300ABDC4D /* BlogCell.swift */; };
 		CB33D5031F2B53AE00E05B87 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */; };
@@ -78,6 +85,13 @@
 		CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostViewController.swift; sourceTree = "<group>"; };
 		CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCustomPlayer.swift; sourceTree = "<group>"; };
 		CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayerCustomControlView.swift; sourceTree = "<group>"; };
+		CB2342181F31F0B40004786F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CB23421B1F31FAD10004786F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CB23421D1F325F490004786F /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		CB23421F1F325F860004786F /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		CB2342211F325FAD0004786F /* MyFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFeedViewController.swift; sourceTree = "<group>"; };
+		CB2342231F325FFA0004786F /* MyCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCourseViewController.swift; sourceTree = "<group>"; };
+		CB2342251F3266040004786F /* CourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCell.xib; sourceTree = "<group>"; };
 		CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CB23744F1F2C721300ABDC4D /* BlogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +185,14 @@
 			name = CustomBMPlayer;
 			sourceTree = "<group>";
 		};
+		CB23421A1F31FA4F0004786F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CB23421B1F31FAD10004786F /* SearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		CB33D5061F2B6FBB00E05B87 /* FloatLabelFields */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +226,7 @@
 				CB23744F1F2C721300ABDC4D /* BlogCell.swift */,
 				CB6546961F2D441500C2393D /* BlogCell.xib */,
 				CB3511F21F2965650043DB88 /* CourseCell.swift */,
+				CB2342251F3266040004786F /* CourseCell.xib */,
 				CB3511F51F29716B0043DB88 /* MessageCell.swift */,
 				CB65468E1F2D2A9900C2393D /* CommentCell.swift */,
 				CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */,
@@ -225,6 +248,7 @@
 			children = (
 				CB3511F71F2971810043DB88 /* MessageViewController.swift */,
 				CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */,
+				CB2342181F31F0B40004786F /* ChatViewController.swift */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -260,6 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */,
+				CB23421D1F325F490004786F /* AboutViewController.swift */,
+				CB23421F1F325F860004786F /* GroupViewController.swift */,
+				CB2342211F325FAD0004786F /* MyFeedViewController.swift */,
+				CB2342231F325FFA0004786F /* MyCourseViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -347,6 +375,7 @@
 		CB6E95301F2247A000E01C60 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB23421A1F31FA4F0004786F /* Search */,
 				CB3511F41F29703F0043DB88 /* Message */,
 				CB3511EF1F2965320043DB88 /* Course */,
 				CB3511E91F2940160043DB88 /* Feed */,
@@ -485,6 +514,7 @@
 				CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */,
 				CB6546971F2D441500C2393D /* BlogCell.xib in Resources */,
 				CB3511E81F2935B60043DB88 /* Assets.xcassets in Resources */,
+				CB2342261F3266040004786F /* CourseCell.xib in Resources */,
 				CB65469B1F2D451100C2393D /* VideoCell.xib in Resources */,
 				CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */,
 				CB6546991F2D44F100C2393D /* PhotoCell.xib in Resources */,
@@ -564,6 +594,7 @@
 				CB3A5D6D1F238BEE00D61562 /* AHTagsLabel.swift in Sources */,
 				CB3511EE1F2940740043DB88 /* VideoCell.swift in Sources */,
 				CB33D50E1F2B7CBD00E05B87 /* PhotoPostViewController.swift in Sources */,
+				CB23421C1F31FAD10004786F /* SearchViewController.swift in Sources */,
 				CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */,
 				CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */,
 				CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */,
@@ -572,6 +603,7 @@
 				CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */,
 				CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */,
 				CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */,
+				CB2342241F325FFA0004786F /* MyCourseViewController.swift in Sources */,
 				CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */,
 				CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */,
 				CB33D50A1F2B6FBB00E05B87 /* FloatLabelTextView.swift in Sources */,
@@ -583,6 +615,9 @@
 				CB3511F61F29716B0043DB88 /* MessageCell.swift in Sources */,
 				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
 				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,
+				CB2342201F325F860004786F /* GroupViewController.swift in Sources */,
+				CB23421E1F325F490004786F /* AboutViewController.swift in Sources */,
+				CB2342221F325FAD0004786F /* MyFeedViewController.swift in Sources */,
 				CB3511F31F2965650043DB88 /* CourseCell.swift in Sources */,
 				CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */,
 				CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */,
@@ -593,6 +628,7 @@
 				CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */,
 				CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */,
 				CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */,
+				CB2342191F31F0B40004786F /* ChatViewController.swift in Sources */,
 				CB33D5031F2B53AE00E05B87 /* PopupViewController.swift in Sources */,
 				CB65468F1F2D2A9900C2393D /* CommentCell.swift in Sources */,
 				CB6546911F2D2AAF00C2393D /* CommentViewController.swift in Sources */,

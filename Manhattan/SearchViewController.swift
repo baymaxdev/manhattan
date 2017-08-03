@@ -1,35 +1,28 @@
 //
-//  ProfileMainViewController.swift
+//  SearchViewController.swift
 //  Manhattan
 //
-//  Created by gOd on 7/24/17.
+//  Created by gOd on 8/2/17.
 //  Copyright © 2017 gOd. All rights reserved.
 //
 
 import UIKit
 import MXSegmentedPager
 
-class ProfileMainViewController: MXSegmentedPagerController {
+class SearchViewController: MXSegmentedPagerController {
 
-    @IBOutlet weak var imgAvatar: UIImageView!
-    @IBOutlet weak var btnJoin: UIButton!
     @IBOutlet var headerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
-        imgAvatar.layer.borderWidth = 3
-        imgAvatar.layer.borderColor = UIColor.white.cgColor
-        btnJoin.layer.cornerRadius = btnJoin.frame.height / 2
-        
-        headerView.frame = CGRect(x: headerView.frame.origin.x, y: headerView.frame.origin.y, width: self.view.bounds.width, height: 180)
+
+        headerView.frame = CGRect(x: headerView.frame.origin.x, y: headerView.frame.origin.y, width: self.view.bounds.width, height: 60)
         segmentedPager.backgroundColor = .white
         
         // Parallax Header
-        
         segmentedPager.parallaxHeader.view = headerView
         segmentedPager.parallaxHeader.mode = .fill
-        segmentedPager.parallaxHeader.height = 200
-        segmentedPager.parallaxHeader.minimumHeight = 200
+        segmentedPager.parallaxHeader.height = 60
+        segmentedPager.parallaxHeader.minimumHeight = 60
         
         // Segmented Control customization
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
@@ -38,7 +31,6 @@ class ProfileMainViewController: MXSegmentedPagerController {
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0)]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0)
-
         // Do any additional setup after loading the view.
     }
 
@@ -48,7 +40,7 @@ class ProfileMainViewController: MXSegmentedPagerController {
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, titleForSectionAt index: Int) -> String {
-        return ["Feed", "Course", "Group", "About"][index]
+        return ["Friends", "Groups"][index]
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, didScrollWith parallaxHeader: MXParallaxHeader) {

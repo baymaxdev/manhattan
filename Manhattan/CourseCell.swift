@@ -14,6 +14,7 @@ protocol CourseCellDelegate {
 
 class CourseCell: UITableViewCell {
 
+    @IBOutlet weak var lbPrice: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var imgBack: UIImageView!
