@@ -39,7 +39,7 @@
 
 - (void)commonInit
 {
-    lineColor = [UIColor whiteColor];
+    lineColor = [UIColor colorWithRed:152/255.0 green:200/255.0 blue:223/255.0 alpha:1.0];
     errorColor = [UIColor colorWithRed:0.910 green:0.329 blue:0.271 alpha:1.000]; // FLAT RED COLOR
     line = [[UIView alloc] init];
     line.backgroundColor = [lineColor colorWithAlphaComponent:DEFAULT_ALPHA_LINE];

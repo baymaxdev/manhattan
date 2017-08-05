@@ -21,8 +21,8 @@ class SearchViewController: MXSegmentedPagerController {
         // Parallax Header
         segmentedPager.parallaxHeader.view = headerView
         segmentedPager.parallaxHeader.mode = .fill
-        segmentedPager.parallaxHeader.height = 60
-        segmentedPager.parallaxHeader.minimumHeight = 60
+        segmentedPager.parallaxHeader.height = 104
+        segmentedPager.parallaxHeader.minimumHeight = 104
         
         // Segmented Control customization
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
@@ -40,7 +40,7 @@ class SearchViewController: MXSegmentedPagerController {
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, titleForSectionAt index: Int) -> String {
-        return ["Friends", "Groups"][index]
+        return ["People", "Group"][index]
     }
     
     override func segmentedPager(_ segmentedPager: MXSegmentedPager, didScrollWith parallaxHeader: MXParallaxHeader) {

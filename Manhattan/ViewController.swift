@@ -11,6 +11,8 @@ import JJMaterialTextField
 import FacebookCore
 import FacebookLogin
 import NVActivityIndicatorView
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController ,NVActivityIndicatorViewable{
 
@@ -43,11 +45,12 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
 
     @IBAction func onSignin(_ sender: Any) {
         if (tfEmail.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Email field is required")
+            delegate?.showAlert(vc: self, msg: "Email field is required", action: nil)
         } else if (tfPassword.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Password field is required")
+            delegate?.showAlert(vc: self, msg: "Password field is required", action: nil)
         } else {
-            delegate?.configureTabBar()
+            delegate?.showLoader(vc: self)
+            self.didLogin(method: "Normal", user: nil)
         }
     }
     
@@ -79,15 +82,48 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
             facebookAPIManager.requestFacebookUser(completion: { (facebookUser) in
                 if let _ = facebookUser.email {
                     self.delegate?.user = facebookUser
-                    self.didLogin(method: "Facebook")
+                    self.didLogin(method: "Facebook", user: facebookUser)
                 }
             })
         }
     }
     
-    private func didLogin(method: String) {
-        delegate?.hideLoader()
-        delegate?.configureTabBar()
+    private func didLogin(method: String, user: User?) {
+        
+        var serverURL = BASE_URL
+        var parameters : [String : Any?]
+        
+        if method == "Normal" {
+            serverURL += LOGIN_URL
+            parameters = ["email": tfEmail.text, "password": tfPassword.text]
+        } else {
+            serverURL += FBLOGIN_URL
+            parameters = ["email": user?.email]
+        }
+        
+        Alamofire.request(serverURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                
+                
+                if swiftyJsonVar["success"].boolValue == true {
+                    let action = UIAlertAction(title: "OK", style: .default){ action in
+                        let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                        self.delegate?.user = User()
+                        self.delegate?.user?.setUser(userObj)
+                        self.delegate?.configureTabBar()
+                    }
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                    return
+                }
+                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
     }
 }
 

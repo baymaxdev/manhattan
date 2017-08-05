@@ -43,11 +43,12 @@ class Signup2ndViewController: UIViewController {
     
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfEmail.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Email is required")
+            delegate?.showAlert(vc: self, msg: "Email is required", action: nil)
         } else if (tfPassword.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Password is required")
+            delegate?.showAlert(vc: self, msg: "Password is required", action: nil)
         } else {
             delegate?.user?.email = tfEmail.text
+            delegate?.user?.password = tfPassword.text
             self.performSegue(withIdentifier: "2To3Segue", sender: nil)
         }
     }

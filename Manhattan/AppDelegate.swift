@@ -38,10 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
-    func showAlert(vc: UIViewController, msg: String) {
-        let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
+    func showAlert(vc: UIViewController, msg: String, action: UIAlertAction?) {
+        let alert = UIAlertController(title: "Manhattan", message: msg, preferredStyle: .alert)
+        if action == nil {
+            let act = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(act)
+        }
+        else {
+            alert.addAction(action!)
+        }
         vc.present(alert, animated: true, completion: nil)
     }
 

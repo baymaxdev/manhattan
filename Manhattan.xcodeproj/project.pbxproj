@@ -12,13 +12,13 @@
 		CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */; };
 		CB2342191F31F0B40004786F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342181F31F0B40004786F /* ChatViewController.swift */; };
 		CB23421C1F31FAD10004786F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421B1F31FAD10004786F /* SearchViewController.swift */; };
-		CB23421E1F325F490004786F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421D1F325F490004786F /* AboutViewController.swift */; };
 		CB2342201F325F860004786F /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23421F1F325F860004786F /* GroupViewController.swift */; };
 		CB2342221F325FAD0004786F /* MyFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342211F325FAD0004786F /* MyFeedViewController.swift */; };
 		CB2342241F325FFA0004786F /* MyCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2342231F325FFA0004786F /* MyCourseViewController.swift */; };
 		CB2342261F3266040004786F /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2342251F3266040004786F /* CourseCell.xib */; };
 		CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */; };
 		CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23744F1F2C721300ABDC4D /* BlogCell.swift */; };
+		CB313EB01F35E5CB00BF981D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB313EAF1F35E5CB00BF981D /* AboutViewController.swift */; };
 		CB33D5031F2B53AE00E05B87 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */; };
 		CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5041F2B53BE00E05B87 /* PopupMenuViewController.swift */; };
 		CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5071F2B6FBB00E05B87 /* FloatLabelTextField.swift */; };
@@ -32,6 +32,7 @@
 		CB3511F31F2965650043DB88 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3511F21F2965650043DB88 /* CourseCell.swift */; };
 		CB3511F61F29716B0043DB88 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3511F51F29716B0043DB88 /* MessageCell.swift */; };
 		CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3511F71F2971810043DB88 /* MessageViewController.swift */; };
+		CB3789101F351A6700F935D0 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37890F1F351A6700F935D0 /* Macro.swift */; };
 		CB3A5D6D1F238BEE00D61562 /* AHTagsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D6B1F238BEE00D61562 /* AHTagsLabel.swift */; };
 		CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D6C1F238BEE00D61562 /* AHTagView.swift */; };
 		CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D701F23CA8700D61562 /* FacebookAPIManager.swift */; };
@@ -43,6 +44,9 @@
 		CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F831F260B790092014E /* Signup2ndViewController.swift */; };
 		CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F851F260B870092014E /* Signup3rdViewController.swift */; };
 		CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F871F260B930092014E /* Signup4thViewController.swift */; };
+		CB626B771F3361380042247A /* PeopleSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB626B761F3361380042247A /* PeopleSearchViewController.swift */; };
+		CB626B791F3361670042247A /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB626B781F3361670042247A /* GroupSearchViewController.swift */; };
+		CB626B7B1F3362640042247A /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB626B7A1F3362640042247A /* SearchCell.swift */; };
 		CB65468F1F2D2A9900C2393D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB65468E1F2D2A9900C2393D /* CommentCell.swift */; };
 		CB6546911F2D2AAF00C2393D /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6546901F2D2AAF00C2393D /* CommentViewController.swift */; };
 		CB6546971F2D441500C2393D /* BlogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6546961F2D441500C2393D /* BlogCell.xib */; };
@@ -54,8 +58,11 @@
 		CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */; };
 		CB6E95121F222D5C00E01C60 /* ManhattanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E95111F222D5C00E01C60 /* ManhattanTests.swift */; };
 		CB6E951D1F222D5C00E01C60 /* ManhattanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */; };
+		CB7560F11F3652D40030D278 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7560F01F3652D40030D278 /* EditProfileViewController.swift */; };
 		CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */; };
 		CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */; };
+		CBA611EF1F35974D00DD11E9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA611EE1F35974D00DD11E9 /* SearchCell.xib */; };
+		CBA611F11F359C8A00DD11E9 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */; };
 		CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */; };
 		CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC8B841F28D692002267DA /* TabBarViewController.swift */; };
 		D83FC281202D56E9B1198DD3 /* Pods_Manhattan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDA95FBA69D301B3EF89A01 /* Pods_Manhattan.framework */; };
@@ -87,13 +94,13 @@
 		CB140A351F2BF95400532BDC /* BMPlayerCustomControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayerCustomControlView.swift; sourceTree = "<group>"; };
 		CB2342181F31F0B40004786F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CB23421B1F31FAD10004786F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		CB23421D1F325F490004786F /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CB23421F1F325F860004786F /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		CB2342211F325FAD0004786F /* MyFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFeedViewController.swift; sourceTree = "<group>"; };
 		CB2342231F325FFA0004786F /* MyCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCourseViewController.swift; sourceTree = "<group>"; };
 		CB2342251F3266040004786F /* CourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCell.xib; sourceTree = "<group>"; };
 		CB23744D1F2C71FC00ABDC4D /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		CB23744F1F2C721300ABDC4D /* BlogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		CB313EAF1F35E5CB00BF981D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CB33D5021F2B53AE00E05B87 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		CB33D5041F2B53BE00E05B87 /* PopupMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupMenuViewController.swift; sourceTree = "<group>"; };
 		CB33D5071F2B6FBB00E05B87 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 		CB3511F21F2965650043DB88 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		CB3511F51F29716B0043DB88 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		CB3511F71F2971810043DB88 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		CB37890F1F351A6700F935D0 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		CB3A5D6B1F238BEE00D61562 /* AHTagsLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHTagsLabel.swift; sourceTree = "<group>"; };
 		CB3A5D6C1F238BEE00D61562 /* AHTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AHTagView.swift; sourceTree = "<group>"; };
 		CB3A5D701F23CA8700D61562 /* FacebookAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAPIManager.swift; sourceTree = "<group>"; };
@@ -119,6 +127,9 @@
 		CB603F831F260B790092014E /* Signup2ndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ndViewController.swift; sourceTree = "<group>"; };
 		CB603F851F260B870092014E /* Signup3rdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup3rdViewController.swift; sourceTree = "<group>"; };
 		CB603F871F260B930092014E /* Signup4thViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup4thViewController.swift; sourceTree = "<group>"; };
+		CB626B761F3361380042247A /* PeopleSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleSearchViewController.swift; sourceTree = "<group>"; };
+		CB626B781F3361670042247A /* GroupSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
+		CB626B7A1F3362640042247A /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		CB65468E1F2D2A9900C2393D /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		CB6546901F2D2AAF00C2393D /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		CB6546961F2D441500C2393D /* BlogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogCell.xib; sourceTree = "<group>"; };
@@ -136,8 +147,11 @@
 		CB6E95181F222D5C00E01C60 /* ManhattanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManhattanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManhattanUITests.swift; sourceTree = "<group>"; };
 		CB6E951E1F222D5C00E01C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB7560F01F3652D40030D278 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
+		CBA611EE1F35974D00DD11E9 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		CBCC8B841F28D692002267DA /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				CB23421B1F31FAD10004786F /* SearchViewController.swift */,
+				CB626B761F3361380042247A /* PeopleSearchViewController.swift */,
+				CB626B781F3361670042247A /* GroupSearchViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -230,6 +246,8 @@
 				CB3511F51F29716B0043DB88 /* MessageCell.swift */,
 				CB65468E1F2D2A9900C2393D /* CommentCell.swift */,
 				CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */,
+				CB626B7A1F3362640042247A /* SearchCell.swift */,
+				CBA611EE1F35974D00DD11E9 /* SearchCell.xib */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -276,6 +294,7 @@
 			children = (
 				CB3A5D771F23D18000D61562 /* FacebookPost.swift */,
 				CB3A5D751F23CAAE00D61562 /* User.swift */,
+				CB37890F1F351A6700F935D0 /* Macro.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -284,10 +303,12 @@
 			isa = PBXGroup;
 			children = (
 				CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */,
-				CB23421D1F325F490004786F /* AboutViewController.swift */,
 				CB23421F1F325F860004786F /* GroupViewController.swift */,
 				CB2342211F325FAD0004786F /* MyFeedViewController.swift */,
 				CB2342231F325FFA0004786F /* MyCourseViewController.swift */,
+				CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */,
+				CB313EAF1F35E5CB00BF981D /* AboutViewController.swift */,
+				CB7560F01F3652D40030D278 /* EditProfileViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -516,6 +537,7 @@
 				CB3511E81F2935B60043DB88 /* Assets.xcassets in Resources */,
 				CB2342261F3266040004786F /* CourseCell.xib in Resources */,
 				CB65469B1F2D451100C2393D /* VideoCell.xib in Resources */,
+				CBA611EF1F35974D00DD11E9 /* SearchCell.xib in Resources */,
 				CB6E95021F222D5C00E01C60 /* Main.storyboard in Resources */,
 				CB6546991F2D44F100C2393D /* PhotoCell.xib in Resources */,
 			);
@@ -608,23 +630,29 @@
 				CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */,
 				CB33D50A1F2B6FBB00E05B87 /* FloatLabelTextView.swift in Sources */,
 				CB33D50C1F2B709700E05B87 /* BlogPostViewController.swift in Sources */,
+				CBA611F11F359C8A00DD11E9 /* AddGroupViewController.swift in Sources */,
 				CB3A5D6E1F238BEE00D61562 /* AHTagView.swift in Sources */,
 				CB3511EB1F2940490043DB88 /* FeedViewController.swift in Sources */,
 				CB23744E1F2C71FC00ABDC4D /* PhotoCell.swift in Sources */,
+				CB626B771F3361380042247A /* PeopleSearchViewController.swift in Sources */,
 				CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */,
 				CB3511F61F29716B0043DB88 /* MessageCell.swift in Sources */,
+				CB313EB01F35E5CB00BF981D /* AboutViewController.swift in Sources */,
 				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
 				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,
 				CB2342201F325F860004786F /* GroupViewController.swift in Sources */,
-				CB23421E1F325F490004786F /* AboutViewController.swift in Sources */,
 				CB2342221F325FAD0004786F /* MyFeedViewController.swift in Sources */,
 				CB3511F31F2965650043DB88 /* CourseCell.swift in Sources */,
+				CB626B791F3361670042247A /* GroupSearchViewController.swift in Sources */,
+				CB7560F11F3652D40030D278 /* EditProfileViewController.swift in Sources */,
+				CB626B7B1F3362640042247A /* SearchCell.swift in Sources */,
 				CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */,
 				CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */,
 				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,
 				CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */,
 				CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */,
 				CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */,
+				CB3789101F351A6700F935D0 /* Macro.swift in Sources */,
 				CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */,
 				CB603F861F260B870092014E /* Signup3rdViewController.swift in Sources */,
 				CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */,

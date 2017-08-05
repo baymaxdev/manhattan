@@ -38,13 +38,12 @@ class Signup1stViewController: UIViewController {
     
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfFirstName.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "First Name is required")
+            delegate?.showAlert(vc: self, msg: "First Name is required", action: nil)
         } else if (tfLastName.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Last Name is required")
+            delegate?.showAlert(vc: self, msg: "Last Name is required", action: nil)
         } else {
             delegate?.user = User()
-            delegate?.user?.firstName = tfFirstName.text
-            delegate?.user?.lastName = tfLastName.text
+            delegate?.user?.name = tfFirstName.text! + " " + tfLastName.text!
             self.performSegue(withIdentifier: "1To2Segue", sender: nil)
         }
     }

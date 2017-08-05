@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Alamofire (4.5.0)
   - BMPlayer (0.8.7):
     - BMPlayer/Full (= 0.8.7)
   - BMPlayer/Core (0.8.7)
@@ -65,11 +66,13 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
   - SnapKit (3.2.0)
+  - SwiftyJSON (3.1.4)
   - THCalendarDatePicker (1.2.8):
     - KNSemiModalViewController_hons82 (~> 0.4.5)
 
 DEPENDENCIES:
   - AFNetworking
+  - Alamofire
   - BMPlayer
   - ExpandableLabel
   - FacebookCore
@@ -81,10 +84,12 @@ DEPENDENCIES:
   - MIBlurPopup
   - MXSegmentedPager
   - NVActivityIndicatorView
+  - SwiftyJSON
   - THCalendarDatePicker (~> 1.2.6)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   ExpandableLabel: 08a058c02bf7abc4f6a91fa4f4b86e5627bfbf19
@@ -106,8 +111,9 @@ SPEC CHECKSUMS:
   MXSegmentedPager: a35ebaf939e1629f24db3bb26653c1c557362f59
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   THCalendarDatePicker: fd1a1103ae0d1d1f2d0f9a1463a3f628a23a25a5
 
-PODFILE CHECKSUM: 69f0d1ab0d98353b6974e7e5d977912c920d393a
+PODFILE CHECKSUM: c400fb31407e4878157bbd643c43f59a4aaf7395
 
 COCOAPODS: 1.2.1

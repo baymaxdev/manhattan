@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BMPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -124,6 +129,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>THCalendarDatePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -137,7 +147,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>141ACB8C4CAAC711E2FCFFBA5698BA8D</key>
+		<key>039DD4F353EB63180FEDEA8089718B14</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,6 +212,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>88022489B74071C3B2294231A5CC18D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
 		<dict>
 			<key>primary</key>
@@ -252,7 +272,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC2E4E128A4D4E9E337E239132F6293E</key>
+		<key>F18061706EC197F94653003DA2856CD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

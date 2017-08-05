@@ -51,7 +51,7 @@ class PhotoPostViewController: UIViewController , UIImagePickerControllerDelegat
                 self.present(picker, animated: true, completion: nil)
             }
             else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, this device has no camera.")
+                self.delegate?.showAlert(vc: self, msg: "Sorry, this device has no camera.", action: nil)
             }
         }
         

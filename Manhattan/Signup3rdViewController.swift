@@ -22,7 +22,7 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         delegate = UIApplication.shared.delegate as? AppDelegate
         
-        imgAvatar.layer.borderWidth = 5
+        imgAvatar.layer.borderWidth = 3
         imgAvatar.layer.borderColor = UIColor.white.cgColor
         imgAvatar.layer.cornerRadius = self.view.bounds.width * 0.4 / 2
         
@@ -47,7 +47,7 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
 
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfUsername.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Username is required")
+            delegate?.showAlert(vc: self, msg: "Username is required", action: nil)
         } else {
             delegate?.user?.userName = tfUsername.text
             self.performSegue(withIdentifier: "3To4Segue", sender: nil)

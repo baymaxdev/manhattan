@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class User {
-    var firstName: String?
-    var lastName: String?
+    var id:String?
     var name: String?
     var email: String?
+    var password: String?
     var dob: String?
     var userName: String?
     var interests: [String]
@@ -21,22 +22,22 @@ class User {
     
     
     init (withFB: Bool, dictionary: [String: Any]) {
-        self.firstName = dictionary["first_name"] as? String
-        self.lastName = dictionary["last_name"] as? String
+        self.id = ""
         self.email = dictionary["email"] as? String
+        self.password = ""
         self.name = dictionary["name"] as? String
         self.dob = dictionary["birthday"] as? String
         self.interests = []
-        let id = dictionary["id"] as? String
-        self.userName = "fb" + id!
-        self.photo = "http://graph.facebook.com/" + id! + "/picture?type=large"
+        let photoid = dictionary["id"] as? String
+        self.userName = "fb" + photoid!
+        self.photo = "http://graph.facebook.com/" + photoid! + "/picture?type=large"
         self.isFB = true
     }
     
     init () {
-        self.firstName = ""
-        self.lastName = ""
+        self.id = ""
         self.email = ""
+        self.password = ""
         self.name = ""
         self.dob = ""
         self.userName = ""
@@ -48,9 +49,9 @@ class User {
     func getUser() -> [String: Any?] {
         var user = [String: Any?]()
         
+        user["id"] = self.id
         user["email"] = self.email
-        user["firstName"] = self.firstName
-        user["lastName"] = self.lastName
+        user["password"] = self.password
         user["name"] = self.name
         user["dob"] = self.dob
         user["userName"] = self.userName
@@ -61,15 +62,19 @@ class User {
         return user
     }
     
-    func setUser(_ user: [String: Any]) {
-        self.email = user["email"] as? String
-        self.firstName = user["firstName"] as? String
-        self.lastName = user["lastName"] as? String
-        self.name = user["name"] as? String
-        self.dob = user["dob"] as? String
-        self.userName = user["userName"] as? String
-        self.photo = user["photo"] as? String
-        self.interests = user["interests"] as! [String]
-        self.isFB = user["isFB"] as? Bool
+    func setUser(_ user: [String: JSON]) {
+        self.id = user["id"]?.stringValue
+        self.email = user["email"]?.stringValue
+        self.password = user["password"]?.stringValue
+        self.name = user["name"]?.stringValue
+        self.dob = user["dob"]?.stringValue
+        self.userName = user["userName"]?.stringValue
+        self.photo = user["photo"]?.stringValue
+        let array = user["interests"]?.arrayValue
+        self.interests.removeAll()
+        for element in array! {
+            self.interests.append(element.stringValue)
+        }
+        self.isFB = user["isFB"]?.boolValue
     }
 }

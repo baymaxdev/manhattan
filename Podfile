@@ -18,5 +18,7 @@ target 'Manhattan' do
   pod 'BMPlayer'
   pod 'ExpandableLabel'
   pod 'JSQMessagesViewController'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   
 end

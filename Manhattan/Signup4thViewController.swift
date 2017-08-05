@@ -8,6 +8,8 @@
 
 import UIKit
 import THCalendarDatePicker
+import Alamofire
+import SwiftyJSON
 
 class Signup4thViewController: UIViewController ,THDatePickerDelegate{
 
@@ -101,16 +103,43 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     
     @IBAction func onSignup(_ sender: Any) {
         if btnDoB.titleLabel?.text == "__/__/____" {
-            delegate?.showAlert(vc: self, msg: "Date of Birth field is required")
+            delegate?.showAlert(vc: self, msg: "Date of Birth field is required", action: nil)
         }
         else {
             var tagStr : [String] = []
             for tag in tagList.tags! {
-                tagStr.append(tag.title)
+                if tag.enabled == true {
+                    tagStr.append(tag.title)
+                }
             }
             delegate?.user?.interests = tagStr
-            
             delegate?.user?.dob = btnDoB.titleLabel?.text
+            
+            let parameters = (delegate?.user?.getUser())!
+            delegate?.showLoader(vc: self)
+            
+            Alamofire.request(BASE_URL + SIGNUP_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    
+                    
+                    if swiftyJsonVar["success"].boolValue == true {
+                        let action = UIAlertAction(title: "OK", style: .default){ action in
+                            let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                            self.delegate?.user?.id = userObj["id"]?.stringValue
+                            self.delegate?.configureTabBar()
+                        }
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                        return
+                    }
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
         }
     }
     
