@@ -33,6 +33,8 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         btnPrev.layer.cornerRadius = btnPrev.frame.height / 2
         btnPrev.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
         btnPrev.layer.borderWidth = 1
+        
+        tfUsername.lineColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 

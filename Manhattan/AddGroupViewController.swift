@@ -18,10 +18,9 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
 
         imgAvatar.layer.cornerRadius = self.view.bounds.width * 0.4 / 2
         imgAvatar.layer.borderWidth = 3
-        imgAvatar.layer.borderColor = UIColor(red: 0, green: 128.0/255.0, blue: 200/255.0, alpha: 1.0).cgColor
+        imgAvatar.layer.borderColor = APP_COLOR.cgColor
         
-        tfGroupName.lineColor = UIColor(red: 0, green: 128.0/255.0, blue: 200/255.0, alpha: 1.0)
-        tfGroupName.tintColor = UIColor(red: 0, green: 128.0/255.0, blue: 200/255.0, alpha: 1.0)
+        tfGroupName.lineColor = APP_COLOR
         tfGroupName.enableMaterialPlaceHolder = true
         // Do any additional setup after loading the view.
     }

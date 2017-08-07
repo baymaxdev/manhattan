@@ -45,6 +45,10 @@ class MessageViewController: UIViewController ,UITableViewDataSource, UITableVie
         self.navigationController?.pushViewController(vc, animated: true)
         //self.present(vc, animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
 
     /*
     // MARK: - Navigation

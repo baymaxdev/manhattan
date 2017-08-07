@@ -17,7 +17,7 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
+        imgAvatar.layer.cornerRadius = imgAvatar.layer.frame.height / 2 - 3
         // Initialization code
     }
 

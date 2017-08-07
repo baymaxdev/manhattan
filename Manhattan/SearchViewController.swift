@@ -28,9 +28,9 @@ class SearchViewController: MXSegmentedPagerController {
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
         segmentedPager.segmentedControl.backgroundColor = .white
         segmentedPager.segmentedControl.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.black]
-        segmentedPager.segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0)]
+        segmentedPager.segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : APP_COLOR]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
-        segmentedPager.segmentedControl.selectionIndicatorColor = UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0)
+        segmentedPager.segmentedControl.selectionIndicatorColor = APP_COLOR
         // Do any additional setup after loading the view.
     }
 

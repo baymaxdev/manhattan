@@ -63,7 +63,7 @@ class BlogCell: UITableViewCell {
     func initCell()
     {
         let attributedStr = NSMutableAttributedString(string: "More")
-        attributedStr.addAttribute(NSForegroundColorAttributeName, value: UIColor(red: 0, green: 128/255.0, blue: 200/255.0, alpha: 1.0), range: NSMakeRange(0, attributedStr.length))
+        attributedStr.addAttribute(NSForegroundColorAttributeName, value: APP_COLOR, range: NSMakeRange(0, attributedStr.length))
         lbBlogContent.collapsedAttributedLink = attributedStr
     }
 

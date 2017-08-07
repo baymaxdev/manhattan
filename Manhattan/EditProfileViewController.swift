@@ -27,6 +27,7 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     @IBOutlet weak var imgAvatar: UIImageView!
     
     let strInterests = ["Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video", "Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video"]
+    let selectedInterests = ["Economy", "Technology", "Sports"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,10 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         var tags : [AHTag] = []
         
         for str in strInterests {
-            let tag = AHTag(category: "", title: str, color: UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0), enabled: false)
+            var tag = AHTag(category: "", title: str, color: UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0), enabled: false)
+            if selectedInterests.contains(str) {
+                tag.enabled = true
+            }
             tags.append(tag)
         }
         
@@ -57,6 +61,16 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         tfEmail.lineColor = APP_COLOR
         tfPassword.lineColor = APP_COLOR
         tfUsername.lineColor = APP_COLOR
+        
+        tfName.text = "Dariya Khojasteh"
+        tfUsername.text = "dariya"
+        tfEmail.text = "dariya@gmail.com"
+        tfPassword.text = "abcd"
+        tvSkill.text = "iOS, Android, React Native, Xamarin, Node.js, AngularJS"
+        tvEducation.text = "Stanford University"
+        tfFrom.text = "2007"
+        tfTo.text = "2011"
+        tvBio.text = "I am Dariya Khojasteh from US. I have graduated Stanford University."
     }
 
     override func didReceiveMemoryWarning() {

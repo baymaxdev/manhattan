@@ -39,8 +39,8 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
         btnfacebook.layer.cornerRadius = btnfacebook.frame.height / 2
         btnSignin.layer.cornerRadius = btnSignin.frame.height / 2
         
-        tfEmail.enableMaterialPlaceHolder = true
-        tfPassword.enableMaterialPlaceHolder = true
+        tfEmail.lineColor = UIColor.white
+        tfPassword.lineColor = UIColor.white
     }
 
     @IBAction func onSignin(_ sender: Any) {
