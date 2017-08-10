@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MyCourseViewController: UITableViewController ,CourseCellDelegate {
 
+    var user: User?
+    var delegate: AppDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,12 +25,40 @@ class MyCourseViewController: UITableViewController ,CourseCellDelegate {
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         customView.backgroundColor = UIColor.clear
         tableView.tableFooterView = customView
+        
+        delegate = UIApplication.shared.delegate as? AppDelegate
+        initializeUser()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func initializeUser() {
+        if (delegate?.isMe())! {
+            user = delegate?.user
+        } else {
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["id": delegate?.curUserId]
+            Alamofire.request(BASE_URL + GETUSERBYID_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        self.user = User(user: swiftyJsonVar["userInfo"].dictionaryValue)
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

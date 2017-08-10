@@ -25,6 +25,7 @@
 		CB33D50A1F2B6FBB00E05B87 /* FloatLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D5081F2B6FBB00E05B87 /* FloatLabelTextView.swift */; };
 		CB33D50C1F2B709700E05B87 /* BlogPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D50B1F2B709700E05B87 /* BlogPostViewController.swift */; };
 		CB33D50E1F2B7CBD00E05B87 /* PhotoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D50D1F2B7CBD00E05B87 /* PhotoPostViewController.swift */; };
+		CB3471E81F3A803E003DD9DF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3471E71F3A803E003DD9DF /* Comment.swift */; };
 		CB3511E81F2935B60043DB88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB3511E71F2935B60043DB88 /* Assets.xcassets */; };
 		CB3511EB1F2940490043DB88 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3511EA1F2940490043DB88 /* FeedViewController.swift */; };
 		CB3511EE1F2940740043DB88 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3511ED1F2940740043DB88 /* VideoCell.swift */; };
@@ -65,6 +66,7 @@
 		CBA611F11F359C8A00DD11E9 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */; };
 		CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */; };
 		CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC8B841F28D692002267DA /* TabBarViewController.swift */; };
+		CBDD4D291F387E8700BD1C95 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDD4D281F387E8700BD1C95 /* Post.swift */; };
 		D83FC281202D56E9B1198DD3 /* Pods_Manhattan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDA95FBA69D301B3EF89A01 /* Pods_Manhattan.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +109,7 @@
 		CB33D5081F2B6FBB00E05B87 /* FloatLabelTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextView.swift; sourceTree = "<group>"; };
 		CB33D50B1F2B709700E05B87 /* BlogPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogPostViewController.swift; sourceTree = "<group>"; };
 		CB33D50D1F2B7CBD00E05B87 /* PhotoPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPostViewController.swift; sourceTree = "<group>"; };
+		CB3471E71F3A803E003DD9DF /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CB3511E71F2935B60043DB88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB3511EA1F2940490043DB88 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		CB3511ED1F2940740043DB88 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		CBCC8B841F28D692002267DA /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		CBDD4D281F387E8700BD1C95 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,7 +298,9 @@
 			children = (
 				CB3A5D771F23D18000D61562 /* FacebookPost.swift */,
 				CB3A5D751F23CAAE00D61562 /* User.swift */,
+				CBDD4D281F387E8700BD1C95 /* Post.swift */,
 				CB37890F1F351A6700F935D0 /* Macro.swift */,
+				CB3471E71F3A803E003DD9DF /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				CB3511EE1F2940740043DB88 /* VideoCell.swift in Sources */,
 				CB33D50E1F2B7CBD00E05B87 /* PhotoPostViewController.swift in Sources */,
 				CB23421C1F31FAD10004786F /* SearchViewController.swift in Sources */,
+				CBDD4D291F387E8700BD1C95 /* Post.swift in Sources */,
 				CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */,
 				CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */,
 				CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */,
@@ -646,6 +653,7 @@
 				CB626B791F3361670042247A /* GroupSearchViewController.swift in Sources */,
 				CB7560F11F3652D40030D278 /* EditProfileViewController.swift in Sources */,
 				CB626B7B1F3362640042247A /* SearchCell.swift in Sources */,
+				CB3471E81F3A803E003DD9DF /* Comment.swift in Sources */,
 				CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */,
 				CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */,
 				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,

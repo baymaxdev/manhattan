@@ -98,7 +98,7 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
             parameters = ["email": tfEmail.text, "password": tfPassword.text]
         } else {
             serverURL += FBLOGIN_URL
-            parameters = ["email": user?.email]
+            parameters = (user?.getUser())!
         }
         
         Alamofire.request(serverURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
@@ -106,7 +106,6 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
             
             if((resData.result.value) != nil) {
                 let swiftyJsonVar = JSON(resData.result.value!)
-                
                 
                 if swiftyJsonVar["success"].boolValue == true {
                     let action = UIAlertAction(title: "OK", style: .default){ action in

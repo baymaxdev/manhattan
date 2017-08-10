@@ -20,5 +20,6 @@ target 'Manhattan' do
   pod 'JSQMessagesViewController'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'SDWebImage'
   
 end

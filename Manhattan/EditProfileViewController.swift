@@ -9,6 +9,8 @@
 import UIKit
 import JJMaterialTextField
 import THCalendarDatePicker
+import Alamofire
+import SwiftyJSON
 
 class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -26,8 +28,10 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     @IBOutlet weak var tfName: JJMaterialTextfield!
     @IBOutlet weak var imgAvatar: UIImageView!
     
+    var user: User?
+    var delegate: AppDelegate?
+    
     let strInterests = ["Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video", "Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video"]
-    let selectedInterests = ["Economy", "Technology", "Sports"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +42,12 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        delegate = UIApplication.shared.delegate as? AppDelegate
         var tags : [AHTag] = []
         
         for str in strInterests {
             var tag = AHTag(category: "", title: str, color: UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0), enabled: false)
-            if selectedInterests.contains(str) {
+            if (user?.interests.contains(str))! {
                 tag.enabled = true
             }
             tags.append(tag)
@@ -62,15 +67,23 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         tfPassword.lineColor = APP_COLOR
         tfUsername.lineColor = APP_COLOR
         
-        tfName.text = "Dariya Khojasteh"
-        tfUsername.text = "dariya"
-        tfEmail.text = "dariya@gmail.com"
-        tfPassword.text = "abcd"
-        tvSkill.text = "iOS, Android, React Native, Xamarin, Node.js, AngularJS"
-        tvEducation.text = "Stanford University"
-        tfFrom.text = "2007"
-        tfTo.text = "2011"
-        tvBio.text = "I am Dariya Khojasteh from US. I have graduated Stanford University."
+        imgAvatar.sd_setImage(with: URL(string: (user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+        tfName.text = user?.name
+        tfUsername.text = user?.userName
+        tfEmail.text = user?.email
+        if (user?.isFB)! {
+            tfPassword.isEnabled = false
+            tfEmail.isEnabled = false
+            tfPassword.text = ""
+        } else {
+            tfPassword.text = user?.password
+        }
+        lbDob.text = user?.dob
+        tvSkill.text = user?.skill
+        tvEducation.text = user?.education
+        tfFrom.text = user?.eduFrom
+        tfTo.text = user?.eduTo
+        tvBio.text = user?.bio
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,7 +116,38 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     }
     
     @IBAction func onDone(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        var tagStr : [String] = []
+        for tag in tagList.tags! {
+            if tag.enabled == true {
+                tagStr.append(tag.title)
+            }
+        }
+        
+        let parameters = ["id": (user?.id)!, "email": tfEmail.text!, "password": tfPassword.text!, "name": tfName.text!, "userName": tfUsername.text!, "dob": lbDob.text!, "photo": (user?.photo)!, "interests": tagStr, "skill": tvSkill.text!, "education": tvEducation.text!, "eduFrom": tfFrom.text!, "eduTo": tfTo.text!, "bio": tvBio.text!] as [String : Any]
+        
+        print(parameters)
+        delegate?.showLoader(vc: self)
+        
+        Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                
+                if swiftyJsonVar["success"].boolValue == true {
+                    let action = UIAlertAction(title: "OK", style: .default){ action in
+                        let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                        self.delegate?.user = User(user: userObj)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                }
+                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
     }
     
     @IBAction func onAvatar(_ sender: Any) {

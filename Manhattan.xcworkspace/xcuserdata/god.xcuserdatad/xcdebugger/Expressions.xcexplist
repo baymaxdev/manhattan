@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "PhotoPostViewController.onDone(Any) -&gt; ():PhotoPostViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.didLogin(method : String, user : User?) -&gt; ():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ProfileMainViewController.viewDidLoad() -&gt; ():ProfileMainViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EditProfileViewController.onDone(Any) -&gt; ():EditProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tfPassword.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

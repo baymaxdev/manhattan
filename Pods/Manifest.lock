@@ -65,6 +65,9 @@ PODS:
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
   - THCalendarDatePicker (1.2.8):
@@ -84,6 +87,7 @@ DEPENDENCIES:
   - MIBlurPopup
   - MXSegmentedPager
   - NVActivityIndicatorView
+  - SDWebImage
   - SwiftyJSON
   - THCalendarDatePicker (~> 1.2.6)
 
@@ -110,10 +114,11 @@ SPEC CHECKSUMS:
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
   MXSegmentedPager: a35ebaf939e1629f24db3bb26653c1c557362f59
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   THCalendarDatePicker: fd1a1103ae0d1d1f2d0f9a1463a3f628a23a25a5
 
-PODFILE CHECKSUM: c400fb31407e4878157bbd643c43f59a4aaf7395
+PODFILE CHECKSUM: 1ed957da850f52bde3ecc6be8f1bbfc7bdc7b8bf
 
 COCOAPODS: 1.2.1

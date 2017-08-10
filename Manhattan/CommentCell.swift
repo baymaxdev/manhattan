@@ -13,6 +13,9 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var lbComment: UILabel!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgAvatar: UIImageView!
+    
+    var index: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2

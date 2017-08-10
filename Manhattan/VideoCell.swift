@@ -9,9 +9,11 @@
 import UIKit
 
 protocol VideoCellDelegate {
-    func didSelectComment(_ index: Int, _ type: String)
+    func didSelectComment(_ index: Int)
     
-    func didSelectProfile(_ index: Int, _ type: String)
+    func didSelectProfile(_ index: Int)
+    
+    func didSelectLike(_ index: Int)
 }
 
 class VideoCell: UITableViewCell {
@@ -50,11 +52,11 @@ class VideoCell: UITableViewCell {
     }
 
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!, "video")
+        delegate?.didSelectComment(index!)
     }
     
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectProfile(index!, "video")
+        delegate?.didSelectProfile(index!)
     }
     
     @IBAction func onLike(_ sender: Any) {
@@ -76,5 +78,7 @@ class VideoCell: UITableViewCell {
         } else {
             btnLike.isSelected = true
         }
+        
+        delegate?.didSelectLike(index!)
     }
 }

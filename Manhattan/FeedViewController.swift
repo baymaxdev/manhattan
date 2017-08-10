@@ -8,6 +8,8 @@
 
 import UIKit
 import ExpandableLabel
+import Alamofire
+import SwiftyJSON
 
 var navController : UINavigationController?
 
@@ -15,6 +17,8 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
 
     @IBOutlet weak var tableView: UITableView!
     
+    var posts: [Post] = []
+    var delegate: AppDelegate?
     var expandableStates : Array<Bool>!
     
     override func viewDidLoad() {
@@ -29,14 +33,40 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         tableView.register(UINib(nibName: "VideoCell", bundle: nil), forCellReuseIdentifier: "VideoCell")
         
         navController = self.navigationController
+        delegate = UIApplication.shared.delegate as? AppDelegate
         
-        expandableStates = [Bool](repeating: true, count: 10)
         // Do any additional setup after loading the view.
+    }
+    
+    func initialize() {
+        delegate?.showLoader(vc: self)
+        posts.removeAll()
+        Alamofire.request(BASE_URL + POSTGETALL_URL, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    let result = swiftyJsonVar["result"].arrayValue
+                    for element in result {
+                        self.posts.append(Post(param: element.dictionaryValue))
+                    }
+                    self.expandableStates = [Bool](repeating: true, count: self.posts.count)
+                    self.tableView.reloadData()
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+                
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+        initialize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,32 +79,79 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row % 3 == 0 {
+        let post = posts[indexPath.row]
+        
+        if post.type == .blog {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell") as! BlogCell
             cell.lbBlogContent.delegate = self
-            cell.lbBlogContent.text = "This app is for learning sth online. You can just install it and login with your email or facebook. You can see some posts and can learn from courses. Messaging and searching feature is embedded. You can also follow other users to see the posts they have posted. Of course you can manage your posts and courses on your profile page. Happy using the app! :)"
+            cell.lbBlogContent.text = post.postContent
+            cell.lbBlogTitle.text = post.postTitle
             cell.lbBlogContent.collapsed = expandableStates[indexPath.row]
+            cell.lbTitle.text = "\((post.user?.name)!) posted an article."
+            cell.lbDate.text = dateFromISOString(string: post.createdTime!)
+            cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
+            cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
+            if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
+                cell.btnLike.isSelected = true
+            }
+            else {
+                cell.btnLike.isSelected = false
+            }
             cell.index = indexPath.row
             cell.delegate = self
             cell.initCell()
             return cell
-        } else if indexPath.row % 3 == 1 {
+        } else if post.type == .photo {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
             cell.index = indexPath.row
+            cell.lbDescription.text = post.postTitle
+            cell.lbTitle.text = "\((post.user?.name)!) posted a photo."
             cell.delegate = self
+            cell.lbDate.text = dateFromISOString(string: post.createdTime!)
+            cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
+            cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
+            if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
+                cell.btnLike.isSelected = true
+            }
+            else {
+                cell.btnLike.isSelected = false
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
             cell.index = indexPath.row
+            cell.lbDescription.text = post.postTitle
+            cell.lbTitle.text = "\((post.user?.name)!) posted a video."
             cell.delegate = self
+            cell.lbDate.text = dateFromISOString(string: post.createdTime!)
+            cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
+            cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
+            if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
+                cell.btnLike.isSelected = true
+            }
+            else {
+                cell.btnLike.isSelected = false
+            }
             return cell
         }
     }
     
+    func dateFromISOString(string: String) -> String {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.timeZone = NSTimeZone.local
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        let date = dateFormatter.date(from: string)
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "dd MMM yyyy h:mm a"
+        return dateFormatter1.string(from: date!)
+        
+    }
     // Expandable Label Delegate
     
     func willExpandLabel(_ label: ExpandableLabel) {
@@ -113,13 +190,55 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     // Cell Delegates
     
-    func didSelectComment(_ index: Int, _ type: String) {
+    func didSelectComment(_ index: Int) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CommentViewController") as! CommentViewController
+        vc.post = posts[index]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func didSelectProfile(_ index: Int, _ type: String) {
-        
+    func didSelectProfile(_ index: Int) {
+        if delegate?.user?.id == posts[index].user?.id {
+            delegate?.curUserId = (delegate?.user?.id)!
+            delegate?.tabBarController?.selectedIndex = 4
+        } else {
+            delegate?.curUserId = (posts[index].user?.id)!
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileMainViewController") as! ProfileMainViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func didSelectLike(_ index: Int) {
+        let parameters = ["id": posts[index].id, "userId": delegate?.user?.id]
+        Alamofire.request(BASE_URL + LIKE_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    let flag = swiftyJsonVar["index"].intValue
+                    if (flag == -1) {
+                        self.posts[index].likes?.append((self.delegate?.user?.id)!)
+                    } else {
+                        self.posts[index].likes = self.posts[index].likes?.filter { $0 != self.delegate?.user?.id }
+                    }
+                    
+                    if (self.posts[index].type == .blog) {
+                        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! BlogCell
+                        cell.lbLikeCnt.text = "\((self.posts[index].likes?.count)!) Likes"
+                    } else if (self.posts[index].type == .photo) {
+                        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PhotoCell
+                        cell.lbLikeCnt.text = "\((self.posts[index].likes?.count)!) Likes"
+                    } else {
+                        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! VideoCell
+                        cell.lbLikeCnt.text = "\((self.posts[index].likes?.count)!) Likes"
+                    }
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
     }
     /*
     // MARK: - Navigation

@@ -9,9 +9,11 @@
 import UIKit
 
 protocol PhotoCellDelegate {
-    func didSelectComment(_ index: Int, _ type: String)
+    func didSelectComment(_ index: Int)
     
-    func didSelectProfile(_ index: Int, _ type: String)
+    func didSelectProfile(_ index: Int)
+    
+    func didSelectLike(_ index: Int)
 }
 
 class PhotoCell: UITableViewCell {
@@ -48,7 +50,7 @@ class PhotoCell: UITableViewCell {
     }
 
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectProfile(index!, "photo")
+        delegate?.didSelectProfile(index!)
     }
     
     @IBAction func onLike(_ sender: Any) {
@@ -69,10 +71,12 @@ class PhotoCell: UITableViewCell {
         } else {
             btnLike.isSelected = true
         }
+        
+        delegate?.didSelectLike(index!)
     }
     
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!, "photo")
+        delegate?.didSelectComment(index!)
     }
     
 }

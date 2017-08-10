@@ -8,11 +8,14 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class TabBarViewController: UITabBarController ,UITabBarControllerDelegate {
 
+    var dele: AppDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.delegate = self
+        dele = UIApplication.shared.delegate as? AppDelegate
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +24,13 @@ class TabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // UITabBarControllerDelegate
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 4 {
+            dele?.curUserId = (dele?.user?.id)!
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

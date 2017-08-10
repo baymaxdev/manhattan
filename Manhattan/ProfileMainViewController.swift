@@ -8,6 +8,9 @@
 
 import UIKit
 import MXSegmentedPager
+import Alamofire
+import SwiftyJSON
+import SDWebImage
 
 class ProfileMainViewController: MXSegmentedPagerController {
 
@@ -18,6 +21,11 @@ class ProfileMainViewController: MXSegmentedPagerController {
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var btnJoin: UIButton!
     @IBOutlet var headerView: UIView!
+    @IBOutlet weak var btnBack: UIButton!
+    
+    var user: User?
+    var delegate: AppDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
@@ -42,10 +50,54 @@ class ProfileMainViewController: MXSegmentedPagerController {
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : APP_COLOR]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = APP_COLOR
-
+        
         // Do any additional setup after loading the view.
+        delegate = UIApplication.shared.delegate as? AppDelegate
+        initializeUser()
+        if (delegate?.isMe())! {
+            btnJoin.setTitle("Edit Profile", for: .normal)
+            btnBack.isHidden = true
+        } else {
+            btnJoin.setTitle("Join", for: .normal)
+            btnBack.isHidden = false
+        }
+        
+        
+    }
+    
+    func initializeUser() {
+        if (delegate?.isMe())! {
+            user = delegate?.user
+            lbUsername.text = "@" + (user?.userName)!
+            imgAvatar.sd_setImage(with: URL(string: (user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+        } else {
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["id": delegate?.curUserId]
+            Alamofire.request(BASE_URL + GETUSERBYID_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        self.user = User(user: swiftyJsonVar["userInfo"].dictionaryValue)
+                        self.lbUsername.text = "@" + (self.user?.userName)!
+                        self.imgAvatar.sd_setImage(with: URL(string: (self.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+        }
     }
 
+    @IBAction func onBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,8 +112,13 @@ class ProfileMainViewController: MXSegmentedPagerController {
     }
     
     @IBAction func onJoin(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        if (delegate?.isMe())! {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+            vc.user = user
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            
+        }
     }
 
     /*

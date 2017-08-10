@@ -10,9 +10,11 @@ import UIKit
 import ExpandableLabel
 
 protocol BlogCellDelegate {
-    func didSelectComment(_ index: Int, _ type: String)
+    func didSelectComment(_ index: Int)
     
-    func didSelectProfile(_ index: Int, _ type: String)
+    func didSelectProfile(_ index: Int)
+    
+    func didSelectLike(_ index: Int)
 }
 
 class BlogCell: UITableViewCell {
@@ -74,11 +76,11 @@ class BlogCell: UITableViewCell {
     }
     
     @IBAction func onComment(_ sender: Any) {
-        delegate?.didSelectComment(index!, "blog")
+        delegate?.didSelectComment(index!)
     }
     
     @IBAction func onProfile(_ sender: Any) {
-        delegate?.didSelectProfile(index!, "blog")
+        delegate?.didSelectProfile(index!)
     }
     
     @IBAction func onLike(_ sender: Any) {
@@ -99,6 +101,9 @@ class BlogCell: UITableViewCell {
         } else {
             btnLike.isSelected = true
         }
+        
+        delegate?.didSelectLike(index!)
+        
     }
 
 }

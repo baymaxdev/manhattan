@@ -14,7 +14,7 @@ class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDat
     @IBOutlet weak var btnAddGroup: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         btnAddGroup.layer.cornerRadius = btnAddGroup.frame.height / 2
         tableView.delegate = self
         tableView.dataSource = self

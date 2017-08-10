@@ -8,11 +8,17 @@
 
 import UIKit
 import JJMaterialTextField
+import Alamofire
+import SwiftyJSON
 
 class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tfGroupName: JJMaterialTextfield!
     @IBOutlet weak var imgAvatar: UIImageView!
+    
+    var user: User?
+    var delegate: AppDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +28,36 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
         
         tfGroupName.lineColor = APP_COLOR
         tfGroupName.enableMaterialPlaceHolder = true
+        
+        delegate = UIApplication.shared.delegate as? AppDelegate
+        initializeUser()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func initializeUser() {
+        if (delegate?.isMe())! {
+            user = delegate?.user
+        } else {
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["id": delegate?.curUserId]
+            Alamofire.request(BASE_URL + GETUSERBYID_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        self.user = User(user: swiftyJsonVar["userInfo"].dictionaryValue)
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

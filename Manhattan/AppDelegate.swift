@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var user: User?
+    var curUserId: Int = 0
     var indicator: NVActivityIndicatorView?
     var indicatorView: UIView?
     var tabBarController: TabBarViewController?
@@ -27,6 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         indicatorView?.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func isMe() -> Bool {
+        if curUserId == user?.id {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func configureTabBar() {

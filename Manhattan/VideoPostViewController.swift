@@ -10,6 +10,8 @@ import UIKit
 import MobileCoreServices
 import Photos
 import BMPlayer
+import Alamofire
+import SwiftyJSON
 
 class VideoPostViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -47,7 +49,34 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
     }
 
     @IBAction func onDone(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if (tfDescription.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Description field is required.", action: nil)
+        }
+        else {
+            let parameters = ["userId": delegate?.user?.id, "type": "V", "postTitle": tfDescription.text, "postContent": ""] as [String : Any]
+            delegate?.showLoader(vc: self)
+            
+            Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    
+                    if swiftyJsonVar["success"].boolValue == true {
+                        let action = UIAlertAction(title: "OK", style: .default){ action in
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+        }
     }
     
     @IBAction func onChoose(_ sender: Any) {

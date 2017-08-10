@@ -125,11 +125,10 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                 if((resData.result.value) != nil) {
                     let swiftyJsonVar = JSON(resData.result.value!)
                     
-                    
                     if swiftyJsonVar["success"].boolValue == true {
                         let action = UIAlertAction(title: "OK", style: .default){ action in
                             let userObj = swiftyJsonVar["userObj"].dictionaryValue
-                            self.delegate?.user?.id = userObj["id"]?.stringValue
+                            self.delegate?.user?.id = userObj["id"]?.intValue
                             self.delegate?.configureTabBar()
                         }
                         self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
