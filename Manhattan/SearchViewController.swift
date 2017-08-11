@@ -12,6 +12,7 @@ import MXSegmentedPager
 class SearchViewController: MXSegmentedPagerController {
 
     @IBOutlet var headerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +22,8 @@ class SearchViewController: MXSegmentedPagerController {
         // Parallax Header
         segmentedPager.parallaxHeader.view = headerView
         segmentedPager.parallaxHeader.mode = .fill
-        segmentedPager.parallaxHeader.height = 104
-        segmentedPager.parallaxHeader.minimumHeight = 104
+        segmentedPager.parallaxHeader.height = 60
+        segmentedPager.parallaxHeader.minimumHeight = 60
         
         // Segmented Control customization
         segmentedPager.segmentedControl.selectionIndicatorLocation = .down
@@ -31,6 +32,7 @@ class SearchViewController: MXSegmentedPagerController {
         segmentedPager.segmentedControl.selectedTitleTextAttributes = [NSForegroundColorAttributeName : APP_COLOR]
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = APP_COLOR
+        
         // Do any additional setup after loading the view.
     }
 

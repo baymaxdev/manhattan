@@ -29,7 +29,6 @@ class FacebookAPIManager {
             switch result {
             case .success(let graphResponse):
                 if let dictionary = graphResponse.dictionaryValue {
-                    print(dictionary)
                     completion(User(withFB: true, dictionary: dictionary))
                 }
                 break
@@ -42,7 +41,6 @@ class FacebookAPIManager {
     func requestFacebookUserPageLikes() {
         let graphRequest = GraphRequest(graphPath: kGraphPathMePageLikes, parameters: [:], accessToken: accessToken, httpMethod: .GET, apiVersion: .defaultVersion)
         graphRequest.start { (response: HTTPURLResponse?, result: GraphRequestResult<GraphRequest>) in
-            print (result)
         }
     }
     

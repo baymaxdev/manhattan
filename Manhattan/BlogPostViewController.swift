@@ -34,7 +34,7 @@ class BlogPostViewController: UIViewController {
             delegate?.showAlert(vc: self, msg: "Blog field is required.", action: nil)
         } else {
             let parameters = ["userId": delegate?.user?.id, "type": "B", "postTitle": tfPostHeader.text, "postContent": tvBlog.text] as [String : Any]
-            print(parameters)
+            
             delegate?.showLoader(vc: self)
             
             Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in

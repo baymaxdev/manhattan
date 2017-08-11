@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnAddGroup: UIButton!
+    
+    var delegate: AppDelegate?
+    var groups: [Group] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,9 +31,40 @@ class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDat
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         customView.backgroundColor = UIColor.clear
         tableView.tableFooterView = customView
+        
+        delegate = UIApplication.shared.delegate as? AppDelegate
         // Do any additional setup after loading the view.
     }
 
+    func initialize() {
+        delegate?.showLoader(vc: self)
+        groups.removeAll()
+        let parameters = ["userId": delegate?.curUserId]
+        Alamofire.request(BASE_URL + GROUPGETBYUSERID_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    let result = swiftyJsonVar["result"].arrayValue
+                    for element in result {
+                        self.groups.append(Group(param: element.dictionaryValue))
+                    }
+                    self.tableView.reloadData()
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initialize()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,14 +75,15 @@ class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
-        
-        cell.lbOne.text = "Group \(indexPath.row)"
-        cell.lbTwo.text = "5 members"
+        let group = groups[indexPath.row]
+        cell.lbOne.text = group.name
+        cell.lbTwo.text = "\((group.userIds?.count)!) members"
+        cell.imgAvatar.sd_setImage(with: URL(string: group.photo!), placeholderImage: UIImage(named: "avatar"))
         // Configure the cell...
         
         return cell

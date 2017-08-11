@@ -129,6 +129,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 cell.lbDate.text = dateFromISOString(string: (post?.createdTime)!)
                 cell.lbLikeCnt.text = "\((post?.likes?.count)!) Likes"
                 cell.lbCommentCnt.text = "\(comments.count) Comments"
+                cell.imgAvatar.sd_setImage(with: URL(string: (post?.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
                 if (post?.likes?.contains((self.delegate?.user?.id)!) == true) {
                     cell.btnLike.isSelected = true
                 }
@@ -148,6 +149,8 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 cell.lbDate.text = dateFromISOString(string: (post?.createdTime)!)
                 cell.lbLikeCnt.text = "\((post?.likes?.count)!) Likes"
                 cell.lbCommentCnt.text = "\(comments.count) Comments"
+                cell.imgAvatar.sd_setImage(with: URL(string: (post?.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+                cell.imgPhoto.sd_setImage(with: URL(string: (post?.postContent)!), placeholderImage: UIImage(named: "placeholder"))
                 if (post?.likes?.contains((self.delegate?.user?.id)!) == true) {
                     cell.btnLike.isSelected = true
                 }
@@ -165,6 +168,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 cell.lbDate.text = dateFromISOString(string: (post?.createdTime)!)
                 cell.lbLikeCnt.text = "\((post?.likes?.count)!) Likes"
                 cell.lbCommentCnt.text = "\(comments.count) Comments"
+                cell.imgAvatar.sd_setImage(with: URL(string: (post?.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
                 if (post?.likes?.contains((self.delegate?.user?.id)!) == true) {
                     cell.btnLike.isSelected = true
                 }

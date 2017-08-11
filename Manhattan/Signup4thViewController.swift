@@ -22,7 +22,6 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     
     var image: UIImage?
     var delegate: AppDelegate?
-    let strInterests = ["Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video", "Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

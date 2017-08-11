@@ -95,6 +95,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             cell.lbDate.text = dateFromISOString(string: post.createdTime!)
             cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
             cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
+            cell.imgAvatar.sd_setImage(with: URL(string: (post.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
             if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
                 cell.btnLike.isSelected = true
             }
@@ -108,6 +109,8 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
         } else if post.type == .photo {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell") as! PhotoCell
             cell.index = indexPath.row
+            cell.imgAvatar.sd_setImage(with: URL(string: (post.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+            cell.imgPhoto.sd_setImage(with: URL(string: post.postContent!), placeholderImage: UIImage(named: "placeholder"))
             cell.lbDescription.text = post.postTitle
             cell.lbTitle.text = "\((post.user?.name)!) posted a photo."
             cell.delegate = self
@@ -130,6 +133,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             cell.lbDate.text = dateFromISOString(string: post.createdTime!)
             cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
             cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
+            cell.imgAvatar.sd_setImage(with: URL(string: (post.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
             if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
                 cell.btnLike.isSelected = true
             }

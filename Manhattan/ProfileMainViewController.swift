@@ -54,15 +54,18 @@ class ProfileMainViewController: MXSegmentedPagerController {
         // Do any additional setup after loading the view.
         delegate = UIApplication.shared.delegate as? AppDelegate
         initializeUser()
+        initializeCourseCnt()
         if (delegate?.isMe())! {
             btnJoin.setTitle("Edit Profile", for: .normal)
             btnBack.isHidden = true
         } else {
-            btnJoin.setTitle("Join", for: .normal)
             btnBack.isHidden = false
+            if (delegate?.user?.mentors.contains((delegate?.curUserId)!))! {
+                btnJoin.setTitle("Unfollow", for: .normal)
+            } else {
+                btnJoin.setTitle("Join", for: .normal)
+            }
         }
-        
-        
     }
     
     func initializeUser() {
@@ -70,6 +73,8 @@ class ProfileMainViewController: MXSegmentedPagerController {
             user = delegate?.user
             lbUsername.text = "@" + (user?.userName)!
             imgAvatar.sd_setImage(with: URL(string: (user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+            lbStudents.text = "\((user?.students.count)!)"
+            lbMentor.text = "\((user?.mentors.count)!)"
         } else {
             self.delegate?.showLoader(vc: self)
             let parameters = ["id": delegate?.curUserId]
@@ -82,6 +87,8 @@ class ProfileMainViewController: MXSegmentedPagerController {
                         self.user = User(user: swiftyJsonVar["userInfo"].dictionaryValue)
                         self.lbUsername.text = "@" + (self.user?.userName)!
                         self.imgAvatar.sd_setImage(with: URL(string: (self.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+                        self.lbStudents.text = "\((self.user?.students.count)!)"
+                        self.lbMentor.text = "\((self.user?.mentors.count)!)"
                     }
                     else {
                         self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
@@ -91,6 +98,37 @@ class ProfileMainViewController: MXSegmentedPagerController {
                     self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
                 }
             }
+        }
+    }
+    
+    func initializeCourseCnt() {
+        let parameters = ["userId": delegate?.curUserId]
+        Alamofire.request(BASE_URL + COURSEGETBYUSERID_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    let result = swiftyJsonVar["result"].arrayValue
+                    self.lbCourses.text = "\(result.count)"
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+                
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (delegate?.isMe())! {
+            user = delegate?.user
+            lbUsername.text = "@" + (user?.userName)!
+            imgAvatar.sd_setImage(with: URL(string: (user?.photo)!), placeholderImage: UIImage(named: "avatar"))
+            lbStudents.text = "\((user?.students.count)!)"
+            lbMentor.text = "\((user?.mentors.count)!)"
         }
     }
 
@@ -117,7 +155,30 @@ class ProfileMainViewController: MXSegmentedPagerController {
             vc.user = user
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            
+            let parameters = ["me": (delegate?.user?.id)!, "him": (user?.id)!] as [String : Any]
+            Alamofire.request(BASE_URL + FOLLOWUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        self.delegate?.user = User(user: swiftyJsonVar["meObj"].dictionaryValue)
+                        self.user = User(user: swiftyJsonVar["himObj"].dictionaryValue)
+                        self.lbStudents.text = "\((self.user?.students.count)!)"
+                        self.lbMentor.text = "\((self.user?.mentors.count)!)"
+                        if (self.delegate?.user?.mentors.contains((self.user?.id)!))! {
+                            self.btnJoin.setTitle("Unfollow", for: .normal)
+                        } else {
+                            self.btnJoin.setTitle("Join", for: .normal)
+                        }
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
         }
     }
 

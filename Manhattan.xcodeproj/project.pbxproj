@@ -40,6 +40,7 @@
 		CB3A5D731F23CA8700D61562 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D711F23CA8700D61562 /* NetworkingManager.swift */; };
 		CB3A5D761F23CAAE00D61562 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D751F23CAAE00D61562 /* User.swift */; };
 		CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D771F23D18000D61562 /* FacebookPost.swift */; };
+		CB3A96941F3C9192007597F9 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A96931F3C9192007597F9 /* Course.swift */; };
 		CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */; };
 		CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F811F260B630092014E /* Signup1stViewController.swift */; };
 		CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F831F260B790092014E /* Signup2ndViewController.swift */; };
@@ -59,9 +60,11 @@
 		CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */; };
 		CB6E95121F222D5C00E01C60 /* ManhattanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E95111F222D5C00E01C60 /* ManhattanTests.swift */; };
 		CB6E951D1F222D5C00E01C60 /* ManhattanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */; };
+		CB71CF571F3E34F0005896EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71CF561F3E34F0005896EE /* Group.swift */; };
 		CB7560F11F3652D40030D278 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7560F01F3652D40030D278 /* EditProfileViewController.swift */; };
 		CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */; };
 		CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */; };
+		CB9CA4B71F3CE4EB00E0E335 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CA4B61F3CE4EB00E0E335 /* Video.swift */; };
 		CBA611EF1F35974D00DD11E9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA611EE1F35974D00DD11E9 /* SearchCell.xib */; };
 		CBA611F11F359C8A00DD11E9 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */; };
 		CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */; };
@@ -125,6 +128,7 @@
 		CB3A5D751F23CAAE00D61562 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB3A5D771F23D18000D61562 /* FacebookPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookPost.swift; sourceTree = "<group>"; };
 		CB3A5D791F23E3C900D61562 /* Manhattan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Manhattan.entitlements; sourceTree = "<group>"; };
+		CB3A96931F3C9192007597F9 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
 		CB603F811F260B630092014E /* Signup1stViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup1stViewController.swift; sourceTree = "<group>"; };
 		CB603F831F260B790092014E /* Signup2ndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ndViewController.swift; sourceTree = "<group>"; };
@@ -150,9 +154,11 @@
 		CB6E95181F222D5C00E01C60 /* ManhattanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManhattanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManhattanUITests.swift; sourceTree = "<group>"; };
 		CB6E951E1F222D5C00E01C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB71CF561F3E34F0005896EE /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CB7560F01F3652D40030D278 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
+		CB9CA4B61F3CE4EB00E0E335 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CBA611EE1F35974D00DD11E9 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		CBB0DC0C1F314FEA00E79E64 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +307,9 @@
 				CBDD4D281F387E8700BD1C95 /* Post.swift */,
 				CB37890F1F351A6700F935D0 /* Macro.swift */,
 				CB3471E71F3A803E003DD9DF /* Comment.swift */,
+				CB3A96931F3C9192007597F9 /* Course.swift */,
+				CB9CA4B61F3CE4EB00E0E335 /* Video.swift */,
+				CB71CF561F3E34F0005896EE /* Group.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -627,6 +636,7 @@
 				CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */,
 				CB6E94FF1F222D5C00E01C60 /* ViewController.swift in Sources */,
 				CB3A5D721F23CA8700D61562 /* FacebookAPIManager.swift in Sources */,
+				CB9CA4B71F3CE4EB00E0E335 /* Video.swift in Sources */,
 				CB140A371F2BF95400532BDC /* BMPlayerCustomControlView.swift in Sources */,
 				CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */,
 				CB33D5051F2B53BE00E05B87 /* PopupMenuViewController.swift in Sources */,
@@ -634,6 +644,7 @@
 				CB2374501F2C721300ABDC4D /* BlogCell.swift in Sources */,
 				CB2342241F325FFA0004786F /* MyCourseViewController.swift in Sources */,
 				CBCC8B851F28D692002267DA /* TabBarViewController.swift in Sources */,
+				CB71CF571F3E34F0005896EE /* Group.swift in Sources */,
 				CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */,
 				CB33D50A1F2B6FBB00E05B87 /* FloatLabelTextView.swift in Sources */,
 				CB33D50C1F2B709700E05B87 /* BlogPostViewController.swift in Sources */,
@@ -657,6 +668,7 @@
 				CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */,
 				CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */,
 				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,
+				CB3A96941F3C9192007597F9 /* Course.swift in Sources */,
 				CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */,
 				CB6E94FD1F222D5C00E01C60 /* AppDelegate.swift in Sources */,
 				CBB0DC0D1F314FEA00E79E64 /* MessageDetailViewController.swift in Sources */,

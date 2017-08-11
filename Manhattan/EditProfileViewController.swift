@@ -31,8 +31,6 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     var user: User?
     var delegate: AppDelegate?
     
-    let strInterests = ["Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video", "Economy", "Military", "Culture", "Technology", "Politics", "Healthcare", "Entertainment", "Sports", "Arts", "Film", "Video"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -125,7 +123,6 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         
         let parameters = ["id": (user?.id)!, "email": tfEmail.text!, "password": tfPassword.text!, "name": tfName.text!, "userName": tfUsername.text!, "dob": lbDob.text!, "photo": (user?.photo)!, "interests": tagStr, "skill": tvSkill.text!, "education": tvEducation.text!, "eduFrom": tfFrom.text!, "eduTo": tfTo.text!, "bio": tvBio.text!] as [String : Any]
         
-        print(parameters)
         delegate?.showLoader(vc: self)
         
         Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in

@@ -69,6 +69,19 @@ class AboutViewController: UITableViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if (delegate?.isMe())! {
+            user = delegate?.user
+            lbName.text = user?.name
+            lbAbout.text = user?.bio
+            lbSkills.text = user?.skill
+            lbEducation.text = user?.education
+            lbEducationPeriod.text = "\((user?.eduFrom)!) - \((user?.eduTo)!)"
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

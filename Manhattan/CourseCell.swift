@@ -10,6 +10,8 @@ import UIKit
 
 protocol CourseCellDelegate {
     func didSelectDetail(_ index: Int)
+    
+    func didSelectProfile(_ index: Int)
 }
 
 class CourseCell: UITableViewCell {
@@ -45,6 +47,10 @@ class CourseCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onProfile(_ sender: Any) {
+        delegate?.didSelectProfile(index!)
+    }
+    
     @IBAction func onDetail(_ sender: Any) {
         delegate?.didSelectDetail(index!)
     }

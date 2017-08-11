@@ -24,7 +24,8 @@ class User {
     var eduFrom: String?
     var eduTo: String?
     var bio: String?
-    
+    var mentors: [Int]
+    var students: [Int]
     
     init (withFB: Bool, dictionary: [String: Any]) {
         self.id = 0
@@ -42,6 +43,8 @@ class User {
         self.eduTo = ""
         self.eduFrom = ""
         self.bio = ""
+        self.mentors = []
+        self.students = []
     }
     
     init (user: [String: JSON]) {
@@ -52,17 +55,27 @@ class User {
         self.dob = user["dob"]?.stringValue
         self.userName = user["userName"]?.stringValue
         self.photo = user["photo"]?.stringValue
-        let array = user["interests"]?.arrayValue
+        var array = user["interests"]?.arrayValue
         self.interests = []
         for element in array! {
             self.interests.append(element.stringValue)
         }
         self.isFB = user["isFB"]?.boolValue
-        self.skill = ""
-        self.education = ""
-        self.eduTo = ""
-        self.eduFrom = ""
-        self.bio = ""
+        self.skill = user["skill"]?.stringValue
+        self.education = user["education"]?.stringValue
+        self.eduTo = user["eduTo"]?.stringValue
+        self.eduFrom = user["eduFrom"]?.stringValue
+        self.bio = user["bio"]?.stringValue
+        array = user["mentors"]?.arrayValue
+        self.mentors = []
+        for element in array! {
+            self.mentors.append(element.intValue)
+        }
+        array = user["students"]?.arrayValue
+        self.students = []
+        for element in array! {
+            self.students.append(element.intValue)
+        }
     }
     
     init () {
@@ -80,6 +93,8 @@ class User {
         self.eduTo = ""
         self.eduFrom = ""
         self.bio = ""
+        self.mentors = []
+        self.students = []
     }
     
     func getUser() -> [String: Any?] {
@@ -99,6 +114,8 @@ class User {
         user["eduFrom"] = self.eduFrom
         user["eduTo"] = self.eduTo
         user["bio"] = self.bio
+        user["mentors"] = self.mentors
+        user["students"] = self.students
         
         return user
     }
@@ -111,7 +128,7 @@ class User {
         self.dob = user["dob"]?.stringValue
         self.userName = user["userName"]?.stringValue
         self.photo = user["photo"]?.stringValue
-        let array = user["interests"]?.arrayValue
+        var array = user["interests"]?.arrayValue
         self.interests.removeAll()
         for element in array! {
             self.interests.append(element.stringValue)
@@ -122,5 +139,15 @@ class User {
         self.eduTo = user["eduTo"]?.stringValue
         self.eduFrom = user["eduFrom"]?.stringValue
         self.bio = user["bio"]?.stringValue
+        array = user["mentors"]?.arrayValue
+        self.mentors = []
+        for element in array! {
+            self.mentors.append(element.intValue)
+        }
+        array = user["students"]?.arrayValue
+        self.students = []
+        for element in array! {
+            self.students.append(element.intValue)
+        }
     }
 }

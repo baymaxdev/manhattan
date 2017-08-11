@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class PeopleSearchViewController: UITableViewController {
+class PeopleSearchViewController: UITableViewController, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    var users: [User] = []
+    var delegate: AppDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +24,37 @@ class PeopleSearchViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        searchBar.delegate = self
+        delegate = UIApplication.shared.delegate as? AppDelegate
+        
         tableView.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
+        initialize()
+    }
+    
+    func initialize() {
+        delegate?.showLoader(vc: self)
+        users.removeAll()
+        let parameters = ["key": searchBar.text!]
+        Alamofire.request(BASE_URL + SEARCHUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    let result = swiftyJsonVar["result"].arrayValue
+                    for element in result {
+                        self.users.append(User(user: element.dictionaryValue))
+                    }
+                    self.tableView.reloadData()
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,22 +71,57 @@ class PeopleSearchViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
-
+        let user = users[indexPath.row]
+        cell.lbOne.text = user.userName
+        cell.lbTwo.text = user.name
+        cell.imgAvatar.sd_setImage(with: URL(string: user.photo!), placeholderImage: UIImage(named: "avatar"))
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if delegate?.user?.id == users[indexPath.row].id {
+            delegate?.curUserId = (delegate?.user?.id)!
+            delegate?.tabBarController?.selectedIndex = 4
+        } else {
+            delegate?.curUserId = users[indexPath.row].id!
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileMainViewController") as! ProfileMainViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        initialize()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        initialize()
+    }
 
     /*
     // Override to support conditional editing of the table view.

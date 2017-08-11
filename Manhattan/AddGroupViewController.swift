@@ -18,6 +18,7 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var user: User?
     var delegate: AppDelegate?
+    var isPhotoChoosen: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,31 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func onDone(_ sender: Any) {
+        if isPhotoChoosen == false {
+            delegate?.showAlert(vc: self, msg: "Please select photo of the group.", action: nil)
+        } else if (tfGroupName.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Please input group name.", action: nil)
+        } else {
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["name": tfGroupName.text!, "photo": ""] as [String : Any]
+            Alamofire.request(BASE_URL + GROUPCREATE_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -84,6 +110,7 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imgAvatar.image = info["UIImagePickerControllerEditedImage"] as! UIImage?
+        isPhotoChoosen = true
         self.dismiss(animated: true, completion: nil)
     }
     
