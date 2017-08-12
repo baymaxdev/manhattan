@@ -8,6 +8,8 @@
 
 import UIKit
 import JJMaterialTextField
+import Alamofire
+import SwiftyJSON
 
 class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -51,8 +53,30 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         if (tfUsername.text?.isEmpty)! {
             delegate?.showAlert(vc: self, msg: "Username is required", action: nil)
         } else {
-            delegate?.user?.userName = tfUsername.text
-            self.performSegue(withIdentifier: "3To4Segue", sender: nil)
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["username": tfUsername.text]
+            Alamofire.request(BASE_URL + CHECKUSERNAME_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        if swiftyJsonVar["result"].boolValue == true {
+                            self.delegate?.user?.userName = self.tfUsername.text
+                            self.performSegue(withIdentifier: "3To4Segue", sender: nil)
+                        } else {
+                            self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                        }
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
+            
         }
     }
     

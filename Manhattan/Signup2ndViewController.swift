@@ -8,6 +8,8 @@
 
 import UIKit
 import JJMaterialTextField
+import Alamofire
+import SwiftyJSON
 
 class Signup2ndViewController: UIViewController {
     
@@ -49,10 +51,33 @@ class Signup2ndViewController: UIViewController {
             delegate?.showAlert(vc: self, msg: "Email is required", action: nil)
         } else if (tfPassword.text?.isEmpty)! {
             delegate?.showAlert(vc: self, msg: "Password is required", action: nil)
+        } else if (tfPassword.text?.characters.count)! < 6 {
+            delegate?.showAlert(vc: self, msg: "Password must include at least 6 characters", action: nil)
         } else {
-            delegate?.user?.email = tfEmail.text
-            delegate?.user?.password = tfPassword.text
-            self.performSegue(withIdentifier: "2To3Segue", sender: nil)
+            self.delegate?.showLoader(vc: self)
+            let parameters = ["email": tfEmail.text]
+            Alamofire.request(BASE_URL + CHECKEMAIL_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        if swiftyJsonVar["result"].boolValue == true {
+                            self.delegate?.user?.email = self.tfEmail.text
+                            self.delegate?.user?.password = self.tfPassword.text
+                            self.performSegue(withIdentifier: "2To3Segue", sender: nil)
+                        } else {
+                            self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                        }
+                    }
+                    else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                    }
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                }
+            }
         }
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 import FacebookCore
 import NVActivityIndicatorView
+import Firebase
 import AWSS3
 
 @UIApplicationMain
@@ -23,10 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: (window?.frame.width)!, height: (window?.frame.height)!))
         indicator = NVActivityIndicatorView(frame: CGRect.init(x: (indicatorView?.frame.width)!/2 - 50.0, y: (indicatorView?.frame.height)!/2 - 50.0, width: 100, height: 100), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: 0)
         indicatorView?.addSubview(indicator!)
         indicatorView?.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
+        UINavigationBar.appearance().isTranslucent = false
         
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

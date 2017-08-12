@@ -119,23 +119,46 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
             delegate?.showLoader(vc: self)
             
             Alamofire.request(BASE_URL + SIGNUP_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                self.delegate?.hideLoader()
                 
                 if((resData.result.value) != nil) {
                     let swiftyJsonVar = JSON(resData.result.value!)
                     
                     if swiftyJsonVar["success"].boolValue == true {
-                        let action = UIAlertAction(title: "OK", style: .default){ action in
-                            let userObj = swiftyJsonVar["userObj"].dictionaryValue
-                            self.delegate?.user?.id = userObj["id"]?.intValue
-                            self.delegate?.configureTabBar()
+                        
+                        FUser.registerUser(withName: (self.delegate?.user?.name)!, email: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!, profilePic: (self.delegate?.user?.photo)!) { [weak weakSelf = self] (status, err) in
+                            DispatchQueue.main.async {
+                                if status == true {
+                                    
+                                    FUser.loginUser(withEmail: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!) { [weak weakSelf = self](status, err) in
+                                        DispatchQueue.main.async {
+                                            self.delegate?.hideLoader()
+                                            if status == true {
+                                                let action = UIAlertAction(title: "OK", style: .default){ action in
+                                                    let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                                                    self.delegate?.user = User()
+                                                    self.delegate?.user?.setUser(userObj)
+                                                    self.delegate?.configureTabBar()
+                                                }
+                                                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                                return
+                                            } else {
+                                                self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                            }
+                                            weakSelf = nil
+                                        }
+                                    }
+                                } else {
+                                    self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                }
+                            }
                         }
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
-                        return
+                    } else {
+                        self.delegate?.hideLoader()
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                     }
-                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                     
                 } else {
+                    self.delegate?.hideLoader()
                     self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
                 }
             }

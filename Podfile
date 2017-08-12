@@ -23,5 +23,8 @@ target 'Manhattan' do
   pod 'SDWebImage'
   pod 'AWSS3'
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   
 end
