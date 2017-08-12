@@ -21,5 +21,7 @@ target 'Manhattan' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SDWebImage'
+  pod 'AWSS3'
+  pod 'Firebase/Core'
   
 end

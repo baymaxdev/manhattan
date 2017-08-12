@@ -58,7 +58,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                         self.comments.append(Comment(param: element.dictionaryValue))
                     }
                     self.tableView.reloadData()
-                    self.tableView.scrollToRow(at: IndexPath(row: self.comments.count, section: 0), at: .bottom, animated: true)
+                    //self.tableView.scrollToRow(at: IndexPath(row: self.comments.count, section: 0), at: .bottom, animated: true)
                 }
                 else {
                     self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)

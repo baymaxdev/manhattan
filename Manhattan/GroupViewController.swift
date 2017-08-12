@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var heightOfBtn: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnAddGroup: UIButton!
     
@@ -33,6 +34,12 @@ class GroupViewController: UIViewController ,UITableViewDelegate, UITableViewDat
         tableView.tableFooterView = customView
         
         delegate = UIApplication.shared.delegate as? AppDelegate
+        
+        if (delegate?.isMe())! {
+            heightOfBtn.constant = 40
+        } else {
+            heightOfBtn.constant = 0
+        }
         // Do any additional setup after loading the view.
     }
 

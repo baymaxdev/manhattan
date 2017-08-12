@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>360388364014-mdfitkcsbc8mcb4lijerlsus4sggd62q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.360388364014-mdfitkcsbc8mcb4lijerlsus4sggd62q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAt6EUCd_HIdq26LNhjUCN8qVaKMig9goo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>360388364014</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>xtechno.Manhattan</string>
+	<key>PROJECT_ID</key>
+	<string>manhattan-b938b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>manhattan-b938b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:360388364014:ios:345c6ecbe7f1701b</string>
+	<key>DATABASE_URL</key>
+	<string>https://manhattan-b938b.firebaseio.com</string>
+</dict>
+</plist>

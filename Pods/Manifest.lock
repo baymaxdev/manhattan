@@ -15,6 +15,9 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Alamofire (4.5.0)
+  - AWSCore (2.5.9)
+  - AWSS3 (2.5.9):
+    - AWSCore (= 2.5.9)
   - BMPlayer (0.8.7):
     - BMPlayer/Full (= 0.8.7)
   - BMPlayer/Core (0.8.7)
@@ -48,6 +51,21 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.25.0):
     - FBSDKCoreKit
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - FirebaseAnalytics (4.0.2):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (4.0.4):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - HMSegmentedControl (1.5.3)
   - IQKeyboardManager (4.0.11)
   - JJMaterialTextField (0.1.3)
@@ -62,6 +80,11 @@ PODS:
     - HMSegmentedControl (= 1.5.3)
     - MXPagerView (= 0.2.1)
     - MXParallaxHeader (= 0.6.1)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - NVActivityIndicatorView (3.7.0):
     - NVActivityIndicatorView/Presenter (= 3.7.0)
   - NVActivityIndicatorView/Presenter (3.7.0)
@@ -76,11 +99,13 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Alamofire
+  - AWSS3
   - BMPlayer
   - ExpandableLabel
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Firebase/Core
   - IQKeyboardManager
   - JJMaterialTextField
   - JSQMessagesViewController
@@ -94,6 +119,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AWSCore: c71840dd51f271dc0af8de8fd6f352767ebde8b4
+  AWSS3: c36b91edb50ccd676be4a92836bb72f0c2ac312b
   BMPlayer: 5ba9e3f3d61ccc5a24ebd9cdc24901dcf28c98bc
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   ExpandableLabel: 08a058c02bf7abc4f6a91fa4f4b86e5627bfbf19
@@ -103,6 +130,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 53e3f4bfb64e80c5f229dd30ae33ff57fbbbd2d1
   FBSDKLoginKit: f628c09684dae9c17f071cf90b014e886f5093ea
   FBSDKShareKit: aea699d3cac749af08e360f4e949b82ffa8813f5
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   JJMaterialTextField: 1ae240b5d75966dd0c2acc9f59d1be6f4e83e0e5
@@ -113,12 +145,13 @@ SPEC CHECKSUMS:
   MXPagerView: ede184b5191b2ed689ccf05a750a9978cce42414
   MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
   MXSegmentedPager: a35ebaf939e1629f24db3bb26653c1c557362f59
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   THCalendarDatePicker: fd1a1103ae0d1d1f2d0f9a1463a3f628a23a25a5
 
-PODFILE CHECKSUM: 1ed957da850f52bde3ecc6be8f1bbfc7bdc7b8bf
+PODFILE CHECKSUM: d7dac14ec5a16c0b56a8f89643b33e9af876483b
 
 COCOAPODS: 1.2.1

@@ -62,6 +62,7 @@
 		CB6E951D1F222D5C00E01C60 /* ManhattanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E951C1F222D5C00E01C60 /* ManhattanUITests.swift */; };
 		CB71CF571F3E34F0005896EE /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB71CF561F3E34F0005896EE /* Group.swift */; };
 		CB7560F11F3652D40030D278 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7560F01F3652D40030D278 /* EditProfileViewController.swift */; };
+		CB7AEC3C1F3EEF5C00D40DC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7AEC3B1F3EEF5C00D40DC3 /* GoogleService-Info.plist */; };
 		CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */; };
 		CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */; };
 		CB9CA4B71F3CE4EB00E0E335 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CA4B61F3CE4EB00E0E335 /* Video.swift */; };
@@ -156,6 +157,7 @@
 		CB6E951E1F222D5C00E01C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB71CF561F3E34F0005896EE /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CB7560F01F3652D40030D278 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		CB7AEC3B1F3EEF5C00D40DC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
 		CB9CA4B61F3CE4EB00E0E335 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				CB3511E71F2935B60043DB88 /* Assets.xcassets */,
 				CB6E95051F222D5C00E01C60 /* LaunchScreen.storyboard */,
 				CB6E95081F222D5C00E01C60 /* Info.plist */,
+				CB7AEC3B1F3EEF5C00D40DC3 /* GoogleService-Info.plist */,
 				CB3A5D741F23CAA700D61562 /* Model */,
 				CB6E952F1F22443200E01C60 /* 3rd Party */,
 				CB3511EC1F2940500043DB88 /* CustomCell */,
@@ -549,6 +552,7 @@
 			files = (
 				CB6E95071F222D5C00E01C60 /* LaunchScreen.storyboard in Resources */,
 				CB6546971F2D441500C2393D /* BlogCell.xib in Resources */,
+				CB7AEC3C1F3EEF5C00D40DC3 /* GoogleService-Info.plist in Resources */,
 				CB3511E81F2935B60043DB88 /* Assets.xcassets in Resources */,
 				CB2342261F3266040004786F /* CourseCell.xib in Resources */,
 				CB65469B1F2D451100C2393D /* VideoCell.xib in Resources */,

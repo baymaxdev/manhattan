@@ -77,7 +77,7 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
             delegate?.showAlert(vc: self, msg: "Please input group name.", action: nil)
         } else {
             self.delegate?.showLoader(vc: self)
-            let parameters = ["name": tfGroupName.text!, "photo": ""] as [String : Any]
+            let parameters = ["name": tfGroupName.text!, "photo": "", "userId": (user?.id)!] as [String : Any]
             Alamofire.request(BASE_URL + GROUPCREATE_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
                 self.delegate?.hideLoader()
                 

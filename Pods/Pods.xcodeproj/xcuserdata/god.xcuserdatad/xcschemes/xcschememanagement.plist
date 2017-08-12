@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AWSCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AWSS3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -55,6 +65,11 @@
 			<false/>
 		</dict>
 		<key>FacebookShare.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -144,20 +159,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>nanopb.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>00103D6C821BE85971C563025527BA5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>007E1F352BBDCF79216810967474DAE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>171892E643977CACF1C966931DF0970F</key>
+		<key>1373D2D6E78699CBFE878A40996FFBDA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2151AA121BD09BF3756A07ADE3D80F5C</key>
+		<key>171892E643977CACF1C966931DF0970F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +208,11 @@
 			<true/>
 		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>47D85DCB0FBA7D929F647756CA7A0B0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,22 +252,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9F7098779713B711F6C591B62A41F242</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2FB697F01DBEFE2BAC5B28559EE0DF7</key>
+		<key>B0EDC4F33EE8E3EA5CC31B3D19C2ACEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C366E9E23E09640A4037C2DB020E88A2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C3AE2F16E9FECAF18B922932E28FBAE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -267,6 +297,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DD1DBCC1DF68514CF23AA06E1AB43A68</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
 		<dict>
 			<key>primary</key>
@@ -277,12 +312,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E75E5BAC0FE6E4C6A5E5F95EA6807F8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB07BBE971F9050D48738F8368100121</key>
+		<key>F80DCD43FDC8943FBF8B690A63C7E994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
