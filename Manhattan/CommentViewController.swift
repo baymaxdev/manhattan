@@ -65,7 +65,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 }
                 
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
         tvComment.text = ""
@@ -100,7 +100,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
             }
         }
@@ -239,7 +239,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                     self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                 }
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }

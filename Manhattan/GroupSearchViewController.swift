@@ -50,7 +50,7 @@ class GroupSearchViewController: UITableViewController, UISearchBarDelegate {
                     self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                 }
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }
@@ -87,6 +87,12 @@ class GroupSearchViewController: UITableViewController, UISearchBarDelegate {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GroupDetailViewController") as! GroupDetailViewController
+        vc.group = groups[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

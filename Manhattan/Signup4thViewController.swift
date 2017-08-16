@@ -92,7 +92,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     
     func datePickerDonePressed(_ datePicker: THDatePickerViewController!) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         btnDoB.setTitle(formatter.string(from: datePicker.date), for: .normal)
         datePicker.dismissSemiModalView()
     }
@@ -125,11 +125,11 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                     
                     if swiftyJsonVar["success"].boolValue == true {
                         
-                        FUser.registerUser(withName: (self.delegate?.user?.name)!, email: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!, profilePic: (self.delegate?.user?.photo)!) { [weak weakSelf = self] (status, err) in
+                        FUser.registerUser(withName: (self.delegate?.user?.name)!, email: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!, profilePic: (self.delegate?.user?.photo)!) { (status, err) in
                             DispatchQueue.main.async {
                                 if status == true {
                                     
-                                    FUser.loginUser(withEmail: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!) { [weak weakSelf = self](status, err) in
+                                    FUser.loginUser(withEmail: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!) { (status, err) in
                                         DispatchQueue.main.async {
                                             self.delegate?.hideLoader()
                                             if status == true {
@@ -144,7 +144,6 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                                             } else {
                                                 self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                             }
-                                            weakSelf = nil
                                         }
                                     }
                                 } else {
@@ -159,7 +158,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                     
                 } else {
                     self.delegate?.hideLoader()
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
             }
         }

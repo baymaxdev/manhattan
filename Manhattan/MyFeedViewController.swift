@@ -60,7 +60,7 @@ class MyFeedViewController: UITableViewController ,ExpandableLabelDelegate, Vide
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
             }
         }
@@ -88,7 +88,7 @@ class MyFeedViewController: UITableViewController ,ExpandableLabelDelegate, Vide
                 }
                 
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }
@@ -267,7 +267,7 @@ class MyFeedViewController: UITableViewController ,ExpandableLabelDelegate, Vide
                     self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                 }
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }

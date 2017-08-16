@@ -56,7 +56,7 @@ class MyCourseViewController: UITableViewController ,CourseCellDelegate {
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
             }
         }
@@ -84,7 +84,7 @@ class MyCourseViewController: UITableViewController ,CourseCellDelegate {
                 }
                 
             } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }

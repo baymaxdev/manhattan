@@ -73,7 +73,7 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
             }
         }

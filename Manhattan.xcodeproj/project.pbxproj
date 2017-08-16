@@ -74,6 +74,7 @@
 		CB7AEC3C1F3EEF5C00D40DC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7AEC3B1F3EEF5C00D40DC3 /* GoogleService-Info.plist */; };
 		CB82D53F1F2F601E00BBE8E7 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */; };
 		CB82D5411F2F612100BBE8E7 /* CourseDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */; };
+		CB98E6131F42C4E00010AA50 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98E6121F42C4E00010AA50 /* GroupDetailViewController.swift */; };
 		CB9CA4B71F3CE4EB00E0E335 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9CA4B61F3CE4EB00E0E335 /* Video.swift */; };
 		CBA611EF1F35974D00DD11E9 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA611EE1F35974D00DD11E9 /* SearchCell.xib */; };
 		CBA611F11F359C8A00DD11E9 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */; };
@@ -178,6 +179,7 @@
 		CB7AEC3B1F3EEF5C00D40DC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB82D53E1F2F601E00BBE8E7 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		CB82D5401F2F612100BBE8E7 /* CourseDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailCell.swift; sourceTree = "<group>"; };
+		CB98E6121F42C4E00010AA50 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		CB9CA4B61F3CE4EB00E0E335 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CBA611EE1F35974D00DD11E9 /* SearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				CB23421B1F31FAD10004786F /* SearchViewController.swift */,
 				CB626B761F3361380042247A /* PeopleSearchViewController.swift */,
 				CB626B781F3361670042247A /* GroupSearchViewController.swift */,
+				CB98E6121F42C4E00010AA50 /* GroupDetailViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				CB313EB01F35E5CB00BF981D /* AboutViewController.swift in Sources */,
 				CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */,
 				CB3A5D761F23CAAE00D61562 /* User.swift in Sources */,
+				CB98E6131F42C4E00010AA50 /* GroupDetailViewController.swift in Sources */,
 				CB2342201F325F860004786F /* GroupViewController.swift in Sources */,
 				CB2342221F325FAD0004786F /* MyFeedViewController.swift in Sources */,
 				CB3511F31F2965650043DB88 /* CourseCell.swift in Sources */,

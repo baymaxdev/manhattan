@@ -121,28 +121,50 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
             }
         }
         
-        let parameters = ["id": (user?.id)!, "email": tfEmail.text!, "password": tfPassword.text!, "name": tfName.text!, "userName": tfUsername.text!, "dob": lbDob.text!, "photo": (user?.photo)!, "interests": tagStr, "skill": tvSkill.text!, "education": tvEducation.text!, "eduFrom": tfFrom.text!, "eduTo": tfTo.text!, "bio": tvBio.text!] as [String : Any]
-        
-        delegate?.showLoader(vc: self)
-        
-        Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-            self.delegate?.hideLoader()
+        if (tfName.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Name field is required", action: nil)
+        } else if (tfUsername.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Username field is required", action: nil)
+        } else if (tfEmail.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Email field is required", action: nil)
+        } else if (tfPassword.text?.isEmpty)! {
+            delegate?.showAlert(vc: self, msg: "Password field is required", action: nil)
+        } else if (tfPassword.text?.characters.count)! < 6 {
+            delegate?.showAlert(vc: self, msg: "Password must include at least 6 characters", action: nil)
+        } else {
+            let parameters = ["id": (user?.id)!, "email": tfEmail.text!, "password": tfPassword.text!, "name": tfName.text!, "userName": tfUsername.text!, "dob": lbDob.text!, "photo": (user?.photo)!, "interests": tagStr, "skill": tvSkill.text!, "education": tvEducation.text!, "eduFrom": tfFrom.text!, "eduTo": tfTo.text!, "bio": tvBio.text!] as [String : Any]
             
-            if((resData.result.value) != nil) {
-                let swiftyJsonVar = JSON(resData.result.value!)
+            delegate?.showLoader(vc: self)
+            
+            Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
                 
-                if swiftyJsonVar["success"].boolValue == true {
-                    let action = UIAlertAction(title: "OK", style: .default){ action in
-                        let userObj = swiftyJsonVar["userObj"].dictionaryValue
-                        self.delegate?.user = User(user: userObj)
-                        self.navigationController?.popViewController(animated: true)
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    
+                    if swiftyJsonVar["success"].boolValue == true {
+                        FUser.updateProfile(name: self.tfName.text!, email: self.tfEmail.text!, password: self.tfPassword.text!, profilePic: (self.user?.photo)!, completion: { (status, err) in
+                            DispatchQueue.main.async {
+                                self.delegate?.hideLoader()
+                                if status == true {
+                                    let action = UIAlertAction(title: "OK", style: .default) { action in
+                                        let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                                        self.delegate?.user = User(user: userObj)
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                    return
+                                } else {
+                                    self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                }
+                            }
+                        })
+                    } else {
+                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                     }
-                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                    
+                } else {
+                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                 }
-                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                
-            } else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
             }
         }
     }

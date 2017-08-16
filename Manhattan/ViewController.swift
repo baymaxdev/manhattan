@@ -108,11 +108,11 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                 
                 if swiftyJsonVar["success"].boolValue == true {
                     if swiftyJsonVar["action"].stringValue == "S" {
-                        FUser.registerUser(withName: (user?.name)!, email: (user?.email)!, password: "123456", profilePic: (self.delegate?.user?.photo)!) { [weak weakSelf = self] (status, err) in
+                        FUser.registerUser(withName: (user?.name)!, email: (user?.email)!, password: "123456", profilePic: (self.delegate?.user?.photo)!) { (status, err) in
                             DispatchQueue.main.async {
                                 if status == true {
                                     
-                                    FUser.loginUser(withEmail: (user?.email)!, password: "123456") { [weak weakSelf = self](status, err) in
+                                    FUser.loginUser(withEmail: (user?.email)!, password: "123456") { (status, err) in
                                         DispatchQueue.main.async {
                                             self.delegate?.hideLoader()
                                             if status == true {
@@ -127,7 +127,6 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                                             } else {
                                                 self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                             }
-                                            weakSelf = nil
                                         }
                                     }
                                 } else {
@@ -145,7 +144,7 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                             pwd = "123456"
                             email = (user?.email)!
                         }
-                        FUser.loginUser(withEmail: email, password: pwd) { [weak weakSelf = self](status, err) in
+                        FUser.loginUser(withEmail: email, password: pwd) { (status, err) in
                             DispatchQueue.main.async {
                                 self.delegate?.hideLoader()
                                 if status == true {
@@ -160,7 +159,6 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                                 } else {
                                     self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                 }
-                                weakSelf = nil
                             }
                         }
                         
@@ -172,7 +170,7 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                 
             } else {
                 self.delegate?.hideLoader()
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Fialed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
     }

@@ -77,7 +77,40 @@ class FUser: NSObject {
         }
     }
     
-   class func info(forUserID: String, completion: @escaping (FUser) -> Swift.Void) {
+    class func updateProfile(name: String, email: String, password: String, profilePic: String, completion: @escaping (Bool, String) -> Swift.Void) {
+        Auth.auth().currentUser?.updateEmail(to: email, completion: { (error) in
+            if error != nil {
+                completion(false, (error?.localizedDescription)!)
+            } else {
+                Auth.auth().currentUser?.updatePassword(to: password, completion: { (error) in
+                    if error != nil {
+                        completion(false, (error?.localizedDescription)!)
+                    } else {
+                        let user = Auth.auth().currentUser
+                        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+                        
+                        user?.reauthenticate(with: credential) { (error) in
+                            if error != nil {
+                                completion(false, (error?.localizedDescription)!)
+                            } else {
+                                let values = ["name": name, "email": email, "profilePicLink": profilePic]
+                                Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
+                                    if errr == nil {
+                                        //let userInfo = ["email" : email, "password" : password]
+                                        //UserDefaults.standard.set(userInfo, forKey: "userInformation")
+                                        completion(true, "")
+                                    }
+                                })
+                            }
+                        }
+                    }
+                })
+            }
+        })
+        
+    }
+    
+    class func info(forUserID: String, completion: @escaping (FUser) -> Swift.Void) {
         Database.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
