@@ -42,6 +42,7 @@
 		CB3A5D761F23CAAE00D61562 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D751F23CAAE00D61562 /* User.swift */; };
 		CB3A5D781F23D18000D61562 /* FacebookPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A5D771F23D18000D61562 /* FacebookPost.swift */; };
 		CB3A96941F3C9192007597F9 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A96931F3C9192007597F9 /* Course.swift */; };
+		CB54BA6D1F44E95C008D6DA5 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB54BA6C1F44E95C008D6DA5 /* StudentsViewController.swift */; };
 		CB5824581F2683F500C174B9 /* ProfileMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */; };
 		CB603F821F260B630092014E /* Signup1stViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F811F260B630092014E /* Signup1stViewController.swift */; };
 		CB603F841F260B790092014E /* Signup2ndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB603F831F260B790092014E /* Signup2ndViewController.swift */; };
@@ -141,6 +142,7 @@
 		CB3A5D771F23D18000D61562 /* FacebookPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookPost.swift; sourceTree = "<group>"; };
 		CB3A5D791F23E3C900D61562 /* Manhattan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Manhattan.entitlements; sourceTree = "<group>"; };
 		CB3A96931F3C9192007597F9 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		CB54BA6C1F44E95C008D6DA5 /* StudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
 		CB5824571F2683F500C174B9 /* ProfileMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainViewController.swift; sourceTree = "<group>"; };
 		CB603F811F260B630092014E /* Signup1stViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup1stViewController.swift; sourceTree = "<group>"; };
 		CB603F831F260B790092014E /* Signup2ndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ndViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				CBA611F01F359C8A00DD11E9 /* AddGroupViewController.swift */,
 				CB313EAF1F35E5CB00BF981D /* AboutViewController.swift */,
 				CB7560F01F3652D40030D278 /* EditProfileViewController.swift */,
+				CB54BA6C1F44E95C008D6DA5 /* StudentsViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				CB3471E81F3A803E003DD9DF /* Comment.swift in Sources */,
 				CB33D5091F2B6FBB00E05B87 /* FloatLabelTextField.swift in Sources */,
 				CB3511F81F2971810043DB88 /* MessageViewController.swift in Sources */,
+				CB54BA6D1F44E95C008D6DA5 /* StudentsViewController.swift in Sources */,
 				CB603F881F260B930092014E /* Signup4thViewController.swift in Sources */,
 				CB3A96941F3C9192007597F9 /* Course.swift in Sources */,
 				CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */,

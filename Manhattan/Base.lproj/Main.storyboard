@@ -1095,18 +1095,23 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FP-yL-WgV">
                             <rect key="frame" x="104" y="70" width="271" height="38.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gg-gQ-kmu">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gg-gQ-kmu">
                                     <rect key="frame" x="8" y="0.0" width="85" height="24"/>
+                                    <gestureRecognizers/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="QJn-AA-nQa" appends="YES" id="5Mf-3W-VTI"/>
+                                    </connections>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs6-S5-XfR">
                                     <rect key="frame" x="93" y="0.0" width="85" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="students" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZT-4Y-LYZ">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="students" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZT-4Y-LYZ">
                                     <rect key="frame" x="8" y="24" width="85" height="14.5"/>
+                                    <gestureRecognizers/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -1115,15 +1120,20 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mentors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFt-Xm-OFR">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mentors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFt-Xm-OFR">
                                     <rect key="frame" x="178" y="24.5" width="85" height="14.5"/>
+                                    <gestureRecognizers/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bld-E9-z5s">
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bld-E9-z5s">
                                     <rect key="frame" x="178" y="0.0" width="85" height="24"/>
+                                    <gestureRecognizers/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="0Wq-Gh-YSL" appends="YES" id="z0W-iO-zJJ"/>
+                                    </connections>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1166,8 +1176,6 @@
                                     <state key="normal" image="btnback"/>
                                     <connections>
                                         <action selector="onBack:" destination="Ibe-MI-IwK" eventType="touchUpInside" id="JV7-n4-Ebf"/>
-                                        <action selector="onBack:" destination="det-kg-zHB" eventType="touchUpInside" id="RPY-WJ-gy7"/>
-                                        <action selector="onBack:" destination="kJX-rh-6FF" eventType="touchUpInside" id="oyH-hG-tTG"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -1226,6 +1234,16 @@
                         <constraint firstItem="pf9-z5-Op5" firstAttribute="bottom" secondItem="PHk-TZ-wdu" secondAttribute="bottom" id="zvT-Su-cTu"/>
                     </constraints>
                 </view>
+                <tapGestureRecognizer id="QJn-AA-nQa">
+                    <connections>
+                        <action selector="onStudents:" destination="Ibe-MI-IwK" id="XEo-DQ-4Xv"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0Wq-Gh-YSL">
+                    <connections>
+                        <action selector="onMentors:" destination="Ibe-MI-IwK" id="Ibh-BS-ydc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3025" y="2488"/>
         </scene>
@@ -1255,7 +1273,6 @@
                                     <state key="normal" image="btnback"/>
                                     <connections>
                                         <action selector="onBack:" destination="det-kg-zHB" eventType="touchUpInside" id="GlW-hV-k03"/>
-                                        <action selector="onBack:" destination="kJX-rh-6FF" eventType="touchUpInside" id="yTB-6h-tvF"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTT-7O-hrF">
@@ -1266,7 +1283,6 @@
                                     </state>
                                     <connections>
                                         <action selector="onDone:" destination="det-kg-zHB" eventType="touchUpInside" id="K80-yg-5B5"/>
-                                        <action selector="onDone:" destination="kJX-rh-6FF" eventType="touchUpInside" id="qTC-9g-O2I"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -1717,6 +1733,75 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3852" y="2389.2053973013494"/>
+        </scene>
+        <!--Students View Controller-->
+        <scene sceneID="eak-sM-hsM">
+            <objects>
+                <viewController storyboardIdentifier="StudentsViewController" id="1y1-gI-Dvs" customClass="StudentsViewController" customModule="Manhattan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bJu-c5-iJt"/>
+                        <viewControllerLayoutGuide type="bottom" id="NBt-9L-KXN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YJ7-lW-9CA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZeL-UE-11D">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Students" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqw-9O-dI9">
+                                        <rect key="frame" x="147" y="18" width="81" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-AA-I4k">
+                                        <rect key="frame" x="10" y="15" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="qcQ-5G-4q9"/>
+                                        </constraints>
+                                        <state key="normal" image="btnback"/>
+                                        <connections>
+                                            <action selector="onBack:" destination="1y1-gI-Dvs" eventType="touchUpInside" id="pyv-dd-kBq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.25098039220000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="j3w-AA-I4k" firstAttribute="width" secondItem="j3w-AA-I4k" secondAttribute="height" multiplier="1:1" id="0RE-ja-KXu"/>
+                                    <constraint firstItem="j3w-AA-I4k" firstAttribute="centerY" secondItem="ZeL-UE-11D" secondAttribute="centerY" id="7t1-ef-OdT"/>
+                                    <constraint firstItem="Jqw-9O-dI9" firstAttribute="centerX" secondItem="ZeL-UE-11D" secondAttribute="centerX" id="Is1-kg-jPM"/>
+                                    <constraint firstItem="Jqw-9O-dI9" firstAttribute="centerY" secondItem="ZeL-UE-11D" secondAttribute="centerY" id="d2r-OZ-gaL"/>
+                                    <constraint firstAttribute="height" constant="60" id="gYh-xF-0v9"/>
+                                    <constraint firstItem="j3w-AA-I4k" firstAttribute="leading" secondItem="ZeL-UE-11D" secondAttribute="leading" constant="10" id="jSp-mi-zmL"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZLt-Fz-LMY">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZLt-Fz-LMY" secondAttribute="trailing" id="I8R-xt-ZHh"/>
+                            <constraint firstItem="ZeL-UE-11D" firstAttribute="leading" secondItem="YJ7-lW-9CA" secondAttribute="leading" id="U1p-0q-hVR"/>
+                            <constraint firstAttribute="trailing" secondItem="ZeL-UE-11D" secondAttribute="trailing" id="XMC-zj-kfc"/>
+                            <constraint firstItem="ZeL-UE-11D" firstAttribute="top" secondItem="bJu-c5-iJt" secondAttribute="bottom" id="bJA-10-POM"/>
+                            <constraint firstItem="ZLt-Fz-LMY" firstAttribute="leading" secondItem="YJ7-lW-9CA" secondAttribute="leading" id="la3-AJ-kjF"/>
+                            <constraint firstItem="ZLt-Fz-LMY" firstAttribute="top" secondItem="ZeL-UE-11D" secondAttribute="bottom" id="oe3-53-lDH"/>
+                            <constraint firstItem="NBt-9L-KXN" firstAttribute="top" secondItem="ZLt-Fz-LMY" secondAttribute="bottom" id="vAe-Jk-NR7"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="lbTitle" destination="Jqw-9O-dI9" id="Y4j-d1-hmX"/>
+                        <outlet property="tableView" destination="ZLt-Fz-LMY" id="QLz-JR-u32"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zgc-bx-PDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4854" y="2321"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="r2q-Uv-kRd">
@@ -3159,7 +3244,6 @@
                                         <state key="normal" image="btnback"/>
                                         <connections>
                                             <action selector="onBack:" destination="QC6-eq-pj0" eventType="touchUpInside" id="Myz-r7-jkp"/>
-                                            <action selector="onBack:" destination="Dfo-TT-5Dc" eventType="touchUpInside" id="i5w-sS-ZWt"/>
                                         </connections>
                                     </button>
                                 </subviews>

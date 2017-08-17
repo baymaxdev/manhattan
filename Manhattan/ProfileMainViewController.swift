@@ -182,6 +182,20 @@ class ProfileMainViewController: MXSegmentedPagerController {
         }
     }
 
+    @IBAction func onStudents(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudentsViewController") as! StudentsViewController
+        vc.userIds = (user?.students)!
+        vc.strTitle = "Students"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func onMentors(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudentsViewController") as! StudentsViewController
+        vc.userIds = (user?.mentors)!
+        vc.strTitle = "Mentors"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
