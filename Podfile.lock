@@ -119,6 +119,7 @@ PODS:
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
   - SnapKit (3.2.0)
+  - Stripe (11.2.0)
   - SwiftyJSON (3.1.4)
   - THCalendarDatePicker (1.2.8):
     - KNSemiModalViewController_hons82 (~> 0.4.5)
@@ -143,6 +144,7 @@ DEPENDENCIES:
   - MXSegmentedPager
   - NVActivityIndicatorView
   - SDWebImage
+  - Stripe
   - SwiftyJSON
   - THCalendarDatePicker (~> 1.2.6)
 
@@ -183,9 +185,10 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Stripe: 898f83a95d72180c6eb4acd65b2ae6158fc6a8bd
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   THCalendarDatePicker: fd1a1103ae0d1d1f2d0f9a1463a3f628a23a25a5
 
-PODFILE CHECKSUM: 3d8549c4c02ebab15d56062bccedf85f034f0c46
+PODFILE CHECKSUM: 2861bdf6dc15b515fe33d4aab43c7ea600415629
 
 COCOAPODS: 1.2.1

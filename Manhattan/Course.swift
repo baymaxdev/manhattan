@@ -15,6 +15,7 @@ class Course {
     var description: String?
     var imgBack: String?
     var price: Int?
+    var paidUsers: [Int]?
     var user: User?
     
     init () {
@@ -23,6 +24,7 @@ class Course {
         description = ""
         imgBack = ""
         price = 0
+        paidUsers = []
         user = User()
     }
     
@@ -30,7 +32,11 @@ class Course {
         id = param["id"]?.intValue
         title = param["title"]?.stringValue
         description = param["description"]?.stringValue
-        let array = param["sections"]?.arrayValue
+        paidUsers = []
+        let array = param["paidUsers"]?.arrayValue
+        for element in array! {
+            paidUsers?.append(element.intValue)
+        }
         price = param["price"]?.intValue
         imgBack = param["imgBack"]?.stringValue
         user = User(user: (param["userInfo"]?.dictionaryValue)!)

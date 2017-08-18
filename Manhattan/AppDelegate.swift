@@ -11,6 +11,7 @@ import FacebookCore
 import NVActivityIndicatorView
 import Firebase
 import AWSS3
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().isTranslucent = false
+        
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_Ke8z3yuwnzoUsWjxKFb4LRhR"
         
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

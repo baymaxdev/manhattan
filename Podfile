@@ -26,5 +26,6 @@ target 'Manhattan' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Stripe'
   
 end

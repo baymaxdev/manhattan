@@ -10,13 +10,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SDWebImage
+import Stripe
 
-class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource ,CourseCellDelegate {
+class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource ,CourseCellDelegate ,STPAddCardViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var delegate: AppDelegate?
     var courses: [Course] = []
+    var payIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +84,13 @@ class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDa
         cell.index = indexPath.row
         cell.delegate = self
         cell.lbName.text = course.user?.name
-        cell.lbPrice.text = "$\((course.price)!)"
+        if (course.paidUsers?.contains((delegate?.user?.id)!))! {
+            cell.lbPrice.text = "Paid"
+            cell.lbPrice.textColor = UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0)
+        } else {
+            cell.lbPrice.text = "$\((course.price)!)"
+            cell.lbPrice.textColor = UIColor(red: 182/255.0, green: 152/255.0, blue: 255/255.0, alpha: 1.0)
+        }
         cell.lbTitle.text = course.title
         cell.lbDescription.text = course.description
         cell.imgBack.sd_setImage(with: URL(string: (course.imgBack)!), placeholderImage: UIImage(named: "placeholder"))
@@ -90,9 +98,81 @@ class CourseViewController: UIViewController ,UITableViewDelegate, UITableViewDa
     }
     
     func didSelectDetail(_ index: Int) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailViewController") as! CourseDetailViewController
-        vc.course = courses[index]
-        self.navigationController?.pushViewController(vc, animated: true)
+        if (courses[index].paidUsers?.contains((delegate?.user?.id)!))! {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CourseDetailViewController") as! CourseDetailViewController
+            vc.course = courses[index]
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            // Setup add card view controller
+            let action = UIAlertAction(title: "OK", style: .default, handler: { (ac: UIAlertAction) in
+                self.payIndex = index
+                let addCardViewController = STPAddCardViewController()
+                addCardViewController.delegate = self
+                
+                // Present add card view controller
+                //self.navigationController?.pushViewController(addCardViewController, animated: true)
+                let nc = UINavigationController(rootViewController: addCardViewController)
+                let titleDict = [NSForegroundColorAttributeName: UIColor.white]
+                nc.navigationBar.titleTextAttributes = titleDict
+                
+                //addCardViewController.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+                //addCardViewController.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+                
+                addCardViewController.navigationItem.leftBarButtonItem?.setTitleTextAttributes(titleDict, for: .normal)
+                addCardViewController.navigationItem.rightBarButtonItem?.setTitleTextAttributes(titleDict, for: .normal)
+                nc.navigationBar.tintColor = UIColor.white
+                
+                self.present(nc, animated: true)
+            })
+            delegate?.showAlert(vc: self, msg: "You should pay to see the content of this course", action: action)
+        }
+    }
+    
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        // Dismiss add card view controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+        print(token)
+        submitTokenToBackend(token, completion: { (error: Error?) in
+            if let error = error {
+                // Show error in add card view controller
+                completion(error)
+            }
+            else {
+                // Notify add card view controller that token creation was handled successfully
+                completion(nil)
+                
+                // Dismiss add card view controller
+                self.dismiss(animated: true)
+            }
+        })
+    }
+    
+    func submitTokenToBackend(_ token: STPToken, completion: @escaping((_ error: Error?) -> Void) ) {
+        delegate?.showLoader(vc: self)
+        
+        let thisvc = self
+        let parameters = ["token": token.tokenId, "id": courses[payIndex!].id, "userId": delegate?.user?.id, "price": courses[payIndex!].price, "email" : delegate?.user?.email] as [String : Any]
+        Alamofire.request(BASE_URL + COURSEPAY_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+            self.delegate?.hideLoader()
+            
+            if((resData.result.value) != nil) {
+                let swiftyJsonVar = JSON(resData.result.value!)
+                if swiftyJsonVar["success"].boolValue == true {
+                    self.initialize()
+                    completion(nil)
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+                else {
+                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }
+            } else {
+                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+            }
+        }
+
     }
     
     func didSelectProfile(_ index: Int) {
