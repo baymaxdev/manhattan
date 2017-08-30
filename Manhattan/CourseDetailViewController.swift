@@ -31,9 +31,9 @@ class CourseDetailViewController: UIViewController ,UITableViewDelegate, UITable
         
         delegate = UIApplication.shared.delegate as? AppDelegate
         
-        let asset = BMPlayerResource(url: URL(string: "http://techslides.com/demos/sample-videos/small.mp4")!)
-        self.vwPlayer.setVideo(resource: asset)
-        self.vwPlayer.play()
+        //let asset = BMPlayerResource(url: URL(string: "http://techslides.com/demos/sample-videos/small.mp4")!)
+        //self.vwPlayer.setVideo(resource: asset)
+        //self.vwPlayer.play()
         
         initialize()
         // Do any additional setup after loading the view.
@@ -95,6 +95,15 @@ class CourseDetailViewController: UIViewController ,UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (videos[indexPath.section][indexPath.row].path?.isEmpty)! {
+            return
+        }
+        let asset = BMPlayerResource(url: URL(string: videos[indexPath.section][indexPath.row].path!)!)
+        vwPlayer.setVideo(resource: asset)
+        vwPlayer.play()
     }
     
     @IBAction func onBack(_ sender: Any) {

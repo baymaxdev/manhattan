@@ -10,6 +10,7 @@ import UIKit
 import JJMaterialTextField
 import Alamofire
 import SwiftyJSON
+import AWSS3
 
 class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,6 +20,7 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
     var user: User?
     var delegate: AppDelegate?
     var isPhotoChoosen: Bool = false
+    let transferUtility = AWSS3TransferUtility.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,23 +79,54 @@ class AddGroupViewController: UIViewController, UIImagePickerControllerDelegate,
             delegate?.showAlert(vc: self, msg: "Please input group name.", action: nil)
         } else {
             self.delegate?.showLoader(vc: self)
-            let parameters = ["name": tfGroupName.text!, "photo": "", "userId": (user?.id)!] as [String : Any]
-            Alamofire.request(BASE_URL + GROUPCREATE_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                self.delegate?.hideLoader()
-                
-                if((resData.result.value) != nil) {
-                    let swiftyJsonVar = JSON(resData.result.value!)
-                    if swiftyJsonVar["success"].boolValue == true {
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                    }
-                    else {
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                    
-                } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+            
+            let data = UIImagePNGRepresentation(imgAvatar.image!)
+            let filename = delegate?.getFileName(type: "group")
+            transferUtility.uploadData(
+                data!,
+                bucket: S3BUCKETNAME,
+                key: filename!,
+                contentType: "image/jpg",
+                expression: nil,
+                completionHandler: { (task, error) -> Void in
+                    DispatchQueue.main.async(execute: {
+                        if let error = error {
+                            self.delegate?.hideLoader()
+                            self.delegate?.showAlert(vc: self, msg: "Failed with error: \(error)", action: nil)
+                        }
+                        else{
+                            let parameters = ["name": self.tfGroupName.text!, "photo": "https://s3.us-east-2.amazonaws.com/dariya-manhattan/\(filename!)", "userId": (self.user?.id)!] as [String : Any]
+                            Alamofire.request(BASE_URL + GROUPCREATE_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                                self.delegate?.hideLoader()
+                                
+                                if((resData.result.value) != nil) {
+                                    let swiftyJsonVar = JSON(resData.result.value!)
+                                    if swiftyJsonVar["success"].boolValue == true {
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                                    }
+                                    else {
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                    
+                                } else {
+                                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                                }
+                            }
+                            
+                        }
+                    })
+            }).continueWith { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: \(error.localizedDescription)")
                 }
+                
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    // Do something with uploadTask.
+                }
+                
+                return nil;
             }
         }
         self.navigationController?.popViewController(animated: true)

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AWSS3
 
 class PhotoPostViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -17,6 +18,7 @@ class PhotoPostViewController: UIViewController , UIImagePickerControllerDelegat
     @IBOutlet weak var btnChoose: UIButton!
     
     var delegate: AppDelegate?
+    let transferUtility = AWSS3TransferUtility.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,29 +38,58 @@ class PhotoPostViewController: UIViewController , UIImagePickerControllerDelegat
             delegate?.showAlert(vc: self, msg: "Description field is required.", action: nil)
         }
         else {
-            let parameters = ["userId": delegate?.user?.id, "type": "P", "postTitle": tfDescription.text, "postContent": ""] as [String : Any]
             delegate?.showLoader(vc: self)
-            
-            Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                self.delegate?.hideLoader()
-                
-                if((resData.result.value) != nil) {
-                    let swiftyJsonVar = JSON(resData.result.value!)
-                    
-                    
-                    if swiftyJsonVar["success"].boolValue == true {
-                        let action = UIAlertAction(title: "OK", style: .default){ action in
-                            self.navigationController?.popViewController(animated: true)
+            let data = UIImagePNGRepresentation(imgPhoto.image!)
+            let filename = delegate?.getFileName(type: "post")
+            transferUtility.uploadData(
+                data!,
+                bucket: S3BUCKETNAME,
+                key: filename!,
+                contentType: "image/jpg",
+                expression: nil,
+                completionHandler: { (task, error) -> Void in
+                    DispatchQueue.main.async(execute: {
+                        if let error = error {
+                            self.delegate?.hideLoader()
+                            self.delegate?.showAlert(vc: self, msg: "Failed with error: \(error)", action: nil)
                         }
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
-                    }
-                    else {
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                    }
-                    
-                } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                        else{
+                            let parameters = ["userId": self.delegate?.user?.id, "type": "P", "postTitle": self.tfDescription.text, "postContent": "https://s3.us-east-2.amazonaws.com/dariya-manhattan/\(filename!)"] as [String : Any]
+                            Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                                self.delegate?.hideLoader()
+                                
+                                if((resData.result.value) != nil) {
+                                    let swiftyJsonVar = JSON(resData.result.value!)
+                                    
+                                    
+                                    if swiftyJsonVar["success"].boolValue == true {
+                                        let action = UIAlertAction(title: "OK", style: .default){ action in
+                                            self.navigationController?.popViewController(animated: true)
+                                        }
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                    }
+                                    else {
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                                    }
+                                    
+                                } else {
+                                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                                }
+                            }
+                            
+                        }
+                    })
+            }).continueWith { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: \(error.localizedDescription)")
                 }
+                
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    // Do something with uploadTask.
+                }
+                
+                return nil;
             }
         }
     }

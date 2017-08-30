@@ -10,6 +10,7 @@ import UIKit
 import THCalendarDatePicker
 import Alamofire
 import SwiftyJSON
+import AWSS3
 
 class Signup4thViewController: UIViewController ,THDatePickerDelegate{
 
@@ -22,6 +23,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     
     var image: UIImage?
     var delegate: AppDelegate?
+    let transferUtility = AWSS3TransferUtility.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,51 +117,84 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
             delegate?.user?.interests = tagStr
             delegate?.user?.dob = btnDoB.titleLabel?.text
             
-            let parameters = (delegate?.user?.getUser())!
+            var parameters = (delegate?.user?.getUser())!
             delegate?.showLoader(vc: self)
             
-            Alamofire.request(BASE_URL + SIGNUP_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                
-                if((resData.result.value) != nil) {
-                    let swiftyJsonVar = JSON(resData.result.value!)
-                    
-                    if swiftyJsonVar["success"].boolValue == true {
-                        
-                        FUser.registerUser(withName: (self.delegate?.user?.name)!, email: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!, profilePic: (self.delegate?.user?.photo)!) { (status, err) in
-                            DispatchQueue.main.async {
-                                if status == true {
+            let data = UIImagePNGRepresentation(image!)
+            let filename = delegate?.getFileName(type: "user")
+            transferUtility.uploadData(
+                data!,
+                bucket: S3BUCKETNAME,
+                key: filename!,
+                contentType: "image/jpg",
+                expression: nil,
+                completionHandler: { (task, error) -> Void in
+                    DispatchQueue.main.async(execute: {
+                        if let error = error {
+                            self.delegate?.hideLoader()
+                            self.delegate?.showAlert(vc: self, msg: "Failed with error: \(error)", action: nil)
+                        }
+                        else{
+                            parameters["photo"] = "https://s3.us-east-2.amazonaws.com/dariya-manhattan/\(filename!)"
+                            
+                            Alamofire.request(BASE_URL + SIGNUP_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                                
+                                if((resData.result.value) != nil) {
+                                    let swiftyJsonVar = JSON(resData.result.value!)
                                     
-                                    FUser.loginUser(withEmail: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!) { (status, err) in
-                                        DispatchQueue.main.async {
-                                            self.delegate?.hideLoader()
-                                            if status == true {
-                                                let action = UIAlertAction(title: "OK", style: .default){ action in
-                                                    let userObj = swiftyJsonVar["userObj"].dictionaryValue
-                                                    self.delegate?.user = User()
-                                                    self.delegate?.user?.setUser(userObj)
-                                                    self.delegate?.configureTabBar()
+                                    if swiftyJsonVar["success"].boolValue == true {
+                                        FUser.registerUser(withName: (self.delegate?.user?.name)!, email: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!, profilePic: (self.delegate?.user?.photo)!) { (status, err) in
+                                            DispatchQueue.main.async {
+                                                if status == true {
+                                                    
+                                                    FUser.loginUser(withEmail: (self.delegate?.user?.email)!, password: (self.delegate?.user?.password)!) { (status, err) in
+                                                        DispatchQueue.main.async {
+                                                            self.delegate?.hideLoader()
+                                                            if status == true {
+                                                                let action = UIAlertAction(title: "OK", style: .default){ action in
+                                                                    let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                                                                    self.delegate?.user = User()
+                                                                    self.delegate?.user?.setUser(userObj)
+                                                                    self.delegate?.configureTabBar()
+                                                                }
+                                                                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                                                return
+                                                            } else {
+                                                                self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    self.delegate?.hideLoader()
+                                                    self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                                 }
-                                                self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
-                                                return
-                                            } else {
-                                                self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                             }
                                         }
+                                    } else {
+                                        self.delegate?.hideLoader()
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
                                     }
+                                    
                                 } else {
-                                    self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                    self.delegate?.hideLoader()
+                                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                                 }
                             }
+
+                            
                         }
-                    } else {
-                        self.delegate?.hideLoader()
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                    }
-                    
-                } else {
-                    self.delegate?.hideLoader()
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                    })
+            }).continueWith { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: \(error.localizedDescription)")
                 }
+                
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    // Do something with uploadTask.
+                }
+                
+                return nil;
             }
         }
     }

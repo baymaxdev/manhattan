@@ -52,7 +52,8 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfUsername.text?.isEmpty)! {
             delegate?.showAlert(vc: self, msg: "Username is required", action: nil)
-        } else {
+        }
+        else {
             self.delegate?.showLoader(vc: self)
             let parameters = ["username": tfUsername.text]
             Alamofire.request(BASE_URL + CHECKUSERNAME_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in

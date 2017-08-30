@@ -12,6 +12,7 @@ import Photos
 import BMPlayer
 import Alamofire
 import SwiftyJSON
+import AWSS3
 
 class VideoPostViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,6 +22,8 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
     
     var delegate: AppDelegate?
     var isRecord: Bool?
+    var videoUrl: URL?
+    let transferUtility = AWSS3TransferUtility.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,28 +56,65 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
             delegate?.showAlert(vc: self, msg: "Description field is required.", action: nil)
         }
         else {
-            let parameters = ["userId": delegate?.user?.id, "type": "V", "postTitle": tfDescription.text, "postContent": ""] as [String : Any]
             delegate?.showLoader(vc: self)
             
-            Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                self.delegate?.hideLoader()
+            var data: Data?
+            do {
+                data = try Data.init(contentsOf: videoUrl!)
+            }
+            catch {
                 
-                if((resData.result.value) != nil) {
-                    let swiftyJsonVar = JSON(resData.result.value!)
-                    
-                    if swiftyJsonVar["success"].boolValue == true {
-                        let action = UIAlertAction(title: "OK", style: .default){ action in
-                            self.navigationController?.popViewController(animated: true)
+            }
+
+            let filename = delegate?.getFileName(type: "video")
+            transferUtility.uploadData(
+                data!,
+                bucket: S3BUCKETNAME,
+                key: filename!,
+                contentType: "video/mov",
+                expression: nil,
+                completionHandler: { (task, error) -> Void in
+                    DispatchQueue.main.async(execute: {
+                        if let error = error {
+                            self.delegate?.hideLoader()
+                            self.delegate?.showAlert(vc: self, msg: "Failed with error: \(error)", action: nil)
                         }
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
-                    }
-                    else {
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
-                    }
-                    
-                } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                        else{
+                            let parameters = ["userId": self.delegate?.user?.id, "type": "V", "postTitle": self.tfDescription.text, "postContent": "https://s3.us-east-2.amazonaws.com/dariya-manhattan/\(filename!)"] as [String : Any]
+                            
+                            Alamofire.request(BASE_URL + POST_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                                self.delegate?.hideLoader()
+                                
+                                if((resData.result.value) != nil) {
+                                    let swiftyJsonVar = JSON(resData.result.value!)
+                                    
+                                    if swiftyJsonVar["success"].boolValue == true {
+                                        let action = UIAlertAction(title: "OK", style: .default){ action in
+                                            self.navigationController?.popViewController(animated: true)
+                                        }
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                    }
+                                    else {
+                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                                    }
+                                    
+                                } else {
+                                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                                }
+                            }
+                        }
+                    })
+            }).continueWith { (task) -> AnyObject! in
+                if let error = task.error {
+                    print("Error: \(error.localizedDescription)")
                 }
+                
+                if let _ = task.result {
+                    print("Upload Starting!")
+                    // Do something with uploadTask.
+                }
+                
+                return nil;
             }
         }
     }
@@ -120,8 +160,9 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
             if type is String {
                 let stringType = type as! String
                 if stringType == kUTTypeMovie as String {
-                    let urlOfVideo = info[UIImagePickerControllerMediaURL] as? URL
-                    if let url = urlOfVideo {
+                    videoUrl = info[UIImagePickerControllerMediaURL] as? URL
+                    
+                    if let url = videoUrl {
                         if isRecord == true {
                             PHPhotoLibrary.shared().performChanges({
                                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
@@ -137,6 +178,7 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                                         let newObj = avurlAsset as! AVURLAsset
                                         let asset = BMPlayerResource(url: newObj.url)
                                         self.vwPlayer.setVideo(resource: asset)
+                                        self.vwPlayer.play()
                                         // This is the URL we need now to access the video from gallery directly.
                                     })
                                 }
@@ -144,6 +186,7 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                         } else {
                             let asset = BMPlayerResource(url: url)
                             self.vwPlayer.setVideo(resource: asset)
+                            self.vwPlayer.play()
                         }
                         
                     }

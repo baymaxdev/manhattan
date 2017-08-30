@@ -23,6 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var indicatorView: UIView?
     var tabBarController: TabBarViewController?
 
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        /*
+         Store the completion handler.
+         */
+        AWSS3TransferUtility.interceptApplication(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
+    }
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -34,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(named: "navigation")!.resizableImage(withCapInsets: UIEdgeInsetsMake(0, 0, 0, 0), resizingMode: .stretch), for: .default)
         UINavigationBar.appearance().isTranslucent = false
         
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_Ke8z3yuwnzoUsWjxKFb4LRhR"
+        STPPaymentConfiguration.shared().publishableKey = STRIPEKEY
         
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -83,6 +91,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         indicatorView?.removeFromSuperview()
     }
     
+    func getFileName(type: String) -> String {
+        var str = type + "_\(Date.timeIntervalSinceReferenceDate * 1000)"
+        if type == "video" {
+            str += ".mp4"
+        } else {
+            str += ".jpg"
+        }
+        
+        return str
+    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

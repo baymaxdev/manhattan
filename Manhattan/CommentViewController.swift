@@ -10,6 +10,7 @@ import UIKit
 import ExpandableLabel
 import Alamofire
 import SwiftyJSON
+import BMPlayer
 
 class CommentViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate, VideoCellDelegate, PhotoCellDelegate, BlogCellDelegate{
 
@@ -161,6 +162,9 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+                let asset = BMPlayerResource(url: URL(string: (post?.postContent)!)!)
+                cell.vwPlayer.setVideo(resource: asset)
+                cell.vwPlayer.pause()
                 cell.index = indexPath.row
                 cell.lbDescription.text = post?.postTitle
                 cell.lbTitle.text = "\((post?.user?.name)!) posted an video."

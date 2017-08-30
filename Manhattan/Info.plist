@@ -71,5 +71,29 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>AWS</key>
+    <dict>
+        <key>CredentialsProvider</key>
+        <dict>
+            <key>CognitoIdentity</key>
+            <dict>
+                <key>Default</key>
+                <dict>
+                    <key>PoolId</key>
+                    <string>us-east-2:83f6c6a2-028c-486b-ab59-fe80de45b0c1</string>
+                    <key>Region</key>
+                    <string>USEast2</string>
+                </dict>
+            </dict>
+        </dict>
+        <key>S3TransferUtility</key>
+        <dict>
+            <key>Default</key>
+            <dict>
+                <key>Region</key>
+                <string>USEast2</string>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 </plist>

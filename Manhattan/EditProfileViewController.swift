@@ -11,6 +11,7 @@ import JJMaterialTextField
 import THCalendarDatePicker
 import Alamofire
 import SwiftyJSON
+import AWSS3
 
 class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -30,6 +31,8 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     
     var user: User?
     var delegate: AppDelegate?
+    var isPhotoSelected = false
+    let transferUtility = AWSS3TransferUtility.default()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,43 +130,86 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
             delegate?.showAlert(vc: self, msg: "Username field is required", action: nil)
         } else if (tfEmail.text?.isEmpty)! {
             delegate?.showAlert(vc: self, msg: "Email field is required", action: nil)
-        } else if (tfPassword.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Password field is required", action: nil)
-        } else if (tfPassword.text?.characters.count)! < 6 {
-            delegate?.showAlert(vc: self, msg: "Password must include at least 6 characters", action: nil)
-        } else {
-            let parameters = ["id": (user?.id)!, "email": tfEmail.text!, "password": tfPassword.text!, "name": tfName.text!, "userName": tfUsername.text!, "dob": lbDob.text!, "photo": (user?.photo)!, "interests": tagStr, "skill": tvSkill.text!, "education": tvEducation.text!, "eduFrom": tfFrom.text!, "eduTo": tfTo.text!, "bio": tvBio.text!] as [String : Any]
+        } else if (user?.isFB == false) {
+            if (tfPassword.text?.isEmpty)! {
+                delegate?.showAlert(vc: self, msg: "Password field is required", action: nil)
+            } else if (tfPassword.text?.characters.count)! < 6 {
+                delegate?.showAlert(vc: self, msg: "Password must include at least 6 characters", action: nil)
+            } else {
+        
+                delegate?.showLoader(vc: self)
             
-            delegate?.showLoader(vc: self)
+                let data = UIImagePNGRepresentation(imgAvatar.image!)
             
-            Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
-                
-                if((resData.result.value) != nil) {
-                    let swiftyJsonVar = JSON(resData.result.value!)
-                    
-                    if swiftyJsonVar["success"].boolValue == true {
-                        FUser.updateProfile(name: self.tfName.text!, email: self.tfEmail.text!, password: self.tfPassword.text!, profilePic: (self.user?.photo)!, completion: { (status, err) in
-                            DispatchQueue.main.async {
+                var filename = user?.photo
+                if (filename?.isEmpty)! {
+                    filename = delegate?.getFileName(type: "user")
+                } else {
+                    let index = filename?.index((filename?.startIndex)!, offsetBy: 52)
+                    filename = filename?.substring(from: index!)
+                }
+            
+                print(filename!)
+            
+                transferUtility.uploadData(
+                    data!,
+                    bucket: S3BUCKETNAME,
+                    key: filename!,
+                    contentType: "image/jpg",
+                    expression: nil,
+                    completionHandler: { (task, error) -> Void in
+                        DispatchQueue.main.async(execute: {
+                            if let error = error {
                                 self.delegate?.hideLoader()
-                                if status == true {
-                                    let action = UIAlertAction(title: "OK", style: .default) { action in
-                                        let userObj = swiftyJsonVar["userObj"].dictionaryValue
-                                        self.delegate?.user = User(user: userObj)
-                                        self.navigationController?.popViewController(animated: true)
+                                self.delegate?.showAlert(vc: self, msg: "Failed with error: \(error)", action: nil)
+                            }
+                            else{
+                                self.user?.photo = "https://s3.us-east-2.amazonaws.com/dariya-manhattan/\(filename!)"
+                                let parameters = ["id": (self.user?.id)!, "email": self.tfEmail.text!, "password": self.tfPassword.text!, "name": self.tfName.text!, "userName": self.tfUsername.text!, "dob": self.lbDob.text!, "photo": (self.user?.photo)!, "interests": tagStr, "skill": self.tvSkill.text!, "education": self.tvEducation.text!, "eduFrom": self.tfFrom.text!, "eduTo": self.tfTo.text!, "bio": self.tvBio.text!] as [String : Any]
+                                Alamofire.request(BASE_URL + UPDATEUSER_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                                
+                                    if((resData.result.value) != nil) {
+                                        let swiftyJsonVar = JSON(resData.result.value!)
+                                    
+                                        if swiftyJsonVar["success"].boolValue == true {
+                                            FUser.updateProfile(name: self.tfName.text!, email: self.tfEmail.text!, password: self.tfPassword.text!, profilePic: (self.user?.photo)!, completion: { (status, err) in
+                                                DispatchQueue.main.async {
+                                                    self.delegate?.hideLoader()
+                                                    if status == true {
+                                                        let action = UIAlertAction(title: "OK", style: .default) { action in
+                                                            let userObj = swiftyJsonVar["userObj"].dictionaryValue
+                                                            self.delegate?.user = User(user: userObj)
+                                                            self.navigationController?.popViewController(animated: true)
+                                                        }
+                                                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
+                                                        return
+                                                    } else {
+                                                        self.delegate?.showAlert(vc: self, msg: err, action: nil)
+                                                    }
+                                                }
+                                            })
+                                        } else {
+                                            self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                                        }
+                                    
+                                    } else {
+                                        self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
                                     }
-                                    self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: action)
-                                    return
-                                } else {
-                                    self.delegate?.showAlert(vc: self, msg: err, action: nil)
                                 }
+                            
                             }
                         })
-                    } else {
-                        self.delegate?.showAlert(vc: self, msg: swiftyJsonVar["message"].stringValue, action: nil)
+                }).continueWith { (task) -> AnyObject! in
+                    if let error = task.error {
+                        print("Error: \(error.localizedDescription)")
                     }
-                    
-                } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                
+                    if let _ = task.result {
+                        print("Upload Starting!")
+                        // Do something with uploadTask.
+                    }
+                
+                    return nil;
                 }
             }
         }
@@ -180,6 +226,7 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imgAvatar.image = info["UIImagePickerControllerEditedImage"] as! UIImage?
+        isPhotoSelected = true
         self.dismiss(animated: true, completion: nil)
     }
     

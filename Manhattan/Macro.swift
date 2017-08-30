@@ -21,6 +21,8 @@ let strInterests = ["Economy", "Military", "Culture", "Technology", "Politics", 
 let S3BUCKETNAME = "dariya-manhattan"
 let AWSACCESSKEYID = "AKIAIDNFYLAKCORWYOPQ"
 let AWSSECRETKEY = "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"
+let STRIPEKEY = "pk_test_Ke8z3yuwnzoUsWjxKFb4LRhR"
+
 let APP_COLOR = UIColor(red: 128/255.0, green: 64/255.0, blue: 255/255.0, alpha: 1.0)
 
 let BASE_URL = "http://192.168.1.119:5000/"
