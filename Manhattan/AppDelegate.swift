@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getFileName(type: String) -> String {
         var str = type + "_\(Date.timeIntervalSinceReferenceDate * 1000)"
         if type == "video" {
-            str += ".mp4"
+            str += ".mov"
         } else {
             str += ".jpg"
         }

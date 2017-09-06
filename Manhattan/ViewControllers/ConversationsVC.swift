@@ -219,7 +219,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.showEmailAlert()
+        //self.showEmailAlert()
     }
     
     override func viewWillAppear(_ animated: Bool) {
