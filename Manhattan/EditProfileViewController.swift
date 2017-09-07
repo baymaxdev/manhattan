@@ -47,7 +47,7 @@ class EditProfileViewController: UITableViewController ,THDatePickerDelegate, UI
         var tags : [AHTag] = []
         
         for str in strInterests {
-            var tag = AHTag(category: "", title: str, color: UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0), enabled: false)
+            var tag = AHTag(category: "", title: str, color: APP_COLOR, enabled: false)
             if (user?.interests.contains(str))! {
                 tag.enabled = true
             }

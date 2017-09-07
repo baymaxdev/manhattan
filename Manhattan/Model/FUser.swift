@@ -39,7 +39,7 @@ class FUser: NSObject {
     class func registerUser(withName: String, email: String, password: String, profilePic: String, completion: @escaping (Bool, String) -> Swift.Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
-                //user?.sendEmailVerification(completion: nil)
+                user?.sendEmailVerification(completion: nil)
                 let values = ["name": withName, "email": email, "profilePicLink": profilePic]
                 Database.database().reference().child("users").child((user?.uid)!).child("credentials").updateChildValues(values, withCompletionBlock: { (errr, _) in
                     if errr == nil {

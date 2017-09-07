@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var checkImg: UIImageView!
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var tfUsername: JJMaterialTextfield!
     @IBOutlet weak var btnPrev: UIButton!
@@ -30,23 +31,57 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         
         btnNext.layer.cornerRadius = btnNext.frame.height / 2
         btnNext.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnNext.layer.borderWidth = 1
+        btnNext.layer.borderWidth = 0
         
         btnPrev.layer.cornerRadius = btnPrev.frame.height / 2
         btnPrev.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnPrev.layer.borderWidth = 1
+        btnPrev.layer.borderWidth = 0
+        
+        btnPrev.layer.cornerRadius = 5
+        btnNext.layer.cornerRadius = 5
         
         tfUsername.lineColor = UIColor.white
+        
+        tfUsername.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         // Do any additional setup after loading the view.
     }
 
+    func textFieldDidChange(_ textField: UITextField) {
+        if tfUsername == textField && !(tfUsername.text?.isEmpty)! {
+            let parameters = ["username": tfUsername.text]
+            Alamofire.request(BASE_URL + CHECKUSERNAME_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        if swiftyJsonVar["result"].boolValue == true {
+                            self.checkImg.image = UIImage(named: "check")
+                        } else {
+                            self.checkImg.image = UIImage(named: "delete")
+                        }
+                    }
+                    else {
+                        
+                    }
+                    
+                } else {
+                    
+                }
+            }
+        }
+        else {
+            checkImg.image = nil
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onBackTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func onNextTapped(_ sender: Any) {

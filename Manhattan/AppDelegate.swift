@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: (window?.frame.width)!, height: (window?.frame.height)!))
-        indicator = NVActivityIndicatorView(frame: CGRect.init(x: (indicatorView?.frame.width)!/2 - 50.0, y: (indicatorView?.frame.height)!/2 - 50.0, width: 100, height: 100), type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: 0)
+        indicator = NVActivityIndicatorView(frame: CGRect.init(x: (indicatorView?.frame.width)!/2 - 50.0, y: (indicatorView?.frame.height)!/2 - 50.0, width: 100, height: 100), type: NVActivityIndicatorType.ballSpinFadeLoader, color: UIColor.white, padding: 0)
         indicatorView?.addSubview(indicator!)
         indicatorView?.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         

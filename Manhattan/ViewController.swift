@@ -31,6 +31,9 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        btnfacebook.layer.cornerRadius = 5
+        btnSignin.layer.cornerRadius = 5
+        
         delegate = UIApplication.shared.delegate as? AppDelegate
         initialize()
     }

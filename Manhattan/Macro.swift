@@ -25,8 +25,8 @@ let STRIPEKEY = "pk_test_Ke8z3yuwnzoUsWjxKFb4LRhR"
 
 let APP_COLOR = UIColor(red: 128/255.0, green: 64/255.0, blue: 255/255.0, alpha: 1.0)
 
-let BASE_URL = "http://192.168.1.119:5000/"
-//let BASE_URL = "http://52.15.87.56:5000/"
+//let BASE_URL = "http://192.168.1.119:5000/"
+let BASE_URL = "http://52.15.87.56:5000/"
 
 let SIGNUP_URL = "user/auth/signup/"
 let LOGIN_URL = "user/auth/login/"

@@ -32,21 +32,22 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
         var tags : [AHTag] = []
         
         for str in strInterests {
-            let tag = AHTag(category: "", title: str, color: UIColor(red: 116/255.0, green: 221/255.0, blue: 137/255.0, alpha: 1.0), enabled: false)
+            let tag = AHTag(category: "", title: str, color: APP_COLOR, enabled: false)
             tags.append(tag)
         }
         
         tagList.setTags(tags)
+        
         vwTag.layer.cornerRadius = 10
         vwDoB.layer.cornerRadius = 10
         
         btnSignup.layer.cornerRadius = btnSignup.frame.height / 2
         btnSignup.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnSignup.layer.borderWidth = 1
+        btnSignup.layer.borderWidth = 0
         
         btnPrev.layer.cornerRadius = btnPrev.frame.height / 2
         btnPrev.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnPrev.layer.borderWidth = 1
+        btnPrev.layer.borderWidth = 0
         
         // Do any additional setup after loading the view.
     }
@@ -57,7 +58,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     }
     
     @IBAction func onBackTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // Date picker

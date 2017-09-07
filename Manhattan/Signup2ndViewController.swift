@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class Signup2ndViewController: UIViewController {
     
+    @IBOutlet weak var checkImg: UIImageView!
     @IBOutlet weak var btnPrev: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var tfPassword: JJMaterialTextfield!
@@ -26,15 +27,45 @@ class Signup2ndViewController: UIViewController {
         
         btnNext.layer.cornerRadius = btnNext.frame.height / 2
         btnNext.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnNext.layer.borderWidth = 1
+        btnNext.layer.borderWidth = 0
         
         btnPrev.layer.cornerRadius = btnPrev.frame.height / 2
         btnPrev.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
-        btnPrev.layer.borderWidth = 1
+        btnPrev.layer.borderWidth = 0
+        
+        btnPrev.layer.cornerRadius = 22
+        btnNext.layer.cornerRadius = 22
         
         tfPassword.lineColor = UIColor.white
         tfEmail.lineColor = UIColor.white
+        tfEmail.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        if textField == tfEmail && !(tfEmail.text?.isEmpty)! {
+            let parameters = ["email": tfEmail.text]
+            Alamofire.request(BASE_URL + CHECKEMAIL_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+                self.delegate?.hideLoader()
+                
+                if((resData.result.value) != nil) {
+                    let swiftyJsonVar = JSON(resData.result.value!)
+                    if swiftyJsonVar["success"].boolValue == true {
+                        if swiftyJsonVar["result"].boolValue == true {
+                            self.checkImg.image = UIImage(named: "check")
+                        } else {
+                            self.checkImg.image = UIImage(named: "delete")
+                        }
+                    }
+                    else {
+                    }
+                    
+                } else {
+                }
+            }
+        } else {
+            checkImg.image = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +74,7 @@ class Signup2ndViewController: UIViewController {
     }
     
     @IBAction func onBackTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onNextTapped(_ sender: Any) {
