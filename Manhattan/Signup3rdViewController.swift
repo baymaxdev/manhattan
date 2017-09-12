@@ -37,8 +37,8 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
         btnPrev.layer.borderColor = UIColor(red: 64/255.0, green: 224/255.0, blue: 128/255.0, alpha: 1.0).cgColor
         btnPrev.layer.borderWidth = 0
         
-        btnPrev.layer.cornerRadius = 5
-        btnNext.layer.cornerRadius = 5
+        // btnPrev.layer.cornerRadius = 10
+        // btnNext.layer.cornerRadius = 5
         
         tfUsername.lineColor = UIColor.white
         
@@ -86,7 +86,7 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
 
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfUsername.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Username is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "A username is required.", action: nil)
         }
         else {
             self.delegate?.showLoader(vc: self)
@@ -109,7 +109,7 @@ class Signup3rdViewController: UIViewController, UIImagePickerControllerDelegate
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: ":( We couldn't connect to our servers right now. Try again in a bit.", action: nil)
                 }
             }
             

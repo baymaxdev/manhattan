@@ -79,11 +79,11 @@ class Signup2ndViewController: UIViewController {
     
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfEmail.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Email is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "An email is required.", action: nil)
         } else if (tfPassword.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Password is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "A password is required.", action: nil)
         } else if (tfPassword.text?.characters.count)! < 6 {
-            delegate?.showAlert(vc: self, msg: "Password must include at least 6 characters", action: nil)
+            delegate?.showAlert(vc: self, msg: "Password must be at least 6 characters.", action: nil)
         } else {
             self.delegate?.showLoader(vc: self)
             let parameters = ["email": tfEmail.text]
@@ -106,7 +106,7 @@ class Signup2ndViewController: UIViewController {
                     }
                     
                 } else {
-                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                    self.delegate?.showAlert(vc: self, msg: "Darn, we couldn't connect to our servers. Try again soon.", action: nil)
                 }
             }
         }

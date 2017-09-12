@@ -48,9 +48,9 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
 
     @IBAction func onSignin(_ sender: Any) {
         if (tfEmail.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Email field is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "Invalid Email", action: nil)
         } else if (tfPassword.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Password field is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "Invalid password", action: nil)
         } else {
             delegate?.showLoader(vc: self)
             self.didLogin(method: "Normal", user: nil)
@@ -138,11 +138,13 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                             }
                         }
                     } else {
+                        let temp = User()
+                        temp.setUser(swiftyJsonVar["userObj"].dictionaryValue)
                         var pwd : String = ""
                         var email: String = ""
                         if method == "Normal" {
                             pwd = self.tfPassword.text!
-                            email = self.tfEmail.text!
+                            email = temp.email!
                         } else {
                             pwd = "123456"
                             email = (user?.email)!
@@ -173,7 +175,7 @@ class ViewController: UIViewController ,NVActivityIndicatorViewable{
                 
             } else {
                 self.delegate?.hideLoader()
-                self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                self.delegate?.showAlert(vc: self, msg: "Oops, we couldn't connect to our servers right now. Try again in a bit.", action: nil)
             }
         }
     }

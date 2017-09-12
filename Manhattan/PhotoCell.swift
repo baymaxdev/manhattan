@@ -36,10 +36,10 @@ class PhotoCell: UITableViewCell {
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height / 2
         
         vwBack.layer.masksToBounds = false
-        vwBack.layer.shadowColor = UIColor.black.cgColor
-        vwBack.layer.shadowOffset = CGSize(width: 2, height: 2)
-        vwBack.layer.shadowOpacity = 0.7
-        vwBack.layer.shadowRadius = 1.0
+        // vwBack.layer.shadowColor = UIColor.black.cgColor
+        // vwBack.layer.shadowOffset = CGSize(width: 2, height: 2)
+        // vwBack.layer.shadowOpacity = 0.7
+        // vwBack.layer.shadowRadius = 1.0
         // Initialization code
     }
 

@@ -44,9 +44,9 @@ class Signup1stViewController: UIViewController {
     
     @IBAction func onNextTapped(_ sender: Any) {
         if (tfFirstName.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "First Name is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "Oops, you didn't enter a first name.", action: nil)
         } else if (tfLastName.text?.isEmpty)! {
-            delegate?.showAlert(vc: self, msg: "Last Name is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "Oops, you didn't enter a last name.", action: nil)
         } else {
             delegate?.user = User()
             delegate?.user?.name = tfFirstName.text! + " " + tfLastName.text!

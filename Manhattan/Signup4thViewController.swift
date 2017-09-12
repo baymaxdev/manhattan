@@ -106,7 +106,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
     
     @IBAction func onSignup(_ sender: Any) {
         if btnDoB.titleLabel?.text == "__/__/____" {
-            delegate?.showAlert(vc: self, msg: "Date of Birth field is required", action: nil)
+            delegate?.showAlert(vc: self, msg: "Your birthday is required.", action: nil)
         }
         else {
             var tagStr : [String] = []
@@ -178,7 +178,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                                     
                                 } else {
                                     self.delegate?.hideLoader()
-                                    self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
+                                    self.delegate?.showAlert(vc: self, msg: "We couldn't connect to our servers. Try again in a bit.", action: nil)
                                 }
                             }
 
@@ -191,7 +191,7 @@ class Signup4thViewController: UIViewController ,THDatePickerDelegate{
                 }
                 
                 if let _ = task.result {
-                    print("Upload Starting!")
+                    print("Registering new user.")
                     // Do something with uploadTask.
                 }
                 

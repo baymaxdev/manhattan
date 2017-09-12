@@ -37,6 +37,7 @@ class CourseCell: UITableViewCell {
         vwContainer.layer.shadowColor = UIColor.black.cgColor
         vwContainer.layer.shadowOffset = CGSize(width: 2, height: 2)
         vwContainer.layer.shadowOpacity = 0.5
+        // vwContainer.layer.cornerRadius = 25
         vwContainer.layer.shadowRadius = 2.0
         // Initialization code
     }
