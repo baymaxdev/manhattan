@@ -42,7 +42,8 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     func initialize() {
         delegate?.showLoader(vc: self)
         posts.removeAll()
-        Alamofire.request(BASE_URL + POSTGETALL_URL, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
+        let parameters = ["userId" : self.delegate?.user?.id]
+        Alamofire.request(BASE_URL + POSTGETALLBYMENTORS_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseData { (resData) -> Void in
             self.delegate?.hideLoader()
             
             if((resData.result.value) != nil) {

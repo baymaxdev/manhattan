@@ -25,8 +25,8 @@ let STRIPEKEY = "pk_test_Ke8z3yuwnzoUsWjxKFb4LRhR"
 
 let APP_COLOR = UIColor(red: 128/255.0, green: 64/255.0, blue: 255/255.0, alpha: 1.0)
 
-let BASE_URL = "http://192.168.1.119:5000/"
-//let BASE_URL = "http://52.15.87.56:5000/"
+//let BASE_URL = "http://192.168.1.119:5000/"
+let BASE_URL = "http://52.15.87.56:5000/"
 
 let SIGNUP_URL = "user/auth/signup/"
 let LOGIN_URL = "user/auth/login/"
@@ -41,6 +41,7 @@ let CHECKEMAIL_URL = "user/checkemail/"
 let POST_URL = "post/post/"
 let LIKE_URL = "post/updatelike/"
 let POSTGETALL_URL = "post/getall/"
+let POSTGETALLBYMENTORS_URL = "post/getallbymentors/"
 let POSTGETBYUSERID_URL = "post/getbyuserid/"
 let GETCOMMENTBYPOSTID_URL = "comment/getbypostid/"
 let COMMENTPOST_URL = "comment/post/"

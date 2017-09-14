@@ -84,11 +84,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IQKeyboardManager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>JJMaterialTextField-JJMaterialTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -197,12 +192,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2601EBD55D17277830C167C7A87E35CF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>279AA6726F52A334C45E85774BD21A3D</key>
+		<key>26F2DFC38CB4E8C341650C5C2906B5CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -242,7 +232,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6055BF2074864B7981B6C7302AA046C9</key>
+		<key>696F77A9D0CC1F8AA27B61B1B1371540</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -267,17 +257,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B3EAA3CEE088EE8A187FC65A05FEA83</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9F7098779713B711F6C591B62A41F242</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A612F53E543F32BA624D06E61DCF591F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -287,7 +267,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC8A1EFBA180F21A3B97F61F45C8AA66</key>
+		<key>ADBA1B21BB03D3FFDB23EBFD3DA3D57A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BFE68EDBE1EED7AAB4495D78E7DDE38C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -317,12 +302,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CFEE754CDFF510321710A2CE80C51652</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D0581AF7BF4A6DA140D280B19ECC7BFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D41F2F37088EE2B724A283C89AC6B567</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCF80E0E50EDF2C0E46E1567B2548010</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -343,11 +338,6 @@
 			<true/>
 		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E7534A7292022F7E0F44807CD08AAA70</key>
 		<dict>
 			<key>primary</key>
 			<true/>
