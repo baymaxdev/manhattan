@@ -14,11 +14,10 @@ import Alamofire
 import SwiftyJSON
 import AWSS3
 
-class VideoPostViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class VideoPostViewController: UIViewController {
     
     @IBOutlet weak var vwPlayer: BMCustomPlayer!
     @IBOutlet weak var tfDescription: FloatLabelTextField!
-    @IBOutlet weak var btnChoose: UIButton!
     
     var delegate: AppDelegate?
     var isRecord: Bool?
@@ -28,9 +27,12 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = UIApplication.shared.delegate as? AppDelegate
-        btnChoose.layer.cornerRadius = btnChoose.frame.height / 2
         BMPlayerConf.shouldAutoPlay = false
         BMPlayerConf.topBarShowInCase = .none
+        let asset = BMPlayerResource(url: videoUrl!)
+        vwPlayer.setVideo(resource: asset)
+        vwPlayer.play()
+
         
         /*vwPlayer.backBlock = { [unowned self] (isFullScreen) in
             if isFullScreen == true {
@@ -71,7 +73,7 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                 data!,
                 bucket: S3BUCKETNAME,
                 key: filename!,
-                contentType: "video/mov",
+                contentType: "video/mp4",
                 expression: nil,
                 completionHandler: { (task, error) -> Void in
                     DispatchQueue.main.async(execute: {
@@ -117,84 +119,6 @@ class VideoPostViewController: UIViewController , UIImagePickerControllerDelegat
                 return nil;
             }
         }
-    }
-    
-    @IBAction func onChoose(_ sender: Any) {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "Record a Video", style: .default) { (_ alert: UIAlertAction) in
-            let picker = UIImagePickerController()
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                picker.sourceType = .camera
-                //picker.cameraCaptureMode = .video
-                //picker.modalPresentationStyle = .fullScreen
-                picker.mediaTypes = [kUTTypeMovie as String]
-                //picker.showsCameraControls = true
-                picker.videoMaximumDuration = 30.0
-                picker.delegate = self
-                self.isRecord = true
-                self.present(picker, animated: true, completion: nil)
-            }
-            else {
-                self.delegate?.showAlert(vc: self, msg: "Sorry, this device has no camera.", action: nil)
-            }
-        }
-        
-        let album = UIAlertAction(title: "Upload From Camera Roll", style: .default) { (_ alert: UIAlertAction) in
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.mediaTypes = [kUTTypeMovie as String]
-            picker.delegate = self
-            self.isRecord = false
-            self.present(picker, animated: true, completion: nil)
-        }
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        sheet.addAction(album)
-        sheet.addAction(camera)
-        self.present(sheet, animated: true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let mediaType = info[UIImagePickerControllerMediaType]
-        
-        if let type = mediaType {
-            if type is String {
-                let stringType = type as! String
-                if stringType == kUTTypeMovie as String {
-                    videoUrl = info[UIImagePickerControllerMediaURL] as? URL
-                    
-                    if let url = videoUrl {
-                        if isRecord == true {
-                            PHPhotoLibrary.shared().performChanges({
-                                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
-                            }) { saved, error in
-                                if saved {
-                                    let fetchOptions = PHFetchOptions()
-                                    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-                                    
-                                    // After uploading we fetch the PHAsset for most recent video and then get its current location url
-                                    
-                                    let fetchResult = PHAsset.fetchAssets(with: .video, options: fetchOptions).lastObject
-                                    PHImageManager().requestAVAsset(forVideo: fetchResult!, options: nil, resultHandler: { (avurlAsset, audioMix, dict) in
-                                        let newObj = avurlAsset as! AVURLAsset
-                                        let asset = BMPlayerResource(url: newObj.url)
-                                        self.vwPlayer.setVideo(resource: asset)
-                                        self.vwPlayer.play()
-                                        // This is the URL we need now to access the video from gallery directly.
-                                    })
-                                }
-                            }
-                        } else {
-                            let asset = BMPlayerResource(url: url)
-                            self.vwPlayer.setVideo(resource: asset)
-                            self.vwPlayer.play()
-                        }
-                        
-                    }
-                } 
-            }
-        }
-        
-        dismiss(animated:true, completion: nil)
     }
     
     /*

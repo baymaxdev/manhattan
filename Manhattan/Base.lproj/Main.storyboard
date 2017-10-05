@@ -947,7 +947,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80e-Uf-jad">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80e-Uf-jad">
                                         <rect key="frame" x="331" y="18" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="fZZ-Wc-ke4"/>
@@ -975,6 +975,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.4823529412" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_postvideo" translatesAutoresizingMaskIntoConstraints="NO" id="vfl-3U-LUm">
+                                <rect key="frame" x="275" y="518" width="80" height="80"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vfl-3U-LUm" secondAttribute="height" multiplier="1:1" id="OHk-Re-4ys"/>
+                                    <constraint firstAttribute="width" constant="80" id="SEF-d7-ioY"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qE2-CW-f1L" appends="YES" id="SIv-Aq-mMZ"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -984,6 +995,8 @@
                             <constraint firstItem="KEf-lj-Yzp" firstAttribute="leading" secondItem="4L8-qD-pJk" secondAttribute="leading" id="YnD-TD-Mhm"/>
                             <constraint firstAttribute="trailing" secondItem="sNs-pT-jSP" secondAttribute="trailing" id="aFI-Wu-bfe"/>
                             <constraint firstItem="sNs-pT-jSP" firstAttribute="top" secondItem="4L8-qD-pJk" secondAttribute="top" id="f7c-1M-Ksa"/>
+                            <constraint firstAttribute="trailing" secondItem="vfl-3U-LUm" secondAttribute="trailing" constant="20" id="iLJ-wo-p9c"/>
+                            <constraint firstItem="Mxj-di-1dL" firstAttribute="top" secondItem="vfl-3U-LUm" secondAttribute="bottom" constant="20" id="roI-Ls-tbT"/>
                             <constraint firstItem="Mxj-di-1dL" firstAttribute="top" secondItem="KEf-lj-Yzp" secondAttribute="bottom" id="xwn-L5-wMy"/>
                         </constraints>
                     </view>
@@ -994,8 +1007,31 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIC-TK-Fap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qE2-CW-f1L">
+                    <connections>
+                        <action selector="onVideoTapped:" destination="glw-qd-cxs" id="SMu-uV-vTN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2676" y="2239"/>
+        </scene>
+        <!--Video Record View Controller-->
+        <scene sceneID="0o7-In-uss">
+            <objects>
+                <viewController storyboardIdentifier="VideoRecordViewController" id="EaF-2l-hSs" customClass="VideoRecordViewController" customModule="Manhattan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vn6-A0-ByN"/>
+                        <viewControllerLayoutGuide type="bottom" id="zXL-Zk-bGh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ftl-w3-sXT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JW8-kz-obL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3591" y="2982"/>
         </scene>
         <!--Popup View Controller-->
         <scene sceneID="dWs-oz-rbg">
@@ -3391,20 +3427,8 @@
                                     <constraint firstItem="i8G-dF-ihD" firstAttribute="width" secondItem="i8G-dF-ihD" secondAttribute="height" multiplier="1:1" id="xEq-Bl-3EG"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHS-zF-7Ux">
-                                <rect key="frame" x="20" y="281" width="335" height="32"/>
-                                <color key="backgroundColor" red="0.4823529412" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="Choose Video">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onChoose:" destination="kJX-rh-6FF" eventType="touchUpInside" id="lEh-H0-991"/>
-                                    <action selector="onChoosePhoto:" destination="WII-Ep-qP2" eventType="touchUpInside" id="Wrx-cW-xp0"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Caption this." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-tc-NY7" customClass="FloatLabelTextField" customModule="Manhattan" customModuleProvider="target">
-                                <rect key="frame" x="20" y="333" width="335" height="40"/>
+                                <rect key="frame" x="19" y="291" width="337.5" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="E1r-1G-knp"/>
@@ -3427,23 +3451,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GHS-zF-7Ux" firstAttribute="trailing" secondItem="TKm-FR-suJ" secondAttribute="trailing" constant="-20" id="4Bu-EA-f8R"/>
                             <constraint firstItem="TKm-FR-suJ" firstAttribute="top" secondItem="xtC-9o-AZ5" secondAttribute="bottom" id="8I0-Nf-2s0"/>
                             <constraint firstItem="TKm-FR-suJ" firstAttribute="leading" secondItem="saQ-E2-OOt" secondAttribute="leading" id="95k-fy-pBJ"/>
-                            <constraint firstItem="GHS-zF-7Ux" firstAttribute="top" secondItem="TKm-FR-suJ" secondAttribute="bottom" constant="10" id="GaP-V2-FkW"/>
-                            <constraint firstItem="Dga-tc-NY7" firstAttribute="top" secondItem="GHS-zF-7Ux" secondAttribute="bottom" constant="20" id="L1x-tq-IVO"/>
+                            <constraint firstItem="Dga-tc-NY7" firstAttribute="centerX" secondItem="saQ-E2-OOt" secondAttribute="centerX" id="EqO-hV-gx0"/>
+                            <constraint firstItem="Dga-tc-NY7" firstAttribute="top" secondItem="TKm-FR-suJ" secondAttribute="bottom" constant="20" id="V5t-ui-YIB"/>
                             <constraint firstAttribute="trailing" secondItem="TKm-FR-suJ" secondAttribute="trailing" id="WJl-EQ-bc2"/>
-                            <constraint firstItem="Dga-tc-NY7" firstAttribute="leading" secondItem="GHS-zF-7Ux" secondAttribute="leading" id="YUR-IU-BPo"/>
-                            <constraint firstItem="GHS-zF-7Ux" firstAttribute="leading" secondItem="TKm-FR-suJ" secondAttribute="leading" constant="20" id="an3-2h-6mU"/>
                             <constraint firstAttribute="trailing" secondItem="xtC-9o-AZ5" secondAttribute="trailing" id="bI8-a0-acT"/>
                             <constraint firstItem="xtC-9o-AZ5" firstAttribute="leading" secondItem="saQ-E2-OOt" secondAttribute="leading" id="cjm-Qk-W4n"/>
+                            <constraint firstItem="Dga-tc-NY7" firstAttribute="width" secondItem="saQ-E2-OOt" secondAttribute="width" multiplier="0.9" id="ibV-qo-HKF"/>
                             <constraint firstItem="xtC-9o-AZ5" firstAttribute="top" secondItem="saQ-E2-OOt" secondAttribute="top" id="img-OT-0w1"/>
-                            <constraint firstItem="Dga-tc-NY7" firstAttribute="trailing" secondItem="GHS-zF-7Ux" secondAttribute="trailing" id="j1B-RA-dIr"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="btnChoose" destination="GHS-zF-7Ux" id="sYd-sw-fAX"/>
                         <outlet property="tfDescription" destination="Dga-tc-NY7" id="57K-1Z-kp4"/>
                         <outlet property="vwPlayer" destination="TKm-FR-suJ" id="YQI-DK-gPa"/>
                     </connections>

@@ -249,6 +249,12 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
+    @IBAction func onVideoTapped(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VideoRecordViewController") as! VideoRecordViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

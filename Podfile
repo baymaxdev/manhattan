@@ -26,5 +26,7 @@ target 'Manhattan' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Stripe'
+  pod 'LLSimpleCamera'
+  pod 'MZTimerLabel'
   
 end
