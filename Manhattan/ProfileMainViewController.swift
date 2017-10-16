@@ -51,6 +51,8 @@ class ProfileMainViewController: MXSegmentedPagerController {
         segmentedPager.segmentedControl.selectionStyle = .fullWidthStripe
         segmentedPager.segmentedControl.selectionIndicatorColor = APP_COLOR
         
+        segmentedPager.pager.isScrollEnabled = false
+        
         // Do any additional setup after loading the view.
         delegate = UIApplication.shared.delegate as? AppDelegate
         initializeUser()

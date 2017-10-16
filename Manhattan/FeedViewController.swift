@@ -21,6 +21,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
     var posts: [Post] = []
     var delegate: AppDelegate?
     var expandableStates : Array<Bool>!
+    var cellsCurrentlyEditing: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,10 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 if swiftyJsonVar["success"].boolValue == true {
                     let result = swiftyJsonVar["result"].arrayValue
                     for element in result {
-                        self.posts.append(Post(param: element.dictionaryValue))
+                        let post = Post(param: element.dictionaryValue)
+                        if (post.type == .video) {
+                            self.posts.append(post)
+                        }
                     }
                     self.expandableStates = [Bool](repeating: true, count: self.posts.count)
                     self.tableView.reloadData()
@@ -128,22 +132,23 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
-            let asset = BMPlayerResource(url: URL(string: post.postContent!)!)
-            cell.vwPlayer.setVideo(resource: asset)
-            cell.vwPlayer.pause()
+//            let asset = BMPlayerResource(url: URL(string: post.postContent!)!)
+//            cell.vwPlayer.setVideo(resource: asset)
+//            cell.vwPlayer.pause()
             cell.index = indexPath.row
             cell.lbDescription.text = post.postTitle
-            cell.lbTitle.text = "\((post.user?.name)!) posted a video."
+            cell.lbTitle.text = (post.user?.name)!
             cell.delegate = self
-            cell.lbDate.text = dateFromISOString(string: post.createdTime!)
-            cell.lbLikeCnt.text = "\((post.likes?.count)!) Likes"
-            cell.lbCommentCnt.text = "\((post.comments?.count)!) Comments"
             cell.imgAvatar.sd_setImage(with: URL(string: (post.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
             if (post.likes?.contains((self.delegate?.user?.id)!) == true) {
                 cell.btnLike.isSelected = true
             }
             else {
                 cell.btnLike.isSelected = false
+            }
+            
+            if (cellsCurrentlyEditing.contains(indexPath.row)) {
+                cell.openCell()
             }
             return cell
         }
@@ -237,8 +242,7 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                         let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PhotoCell
                         cell.lbLikeCnt.text = "\((self.posts[index].likes?.count)!) Likes"
                     } else {
-                        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! VideoCell
-                        cell.lbLikeCnt.text = "\((self.posts[index].likes?.count)!) Likes"
+                        
                     }
                 }
                 else {
@@ -248,6 +252,19 @@ class FeedViewController: UIViewController , UITableViewDelegate, UITableViewDat
                 self.delegate?.showAlert(vc: self, msg: "Sorry, Failed to connect to server.", action: nil)
             }
         }
+    }
+    
+    func didSelectCell(_ index: Int) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VideoPlayerViewController") as! VideoPlayerViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func cellDidOpen(_ index: Int) {
+        cellsCurrentlyEditing.add(index)
+    }
+    
+    func cellDidClose(_ index: Int) {
+        cellsCurrentlyEditing.remove(index)
     }
     
     @IBAction func onVideoTapped(_ sender: Any) {

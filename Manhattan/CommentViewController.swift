@@ -22,6 +22,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
     var post: Post?
     var comments: [Comment] = []
     var delegate: AppDelegate?
+    var cellsCurrentlyEditing: NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,16 +163,10 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
-                let asset = BMPlayerResource(url: URL(string: (post?.postContent)!)!)
-                cell.vwPlayer.setVideo(resource: asset)
-                cell.vwPlayer.pause()
                 cell.index = indexPath.row
                 cell.lbDescription.text = post?.postTitle
-                cell.lbTitle.text = "\((post?.user?.name)!) posted an video."
+                cell.lbTitle.text = (post?.user?.name)!
                 cell.delegate = self
-                cell.lbDate.text = dateFromISOString(string: (post?.createdTime)!)
-                cell.lbLikeCnt.text = "\((post?.likes?.count)!) Likes"
-                cell.lbCommentCnt.text = "\(comments.count) Comments"
                 cell.imgAvatar.sd_setImage(with: URL(string: (post?.user?.photo)!), placeholderImage: UIImage(named: "avatar"))
                 if (post?.likes?.contains((self.delegate?.user?.id)!) == true) {
                     cell.btnLike.isSelected = true
@@ -180,6 +175,9 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                     cell.btnLike.isSelected = false
                 }
                 
+                if (cellsCurrentlyEditing.contains(indexPath.row)) {
+                    cell.openCell()
+                }
                 return cell
             }
         }
@@ -206,11 +204,11 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
     
     // Cell Delegates
     
-    func didSelectComment(_ index: Int) {
-
+    func didSelectProfile(_ index: Int) {
+        
     }
     
-    func didSelectProfile(_ index: Int) {
+    func didSelectComment(_ index: Int) {
         
     }
     
@@ -235,8 +233,7 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
                         let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! PhotoCell
                         cell.lbLikeCnt.text = "\((self.post?.likes?.count)!) Likes"
                     } else {
-                        let cell = self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! VideoCell
-                        cell.lbLikeCnt.text = "\((self.post?.likes?.count)!) Likes"
+
                     }
                 }
                 else {
@@ -248,6 +245,18 @@ class CommentViewController: UIViewController ,UITableViewDataSource, UITableVie
         }
     }
     
+    func didSelectCell(_ index: Int) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VideoPlayerViewController") as! VideoPlayerViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func cellDidOpen(_ index: Int) {
+        cellsCurrentlyEditing.add(index)
+    }
+    
+    func cellDidClose(_ index: Int) {
+        cellsCurrentlyEditing.remove(index)
+    }
     /*
     // MARK: - Navigation
 

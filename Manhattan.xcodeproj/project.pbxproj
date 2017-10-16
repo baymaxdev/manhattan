@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB08D1DD1F880DC50029291C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB08D1DC1F880DC50029291C /* VideoPlayerViewController.swift */; };
 		CB1342FE1F85F14D0072506C /* VideoRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1342FD1F85F14D0072506C /* VideoRecordViewController.swift */; };
 		CB140A321F2BBF6200532BDC /* VideoPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */; };
 		CB140A361F2BF95400532BDC /* BMCustomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */; };
@@ -107,6 +108,7 @@
 		3CB85D4FE59F2606C6341702 /* Pods-Manhattan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manhattan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Manhattan/Pods-Manhattan.debug.xcconfig"; sourceTree = "<group>"; };
 		4DDA95FBA69D301B3EF89A01 /* Pods_Manhattan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Manhattan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30B163244EB0EA6454AD111 /* Pods-Manhattan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Manhattan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Manhattan/Pods-Manhattan.release.xcconfig"; sourceTree = "<group>"; };
+		CB08D1DC1F880DC50029291C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		CB1342FD1F85F14D0072506C /* VideoRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecordViewController.swift; sourceTree = "<group>"; };
 		CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPostViewController.swift; sourceTree = "<group>"; };
 		CB140A341F2BF95400532BDC /* BMCustomPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMCustomPlayer.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				CB140A311F2BBF6200532BDC /* VideoPostViewController.swift */,
 				CB6546901F2D2AAF00C2393D /* CommentViewController.swift */,
 				CB1342FD1F85F14D0072506C /* VideoRecordViewController.swift */,
+				CB08D1DC1F880DC50029291C /* VideoPlayerViewController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 			files = (
 				CB3511F11F29654A0043DB88 /* CourseViewController.swift in Sources */,
 				CB3A5D6D1F238BEE00D61562 /* AHTagsLabel.swift in Sources */,
+				CB08D1DD1F880DC50029291C /* VideoPlayerViewController.swift in Sources */,
 				CB3511EE1F2940740043DB88 /* VideoCell.swift in Sources */,
 				CB33D50E1F2B7CBD00E05B87 /* PhotoPostViewController.swift in Sources */,
 				CB23421C1F31FAD10004786F /* SearchViewController.swift in Sources */,

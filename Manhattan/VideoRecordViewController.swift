@@ -217,4 +217,13 @@ class VideoRecordViewController: UIViewController, MZTimerLabelDelegate {
             self.delegate?.showAlert(vc: self, msg: "Video Length must be less than 60s.", action: nil)
         }
     }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
+    }
+    
 }
